@@ -9,11 +9,12 @@ Zorg er eerst voor dat je [Git](https://git-scm.com/) en [Node.js](https://nodej
 > git clone git@github.com:Mesoptier/octopus-trivia.git # Maakt een nieuwe map 'octopus-trivia' aan met de project bestanden
 > cd octopus-trivia # Open de nieuwe map
 > npm install # Installeert de vereiste modules, dit kan een tijdje duren
-> npm install webpack-dev-server -g # Installeert de webserver
 ```
 
-Vervolgens start je een server die automatisch de broncode compileerd en deze toegankelijk maakt via `http://localhost:8080`. Je kan de webserver starten met het volgende commando:
+Vervolgens start je een server die automatisch de broncode compileerd en deze toegankelijk maakt via `http://localhost:8080`. Deze server hercompileerd de broncode en herlaad de pagina automatisch als je een wijziging maakt. Je kan de webserver starten met het volgende commando:
 
 ```shell
 > npm start
 ```
+
+Je kan de server stoppen met `Ctrl + C`.
