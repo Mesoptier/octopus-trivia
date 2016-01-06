@@ -1,33 +1,38 @@
+import Player from '../objects/Player';
+
 export default class GameState extends Phaser.State {
 
   create() {
-    const cw = this.game.width;
-    const ch = this.game.height;
+    const cw = this.game.width / 2;
+    const ch = this.game.height / 2;
 
-    this.stage.backgroundColor = '#ffffff';
+    this.stage.backgroundColor = '#000000';
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    // Create test object
-    this.text = new Phaser.Text(this.game, cw / 2, ch / 2, 'Hello, world!', {
-      font: '45px Arial',
-      fill: '#ff0000'
-    });
-    this.text.anchor.set(0.5)
-    this.stage.addChild(this.text);
+    var world = this.game.add.group();
+    world.scale.set(2, 2);
+
+    // Create player object
+    this.player = new Player(this.game, cw / 2, ch / 2);
+    world.add(this.player);
   }
 
-  update() {
-    const speed = 5;
-
-    if (this.cursors.left.isDown)
-      this.text.x -= speed;
-    if (this.cursors.right.isDown)
-      this.text.x += speed;
-
-    if (this.cursors.up.isDown)
-      this.text.y -= speed;
-    if (this.cursors.down.isDown)
-      this.text.y += speed;
+  render() {
+    this.game.debug.spriteInfo(this.player, 32, 32);
   }
+
+  // update() {
+  //   const speed = 5;
+  //
+  //   if (this.cursors.left.isDown)
+  //     this.text.x -= speed;
+  //   if (this.cursors.right.isDown)
+  //     this.text.x += speed;
+  //
+  //   if (this.cursors.up.isDown)
+  //     this.text.y -= speed;
+  //   if (this.cursors.down.isDown)
+  //     this.text.y += speed;
+  // }
 
 }
