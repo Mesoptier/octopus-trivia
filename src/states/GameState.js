@@ -7,7 +7,6 @@ export default class GameState extends Phaser.State {
     const ch = this.game.height / 2;
 
     this.stage.backgroundColor = '#000000';
-    this.cursors = this.input.keyboard.createCursorKeys();
 
     var world = this.game.add.group();
     world.scale.set(2, 2);

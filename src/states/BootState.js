@@ -4,10 +4,7 @@ import GameState from './GameState';
 export default class BootState extends Phaser.State {
 
   create() {
-    // this.scale.maxWidth = 800;
-    // this.scale.maxHeight = 640;
-    // this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    // this.scale.setScreenSize();
+    this.physics.startSystem(Phaser.Physics.ARCADE);
 
     this.stage.smoothed = false;
 
