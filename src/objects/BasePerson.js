@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 export default class BasePerson extends Phaser.Sprite {
 
   constructor(game, x, y, key) {
@@ -10,33 +12,33 @@ export default class BasePerson extends Phaser.Sprite {
     // Setup animations
     const frameRate = 10;
 
-    this.animations.add('walk_u', [0, 1, 0, 2], frameRate, true);
-    this.animations.add('walk_r', [3, 4, 3, 5], frameRate, true);
-    this.animations.add('walk_d', [6, 7, 6, 8], frameRate, true);
-    this.animations.add('walk_l', [9, 10, 9, 11], frameRate, true);
+    this.animations.add('walk_u', [1, 0, 2, 0], frameRate, true);
+    this.animations.add('walk_r', [4, 3, 5, 3], frameRate, true);
+    this.animations.add('walk_d', [7, 6, 8, 6], frameRate, true);
+    this.animations.add('walk_l', [10, 9, 11, 9], frameRate, true);
   }
 
   update() {
     const angle = this.body.angle * 180 / Math.PI;
-    let direction;
+    let animation;
 
     switch (angle) {
       case -90: // Up
-        this.animations.play('walk_u');
-        break;
+        animation = 'walk_u'; break;
       case 0: // Right
-        this.animations.play('walk_r');
-        break;
+        animation = 'walk_r'; break;
       case 90: // Down
-        this.animations.play('walk_d');
-        break;
+        animation = 'walk_d'; break;
       case 180: // Left
-        this.animations.play('walk_l');
-        break;
+        animation = 'walk_l'; break;
     }
+
+    // Start the animation, will be ignored if it is already running
+    this.animations.play(animation);
 
     // Stop animation when standing still
     if (this.body.velocity.getMagnitude() == 0) {
+      this.animations.currentAnim.setFrame(1, true);
       this.animations.stop();
     }
   }

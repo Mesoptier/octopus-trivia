@@ -8,12 +8,12 @@ module.exports = {
     filename: "bundle.js"
   },
   devtool: 'source-map',
-  plugins: [
-    new webpack.ProvidePlugin({
-      Phaser: __dirname + '/phaser/phaser.js',
-      PIXI: __dirname + '/phaser/pixi.js'
-    })
-  ],
+  resolve: {
+    alias: {
+      phaser: __dirname + '/phaser/phaser.js',
+      pixi: __dirname + '/phaser/pixi.js'
+    }
+  },
   module: {
     loaders: [
       {
@@ -21,6 +21,10 @@ module.exports = {
         exclude: /(node_modules|phaser)/,
         loader: 'babel',
         query: { presets: ['es2015'] }
+      },
+      {
+        test: /phaser\.js$/,
+        loader: 'expose?Phaser!imports?PIXI=pixi'
       }
     ]
   }

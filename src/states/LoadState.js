@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 export default class LoadState extends Phaser.State {
 
   preload() {

@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import Player from '../objects/Player';
 
 export default class GameState extends Phaser.State {

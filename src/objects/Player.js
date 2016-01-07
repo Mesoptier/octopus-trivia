@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import BasePerson from './BasePerson';
 
 export default class Player extends BasePerson {
