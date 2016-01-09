@@ -10,7 +10,7 @@ export default class Player extends BasePerson {
   }
 
   update() {
-    const speed = 80;
+    const speed = 160;
 
     this.body.velocity.set(0, 0);
 

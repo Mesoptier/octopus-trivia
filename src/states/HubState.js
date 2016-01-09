@@ -5,20 +5,45 @@ import renderer from '../renderer';
 export default class HubState extends Phaser.State {
 
   create() {
-    const cw = this.game.width;
-    const ch = this.game.height;
+    const { game } = this;
 
-    this.stage.backgroundColor = '#000000';
+    const cw = game.width;
+    const ch = game.height;
 
-    var world = this.game.add.group();
+    game.world.setBounds(0, 0, 1024, 1024);
+    game.stage.backgroundColor = '#000000';
+
+    this.rootGroup = game.add.group();
 
     // Create player object
-    this.player = new Player(this.game, cw / 2, ch / 2);
-    world.add(this.player);
+    this.player = new Player(game, cw / 2, ch / 2);
+    this.rootGroup.add(this.player);
+
+    // Camera
+    game.camera.follow(this.player);
+    game.camera.deadzone = new Phaser.Rectangle(64, 64, cw - 128, ch - 128);
+
+    // Create walls
+    this.wall = game.add.sprite(32, 32, null);
+    game.physics.arcade.enable(this.wall);
+    this.wall.body.setSize(128, 128, 0, 0);
+    this.wall.body.immovable = true;
+    this.rootGroup.add(this.wall);
+  }
+
+  update() {
+    const { game } = this;
+
+    game.physics.arcade.collide(this.player, this.wall);
   }
 
   render() {
-    this.game.debug.spriteInfo(this.player, 8, 8);
+    const { game, rootGroup } = this;
+
+    rootGroup.forEachAlive((sprite) => {
+      game.debug.body(sprite);
+    });
+
     renderer.render();
   }
 
