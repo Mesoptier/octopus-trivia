@@ -7,7 +7,7 @@ export default class LoadState extends Phaser.State {
   }
 
   create() {
-    this.game.state.start('GameState');
+    this.game.state.start('HubState');
   }
 
 }
