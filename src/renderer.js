@@ -7,19 +7,23 @@ let context;
 let width;
 let height;
 
-export function init(_game) {
-  game = _game;
+const renderer = {
+  init(_game) {
+    game = _game;
 
-  game.canvas.style['display'] = 'none';
-  canvas = Phaser.Canvas.create(game.width * scale, game.height * scale);
-  context = canvas.getContext('2d');
-  Phaser.Canvas.addToDOM(canvas, 'container');
-  Phaser.Canvas.setSmoothingEnabled(context, false);
+    game.canvas.style['display'] = 'none';
+    canvas = Phaser.Canvas.create(renderer, game.width * scale, game.height * scale);
+    context = canvas.getContext('2d');
+    Phaser.Canvas.addToDOM(canvas, 'container');
+    Phaser.Canvas.setSmoothingEnabled(context, false);
 
-  width = canvas.width;
-  height = canvas.height;
+    width = canvas.width;
+    height = canvas.height;
+  },
+
+  render() {
+    context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, width, height);
+  }
 };
 
-export function render() {
-  context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, width, height);
-};
+export default renderer;

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import Player from '../objects/Player';
-import * as renderer from '../renderer';
+import renderer from '../renderer';
 
 export default class HubState extends Phaser.State {
 

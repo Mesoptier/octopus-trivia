@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import * as renderer from '../renderer';
+import renderer from '../renderer';
 import LoadState from './LoadState';
 import GameState from './GameState';
 import HubState from './HubState';
