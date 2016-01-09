@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 
+require('../assets/fonts/munro/stylesheet.css');
+
 export default class LoadState extends Phaser.State {
 
   preload() {
@@ -7,7 +9,9 @@ export default class LoadState extends Phaser.State {
   }
 
   create() {
-    this.game.state.start('HubState');
+    setTimeout(() => {
+      this.game.state.start('HubState');
+    }, 500);
   }
 
 }

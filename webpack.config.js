@@ -25,6 +25,14 @@ module.exports = {
       {
         test: /phaser\.js$/,
         loader: 'expose?Phaser!imports?PIXI=pixi'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file'
       }
     ]
   }

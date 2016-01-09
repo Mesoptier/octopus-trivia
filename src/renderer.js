@@ -10,7 +10,9 @@ let height;
 const renderer = {
   init(_game) {
     game = _game;
+    game.stage.smoothed = false;
 
+    Phaser.Canvas.setImageRenderingCrisp(game.canvas);
     game.canvas.style['display'] = 'none';
     canvas = Phaser.Canvas.create(renderer, game.width * scale, game.height * scale);
     context = canvas.getContext('2d');

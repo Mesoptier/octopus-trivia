@@ -10,6 +10,9 @@ export default class BootState extends Phaser.State {
     // Use scaled pixel renderer
     renderer.init(this.game);
 
+    this.game.debug.font = '10px Munro';
+    this.game.debug.lineHeight = 12;
+
     // Start physics system
     this.physics.startSystem(Phaser.Physics.ARCADE);
 
