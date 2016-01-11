@@ -10,30 +10,51 @@ export default class HubState extends Phaser.State {
     const cw = game.width;
     const ch = game.height;
 
-    game.world.setBounds(0, 0, 1024, 1024);
-    game.stage.backgroundColor = '#000000';
+    // Load tilemap
+    const map = game.add.tilemap('auditorium_map');
+    map.addTilesetImage('auditorium', 'auditorium_tiles');
 
-    this.rootGroup = game.add.group();
+    // Create background layer
+    const backgroundLayer = map.createLayer('background');
+    backgroundLayer.resizeWorld();
 
-    // Create player object
-    this.player = new Player(game, cw / 2, ch / 2);
-    this.rootGroup.add(this.player);
+    // Create props layer
+    const propsLayer = map.createLayer('props');
+
+    console.log(map);
+
+    const rootGroup = this.rootGroup = game.add.group();
+
+    // Create walls
+    const walls = this.walls = game.add.group(rootGroup);
+    walls.enableBody = true;
+    walls.physicsBodyType = Phaser.Physics.ARCADE;
+
+    map.objects.walls.forEach((object) => {
+      let wall = walls.create(object.x, object.y, null);
+      wall.body.setSize(object.width, object.height);
+      wall.body.immovable = true;
+    });
+
+    // Create entities
+    map.objects.entities.forEach((object) => {
+      switch (object.type) {
+        case 'player':
+          // Create player
+          this.player = new Player(game, object.x + object.width / 2, object.y + object.height / 2);
+          rootGroup.add(this.player);
+          return;
+      }
+    })
 
     // Camera
     game.camera.follow(this.player, Phaser.Camera.FOLLOW_TOPDOWN);
-
-    // Create walls
-    this.wall = game.add.sprite(32, 32, null);
-    game.physics.arcade.enable(this.wall);
-    this.wall.body.setSize(128, 128, 0, 0);
-    this.wall.body.immovable = true;
-    this.rootGroup.add(this.wall);
   }
 
   update() {
     const { game } = this;
 
-    game.physics.arcade.collide(this.player, this.wall);
+    game.physics.arcade.collide(this.player, this.walls);
   }
 
   render() {
