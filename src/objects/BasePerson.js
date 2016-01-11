@@ -5,8 +5,10 @@ export default class BasePerson extends Phaser.Sprite {
   constructor(game, x, y, key) {
     super(game, x, y, key, 0);
 
+    this.anchor.set(0.5, 0.5);
+
     game.physics.arcade.enable(this);
-    this.body.setSize(18, 24, 7, 6);
+    this.body.setSize(18, 24, 0, 2);
 
     // Setup animations
     const frameRate = 10;

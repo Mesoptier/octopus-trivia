@@ -20,8 +20,7 @@ export default class HubState extends Phaser.State {
     this.rootGroup.add(this.player);
 
     // Camera
-    game.camera.follow(this.player);
-    game.camera.deadzone = new Phaser.Rectangle(64, 64, cw - 128, ch - 128);
+    game.camera.follow(this.player, Phaser.Camera.FOLLOW_TOPDOWN);
 
     // Create walls
     this.wall = game.add.sprite(32, 32, null);
