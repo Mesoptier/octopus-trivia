@@ -21,8 +21,6 @@ export default class HubState extends Phaser.State {
     // Create props layer
     const propsLayer = map.createLayer('props');
 
-    console.log(map);
-
     const rootGroup = this.rootGroup = game.add.group();
 
     // Create walls
@@ -58,12 +56,6 @@ export default class HubState extends Phaser.State {
   }
 
   render() {
-    const { game, rootGroup } = this;
-
-    rootGroup.forEachAlive((sprite) => {
-      game.debug.body(sprite);
-    });
-
     renderer.render();
   }
 
