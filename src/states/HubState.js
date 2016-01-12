@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Player from '../objects/Player';
 import renderer from '../renderer';
+import Dialog from '../helpers/Dialog';
 
 export default class HubState extends Phaser.State {
 
@@ -12,50 +13,85 @@ export default class HubState extends Phaser.State {
 
     // Load tilemap
     const map = game.add.tilemap('auditorium_map');
-    map.addTilesetImage('auditorium', 'auditorium_tiles');
+    map.addTilesetImage('soulsilver tileset', 'soulsilver tileset');
+    map.addTilesetImage('tileset2', 'tileset2');
 
     // Create background layer
-    const backgroundLayer = map.createLayer('background');
+    const backgroundLayer = map.createLayer('Floor');
     backgroundLayer.resizeWorld();
 
-    // Create props layer
-    const propsLayer = map.createLayer('props');
+    // Create prop layers
+    [
+      'Chairs',
+      'Tables',
+      'Round tables',
+      'PCs',
+      'Front Chairs',
+      'Others',
+      'Upstairs',
+      'Stairs',
+      'Ballustrade',
+      'Cantina',
+      'Miscellaneous',
+      'Doors'
+    ].forEach((layerName) => {
+      const layer = map.createLayer(layerName);
+    });
 
-    const rootGroup = this.rootGroup = game.add.group();
+    // Create solids
+    const solids = this.solids = game.add.group();
+    solids.enableBody = true;
+    solids.physicsBodyType = Phaser.Physics.ARCADE;
 
-    // Create walls
-    const walls = this.walls = game.add.group(rootGroup);
-    walls.enableBody = true;
-    walls.physicsBodyType = Phaser.Physics.ARCADE;
-
-    map.objects.walls.forEach((object) => {
-      let wall = walls.create(object.x, object.y, null);
+    map.objects.Solids.forEach((object) => {
+      let wall = solids.create(object.x, object.y, null);
       wall.body.setSize(object.width, object.height);
       wall.body.immovable = true;
     });
 
+    const doors = this.doors = game.add.group();
+    doors.enableBody = true;
+    doors.physicsBodyType = Phaser.Physics.ARCADE;
+
+    map.objects.Doors.forEach((object) => {
+      const door = doors.create(object.x, object.y, null);
+      door.body.setSize(object.width, object.height);
+      door.body.immovable = true;
+      door.tiledProperties = object.properties;
+    });
+
     // Create entities
-    map.objects.entities.forEach((object) => {
+    map.objects.Entities.forEach((object) => {
       switch (object.type) {
         case 'player':
           // Create player
           this.player = new Player(game, object.x + object.width / 2, object.y + object.height / 2);
-          rootGroup.add(this.player);
+          this.world.add(this.player);
           return;
       }
-    })
+    });
 
     // Camera
     game.camera.follow(this.player, Phaser.Camera.FOLLOW_TOPDOWN);
+
+    // Dialog
+    this.dialog = new Dialog(game);
   }
 
   update() {
     const { game } = this;
 
-    game.physics.arcade.collide(this.player, this.walls);
+    game.physics.arcade.collide(this.player, this.solids);
+    game.physics.arcade.collide(this.player, this.doors, this.collideDoor);
+  }
+
+  collideDoor(player, door) {
+    console.log(door.tiledProperties);
   }
 
   render() {
+    this.dialog.render();
+
     renderer.render();
   }
 

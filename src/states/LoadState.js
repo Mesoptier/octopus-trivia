@@ -10,7 +10,8 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('player', require('file!../assets/spritesheets/player.png'), 32, 32);
 
     game.load.tilemap('auditorium_map', require('file!../assets/levels/auditorium.json'), null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('auditorium_tiles', require('file!../assets/levels/auditorium.png'));
+    game.load.image('soulsilver tileset', require('file!../assets/levels/soulsilver tileset.png'));
+    game.load.image('tileset2', require('file!../assets/levels/tileset2.png'));
   }
 
   create() {

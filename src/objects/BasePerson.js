@@ -8,7 +8,7 @@ export default class BasePerson extends Phaser.Sprite {
     this.anchor.set(0.5, 0.5);
 
     game.physics.arcade.enable(this);
-    this.body.setSize(18, 24, 0, 2);
+    this.body.setSize(16, 16, 0, 8);
 
     // Setup animations
     const frameRate = 10;
