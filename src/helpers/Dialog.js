@@ -19,7 +19,9 @@ export default class Dialog {
     const back = new Phaser.Image(game, 0, 0, 'dialog-back-large');
     group.add(back);
 
-    this.text = new Phaser.Text(game, 10, 6, '', { font: '18px Munro' });
+    this.text = new Phaser.BitmapText(game, 10, 10, 'pixelade', '', 13);
+    this.text.tint = '#000000';
+    this.text.maxWidth = 200;
     group.add(this.text);
 
     game.input.keyboard.addCallbacks(this, (e) => {
