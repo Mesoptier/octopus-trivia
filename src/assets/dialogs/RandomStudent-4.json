@@ -1,6 +1,6 @@
-{
-  ["character": "RandomStudent"],
+[
+  ["character", "RandomStudent"],
     "If you come from far away, getting a room in Eindhoven is not a bad idea.",
 	"Many students still travel to Eindhoven every day, though. Most of them by train."
   
-}
+]

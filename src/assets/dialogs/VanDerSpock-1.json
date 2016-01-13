@@ -1,6 +1,6 @@
-{
-  ["character": "VanDerSpock"],
+[
+  ["character", "VanDerSpock"],
     "You must be the player!",
 	"Nice to meet you."
   
-}
+]

@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 import Dialog from '../helpers/Dialog';
 
-require('../assets/fonts/munro/stylesheet.css');
-
 export default class LoadState extends Phaser.State {
 
   preload() {
     const { game } = this;
+
+    // Load font
+    game.load.bitmapFont('pixelade', require('file!../assets/fonts/Pixelade/font.png'), require('file!../assets/fonts/Pixelade/font.fnt'));
 
     // Load sprites
     game.load.spritesheet('player', require('file!../assets/spritesheets/player.png'), 32, 32);
@@ -150,17 +151,17 @@ export default class LoadState extends Phaser.State {
     Dialog.add('SeniorStudent-4', 'dialog-SeniorStudent-4');
     Dialog.addGroup('SeniorStudent', ['SeniorStudent-1', 'SeniorStudent-2', 'SeniorStudent-3', 'SeniorStudent-4']);
 
-    game.load.json('dialog-VanDenSpock-1', require('file!../assets/dialogs/VanDenSpock-1.json'));
-    Dialog.add('VanDenSpock-1', 'dialog-VanDenSpock-1');
-    game.load.json('dialog-VanDenSpock-2', require('file!../assets/dialogs/VanDenSpock-2.json'));
-    Dialog.add('VanDenSpock-2', 'dialog-VanDenSpock-2');
-    game.load.json('dialog-VanDenSpock-3', require('file!../assets/dialogs/VanDenSpock-3.json'));
-    Dialog.add('VanDenSpock-3', 'dialog-VanDenSpock-3');
-    game.load.json('dialog-VanDenSpock-4', require('file!../assets/dialogs/VanDenSpock-4.json'));
-    Dialog.add('VanDenSpock-4', 'dialog-VanDenSpock-4');
-    game.load.json('dialog-VanDenSpock-5', require('file!../assets/dialogs/VanDenSpock-5.json'));
-    Dialog.add('VanDenSpock-5', 'dialog-VanDenSpock-5');
-    Dialog.addGroup('VanDenSpock', ['VanDenSpock-1', 'VanDenSpock-2', 'VanDenSpock-3', 'VanDenSpock-4', 'VanDenSpock-5']);
+    game.load.json('dialog-VanDenSpock-1', require('file!../assets/dialogs/VanDerSpock-1.json'));
+    Dialog.add('VanDerSpock-1', 'dialog-VanDerSpock-1');
+    game.load.json('dialog-VanDerSpock-2', require('file!../assets/dialogs/VanDerSpock-2.json'));
+    Dialog.add('VanDerSpock-2', 'dialog-VanDerSpock-2');
+    game.load.json('dialog-VanDerSpock-3', require('file!../assets/dialogs/VanDerSpock-3.json'));
+    Dialog.add('VanDerSpock-3', 'dialog-VanDerSpock-3');
+    game.load.json('dialog-VanDerSpock-4', require('file!../assets/dialogs/VanDerSpock-4.json'));
+    Dialog.add('VanDerSpock-4', 'dialog-VanDerSpock-4');
+    game.load.json('dialog-VanDerSpock-5', require('file!../assets/dialogs/VanDerSpock-5.json'));
+    Dialog.add('VanDerSpock-5', 'dialog-VanDerSpock-5');
+    Dialog.addGroup('VanDerSpock', ['VanDerSpock-1', 'VanDerSpock-2', 'VanDerSpock-3', 'VanDerSpock-4', 'VanDerSpock-5']);
 
     game.load.json('dialog-WebScienceStudent-1', require('file!../assets/dialogs/WebScienceStudent-1.json'));
     Dialog.add('WebScienceStudent-1', 'dialog-WebScienceStudent-1');
@@ -172,8 +173,6 @@ export default class LoadState extends Phaser.State {
   }
 
   create() {
-    const text = this.game.add.text(0, 0, 'dummy', { font: '20px Munro' });
-    text.destroy();
     this.game.state.start('HubState');
   }
 

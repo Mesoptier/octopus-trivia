@@ -1,5 +1,5 @@
-{
-  ["character": "LazyStudent"],
+[
+  ["character", "LazyStudent"],
     "I think I'm going to skip the next lecture. I don't really feel like going."
   
-}
+]
