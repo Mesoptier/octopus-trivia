@@ -1,6 +1,5 @@
 {
-  "character": MasterStudent
-  "lines": [
+  ["character": "MasterStudent"],
     "Looks like the canteen isn't open yet. When it's open you can buy some great cheap upgrades there."
-  ]
+  
 }

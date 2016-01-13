@@ -1,6 +1,5 @@
 {
-  "character": RandomStudent
-  "lines": [
+  ["character": "RandomStudent"],
     "I can't find where my next class is!"
-  ]
+  
 }

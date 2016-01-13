@@ -1,6 +1,5 @@
 {
-  "character": LazyStudent
-  "lines": [
-    "I think I'm going to skip the enxt lecture. I don't really feel like going."
-  ]
+  ["character": "LazyStudent"],
+    "I think I'm going to skip the next lecture. I don't really feel like going."
+  
 }

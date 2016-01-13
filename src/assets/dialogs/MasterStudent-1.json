@@ -1,6 +1,5 @@
 {
-  "character": MasterStudent
-  "lines": [
+  ["character": "MasterStudent"],
     "The coffee in the canteen tastes a million times better than the stuff that comes out of the vending machines."
-  ]
+  
 }

@@ -1,6 +1,5 @@
 {
-  "character": RandomStudent
-  "lines": [
+  ["character": "RandomStudent"],
     "I am ERROR"
-  ]
+  
 }

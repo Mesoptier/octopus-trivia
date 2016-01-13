@@ -1,6 +1,5 @@
 {
-  "character": SeniorStudent
-  "lines": [
+  ["character": "SeniorStudent"],
     "I'm no teacher! I'm a student!"
-  ]
+  
 }

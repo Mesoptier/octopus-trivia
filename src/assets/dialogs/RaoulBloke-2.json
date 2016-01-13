@@ -1,6 +1,5 @@
 {
-  "character": RaoulBloke
-  "lines": [
+  ["character": "RaoulBloke"],
     "The Logic and Set classes can be found on the north-side of the second floor."
-  ]
+  
 }

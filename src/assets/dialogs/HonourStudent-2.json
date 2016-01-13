@@ -1,6 +1,5 @@
 {
-  "character": HonourStudent
-  "lines": [
+  ["character": "HonourStudent"],
     "The schedule allows for a maximum of 5 subjects per quartile. Most people follow 3. I'm following 8..."
-  ]
+  
 }

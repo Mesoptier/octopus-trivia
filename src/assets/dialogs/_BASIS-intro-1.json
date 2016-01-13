@@ -1,6 +1,5 @@
 {
-  "character": RaoulBloke,
-  "lines": [
+  ["character": "RaoulBloke"],
     "Welcome students!",
     "Welcome to the Technical University of Eindhoven!",
     "I hope everyone has had a great holiday.",
@@ -13,13 +12,9 @@
 	"Therefor I highly recommend that you follow all your classes.",
 	"You are free to skip a class at any time, but this is not adviced. From my experience, those who skip classes won't pass the exam.",
 	"Any questions thusfar?"
-	]
-  "character": FirstYearStudent,
-  "lines": [
+  ["character": "FirstYearStudent"],
 	"Sir? I seem to be stuck. How do we walk in this game?"
-	]
-  "character": RaoulBloke,
-  "lines": [
+  ["character": "RaoulBloke"],
 	"...",
 	"Ehm...",
 	"You walk around using the arrow-keys.",
@@ -43,9 +38,6 @@
 	"Fish and computerchips...",
 	"Mhmmmhmhmmmmmhm...",
 	".................."
-  ]
-  "character": INFORMATIONSCREEN
-  "lines": [
+  ["character": "INFORMATIONSCREEN"],
 	"<YOU BLACKED OUT>"
-  ]
 }

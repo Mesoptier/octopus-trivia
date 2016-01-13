@@ -1,6 +1,5 @@
 {
-  "character": SeniorStudent
-  "lines": [
+  ["character": "SeniorStudent"],
     "One course per quartile is an acceptable average..."
-  ]
+  
 }

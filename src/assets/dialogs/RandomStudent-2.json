@@ -1,6 +1,5 @@
 {
-  "character": RandomStudent
-  "lines": [
+  ["character": "RandomStudent"],
     "Coffee is what usually gets me through the day."
-  ]
+  
 }

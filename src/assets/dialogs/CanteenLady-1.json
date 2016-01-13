@@ -1,6 +1,4 @@
 {
-  "character": CanteenLady
-  "lines": [
+  ["character": "CanteenLady"],
     "We aren't open at the moment."
-  ]
 }
