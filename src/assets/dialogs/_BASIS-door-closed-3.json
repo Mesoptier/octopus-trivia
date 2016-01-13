@@ -1,6 +1,4 @@
-{
-  "character": INFORMATION SCREEN
-  "lines": [
-    "<THERE SEEMS TO BE LECTURE GOING ON INSIDE>"
-  ]
-}
+[
+  ["character", "InformationScreen"],
+  "<THERE SEEMS TO BE LECTURE GOING ON INSIDE>"
+]

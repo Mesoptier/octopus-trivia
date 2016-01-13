@@ -21,7 +21,7 @@ export default class Dialog {
 
     this.text = new Phaser.BitmapText(game, 10, 10, 'pixelade', '', 13);
     this.text.tint = '#000000';
-    this.text.maxWidth = 200;
+    this.text.maxWidth = 300;
     group.add(this.text);
 
     game.input.keyboard.addCallbacks(this, (e) => {
@@ -44,9 +44,14 @@ export default class Dialog {
   nextLine() {
     if (this.activeDialog !== null) {
       if (this.activeLine === this.lastLine) {
-        this.stop();
-      } else {
-        this.activeLine++;
+        return this.stop();
+      }
+
+      this.activeLine++;
+
+      if (Array.isArray(this.activeDialog[this.activeLine])) {
+        this.activeCharacter = this.activeDialog[this.activeLine][1];
+        this.nextLine();
       }
     }
   }
@@ -56,8 +61,11 @@ export default class Dialog {
     const dialog = this.game.cache.getJSON(jsonKey);
 
     this.activeDialog = dialog;
-    this.activeLine = 0;
-    this.lastLine = dialog.lines.length - 1;
+    this.activeCharacter = '';
+    this.activeLine = -1;
+    this.lastLine = dialog.length - 1;
+
+    this.nextLine();
 
     this.callback('play');
   }
@@ -77,11 +85,31 @@ export default class Dialog {
   update() {
     if (this.activeDialog !== null) {
       this.group.visible = true;
-      const line = this.activeDialog.lines[this.activeLine];
+      let line = this.activeDialog[this.activeLine];
+      let characterName = this.getActiveCharacterName();
+
+      if (characterName) {
+        line = characterName + '\n' + characterName.replace(/./g, '-') + '\n' + line;
+      }
+
       this.text.text = line;
     } else {
       this.group.visible = false;
     }
+  }
+
+  getActiveCharacterName() {
+    let name = '';
+
+    switch (this.activeCharacter) {
+      case 'InformationScreen': name = 'TEST'; break;
+    }
+
+    return name;
+  }
+
+  getActiveCharacterImage() {
+    return this.activeCharacter;
   }
 
 }
