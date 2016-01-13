@@ -10,6 +10,10 @@ require('phaser-state-transition-plugin');
 
 export default class BootState extends Phaser.State {
 
+  preload() {
+    this.game.load.image('loading', require('file!../assets/loading.png'));
+  }
+
   init() {
     // Use scaled pixel renderer
     renderer.init(this.game);
@@ -38,7 +42,17 @@ export default class BootState extends Phaser.State {
   }
 
   create() {
-    this.state.start('LoadState');
+    this.stage.backgroundColor = '#000000';
+    this.loadingText = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'loading');
+    this.loadingText.anchor.setTo(0.5, 0.5);
+
+    setTimeout(() => {
+      this.state.start('LoadState');
+    }, 10);
+  }
+
+  render() {
+    renderer.render();
   }
 
 }

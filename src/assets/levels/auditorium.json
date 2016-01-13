@@ -160,7 +160,7 @@
                  "type":"player",
                  "visible":true,
                  "width":16,
-                 "x":1152,
+                 "x":1120,
                  "y":576
                 }],
          "opacity":1,
@@ -1681,7 +1681,7 @@
                  "type":"player",
                  "visible":true,
                  "width":16,
-                 "x":1152,
+                 "x":1120,
                  "y":576
                 }, 
                 {
@@ -2006,7 +2006,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":178,
+ "nextobjectid":179,
  "orientation":"orthogonal",
  "properties":
     {

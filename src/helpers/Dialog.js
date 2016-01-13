@@ -132,8 +132,10 @@ export default class Dialog {
     let name = '';
 
     switch (this.activeCharacter) {
-      case 'InformationScreen': name = 'TEST'; break;
+      case 'InformationScreen': break;
       case 'RaoulBloke': name = 'Raoul Bloke'; break;
+      case 'FirstYearStudent': name = 'First Year Student'; break;
+      default: console.log('UNKNOWN CHARACTER', this.activeCharacter);
     }
 
     return name;

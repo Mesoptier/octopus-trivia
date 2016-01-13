@@ -18,9 +18,6 @@ export default class IntroState extends Phaser.State {
     const backgroundLayer = map.createLayer('Floor', game.width, game.height, mapGroup);
     backgroundLayer.resizeWorld();
 
-    game.camera.x = 960;
-    game.camera.y = 420;
-
     // Create prop layers
     [
       'Chairs',
@@ -53,6 +50,7 @@ export default class IntroState extends Phaser.State {
           // Player
           entity = game.add.sprite(object.x, object.y, 'player');
           entity.frame = FRAME_LOOK_RIGHT;
+          game.camera.follow(entity, Phaser.Camera.FOLLOW_LOCKON);
           break;
         default:
           // Random NPCs

@@ -28,6 +28,10 @@ export default class Player extends BasePerson {
       if (cursors.down.isDown) {
         body.velocity.y = +speed;
       }
+
+      if (body.velocity.getMagnitude() > speed) {
+        body.velocity.setMagnitude(speed);
+      }
     }
 
     super.update();

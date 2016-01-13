@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Dialog from '../helpers/Dialog';
+import renderer from '../renderer';
 
 export default class LoadState extends Phaser.State {
 
@@ -174,7 +175,23 @@ export default class LoadState extends Phaser.State {
   }
 
   create() {
-    this.game.state.start('IntroState');
+    this.stage.backgroundColor = '#000000';
+    this.graphics = this.game.add.graphics(0, 0);
+
+    this.loadingText = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'loading');
+    this.loadingText.anchor.setTo(0.5, 0.5);
+
+    setTimeout(() => {
+      this.game.stateTransition.to('IntroState', true, false);
+    }, 200);
+  }
+
+  render() {
+    this.graphics.beginFill('#000000');
+    this.graphics.drawRect(0, 0, this.game.width, this.game.height);
+    this.graphics.endFill();
+
+    renderer.render();
   }
 
 }
