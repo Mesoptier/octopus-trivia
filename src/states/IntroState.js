@@ -16,6 +16,9 @@ export default class IntroState extends Phaser.State {
     const backgroundLayer = map.createLayer('Floor');
     backgroundLayer.resizeWorld();
 
+    game.camera.x = 960;
+    game.camera.y = 420;
+
     // Create prop layers
     [
       'Chairs',
@@ -34,8 +37,32 @@ export default class IntroState extends Phaser.State {
       const layer = map.createLayer(layerName);
     });
 
-    game.camera.x = 960;
-    game.camera.y = 420;
+    // Create entities
+    map.objects.IntroEntities.forEach((object) => {
+      const FRAME_LOOK_RIGHT = 3;
+      const FRAME_LOOK_LEFT = 0;
+      let entity;
+
+      switch (object.type) {
+        case 'bloke':
+          // Raoul bloke
+          break;
+        case 'player':
+          // Player
+          entity = game.add.sprite(object.x, object.y, 'player');
+          entity.frame = FRAME_LOOK_RIGHT;
+          break;
+        default:
+          // Random NPCs
+          entity = game.add.sprite(object.x, object.y, 'player');
+          entity.frame = FRAME_LOOK_RIGHT;
+          break;
+      }
+
+      if (entity) {
+        entity.anchor.setTo(0.5, 0.5);
+      }
+    });
 
     // Create dialog
     this.dialog = new Dialog();
