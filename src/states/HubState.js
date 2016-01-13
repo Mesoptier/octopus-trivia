@@ -97,7 +97,7 @@ export default class HubState extends Phaser.State {
     const open = door.tiledProperties.open == 'true';
 
     if (open) {
-      this.state.start('PuzzleState');
+      this.game.stateTransition.to('PuzzleState', true, false, 'param1');
     } else {
       this.dialog.playGroupRandom('door-closed');
     }
