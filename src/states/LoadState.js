@@ -13,6 +13,7 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('player', require('file!../assets/spritesheets/player.png'), 32, 32);
 
     game.load.image('dialog-back-large', require('file!../assets/dialog-back-large.png'));
+    game.load.image('dialog-arrow-more', require('file!../assets/dialog-arrow-more.png'));
 
     // Load map
     game.load.tilemap('auditorium_map', require('file!../assets/levels/auditorium.json'), null, Phaser.Tilemap.TILED_JSON);
@@ -29,7 +30,7 @@ export default class LoadState extends Phaser.State {
     Dialog.addGroup('door-closed', ['door-closed-1', 'door-closed-2', 'door-closed-3']);
 
     game.load.json('dialog-intro-1', require('file!../assets/dialogs/_BASIS-intro-1.json'));
-    Dialog.add('intro', 'dialog-intro-1');
+    Dialog.add('intro-1', 'dialog-intro-1');
 	  game.load.json('dialog-intro-2', require('file!../assets/dialogs/_BASIS-intro-2.json'));
     Dialog.add('intro-2', 'dialog-intro-2');
 
@@ -173,7 +174,7 @@ export default class LoadState extends Phaser.State {
   }
 
   create() {
-    this.game.state.start('HubState');
+    this.game.state.start('IntroState');
   }
 
 }

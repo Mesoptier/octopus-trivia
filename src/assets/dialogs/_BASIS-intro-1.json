@@ -39,5 +39,6 @@
   "Mhmmmhmhmmmmmhm...",
   "..................",
   ["character", "InformationScreen"],
+  ["event", "blackout"],
   "<YOU BLACKED OUT>"
 ]

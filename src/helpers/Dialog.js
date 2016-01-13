@@ -19,11 +19,25 @@ export default class Dialog {
     const back = new Phaser.Image(game, 0, 0, 'dialog-back-large');
     group.add(back);
 
+    // Text
     this.text = new Phaser.BitmapText(game, 10, 10, 'pixelade', '', 13);
     this.text.tint = '#000000';
     this.text.maxWidth = 300;
     group.add(this.text);
 
+    // More (arrow + text)
+    this.moreGroup = game.add.group();
+    this.moreGroup.position.setTo(10, 75);
+    group.add(this.moreGroup);
+
+    const moreText = new Phaser.BitmapText(game, 13, 0, 'pixelade', '[SPACE]', 13);
+    moreText.tint = '#000000';
+    this.moreGroup.add(moreText);
+
+    const moreArrow = new Phaser.Image(game, 0, 2, 'dialog-arrow-more');
+    this.moreGroup.add(moreArrow);
+
+    // Add input callbacks
     game.input.keyboard.addCallbacks(this, (e) => {
       switch (e.keyCode) {
         case Phaser.KeyCode.SPACEBAR:
@@ -50,7 +64,17 @@ export default class Dialog {
       this.activeLine++;
 
       if (Array.isArray(this.activeDialog[this.activeLine])) {
-        this.activeCharacter = this.activeDialog[this.activeLine][1];
+        const line = this.activeDialog[this.activeLine];
+        const [type, ...params] = line;
+
+        if (type === 'character') {
+          this.activeCharacter = params[0];
+        }
+
+        if (type === 'event') {
+          this.callback(...params);
+        }
+
         this.nextLine();
       }
     }
@@ -85,14 +109,20 @@ export default class Dialog {
   update() {
     if (this.activeDialog !== null) {
       this.group.visible = true;
+      const isLastLine = this.activeLine === this.lastLine;
+      const characterName = this.getActiveCharacterName();
+
       let line = this.activeDialog[this.activeLine];
-      let characterName = this.getActiveCharacterName();
 
       if (characterName) {
         line = characterName + '\n' + characterName.replace(/./g, '-') + '\n' + line;
       }
 
       this.text.text = line;
+
+      // Hide "v [SPACE]" when on the last line
+      // this.moreGroup.visible = !isLastLine;
+
     } else {
       this.group.visible = false;
     }
@@ -103,6 +133,7 @@ export default class Dialog {
 
     switch (this.activeCharacter) {
       case 'InformationScreen': name = 'TEST'; break;
+      case 'RaoulBloke': name = 'Raoul Bloke'; break;
     }
 
     return name;

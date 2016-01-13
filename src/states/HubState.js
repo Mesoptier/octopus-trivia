@@ -82,6 +82,8 @@ export default class HubState extends Phaser.State {
           break;
       }
     });
+
+    this.dialog.play('intro-2');
   }
 
   update() {

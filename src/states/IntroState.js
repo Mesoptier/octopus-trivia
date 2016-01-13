@@ -12,8 +12,10 @@ export default class IntroState extends Phaser.State {
     map.addTilesetImage('soulsilver tileset', 'soulsilver tileset');
     map.addTilesetImage('tileset2', 'tileset2');
 
+    const mapGroup = game.add.group();
+
     // Create background layer
-    const backgroundLayer = map.createLayer('Floor');
+    const backgroundLayer = map.createLayer('Floor', game.width, game.height, mapGroup);
     backgroundLayer.resizeWorld();
 
     game.camera.x = 960;
@@ -34,7 +36,7 @@ export default class IntroState extends Phaser.State {
       'Miscellaneous',
       'Doors'
     ].forEach((layerName) => {
-      const layer = map.createLayer(layerName);
+      const layer = map.createLayer(layerName, game.width, game.height, mapGroup);
     });
 
     // Create entities
@@ -61,6 +63,7 @@ export default class IntroState extends Phaser.State {
 
       if (entity) {
         entity.anchor.setTo(0.5, 0.5);
+        mapGroup.add(entity);
       }
     });
 
@@ -68,13 +71,16 @@ export default class IntroState extends Phaser.State {
     this.dialog = new Dialog();
     this.dialog.create(game, (state) => {
       switch (state) {
+        case 'blackout':
+          game.add.tween(mapGroup).to({ alpha: 0 }, 500, Phaser.Easing.Exponential.InOut, true);
+          break;
         case 'stop':
           game.stateTransition.to('BlackState', true, false, 'HubState');
           break;
       }
     });
 
-    this.dialog.play('intro');
+    this.dialog.play('intro-1');
   }
 
   update() {
