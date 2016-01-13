@@ -1,8 +1,12 @@
 import Phaser from 'phaser';
 import renderer from '../renderer';
 import LoadState from './LoadState';
+import IntroState from './IntroState';
+import BlackState from './BlackState';
 import HubState from './HubState';
 import PuzzleState from './PuzzleState';
+
+require('phaser-state-transition-plugin');
 
 export default class BootState extends Phaser.State {
 
@@ -18,8 +22,19 @@ export default class BootState extends Phaser.State {
 
     // Add states
     this.state.add('LoadState', LoadState, false);
+    this.state.add('IntroState', IntroState, false);
+    this.state.add('BlackState', BlackState, false);
     this.state.add('HubState', HubState, false);
     this.state.add('PuzzleState', PuzzleState, false);
+
+    this.game.stateTransition = this.game.plugins.add(Phaser.Plugin.StateTransition);
+    this.game.stateTransition.configure({
+      duration: 500,
+      ease: Phaser.Easing.Exponential.InOut,
+      properties: {
+        alpha: 0
+      }
+    });
   }
 
   create() {

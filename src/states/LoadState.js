@@ -26,12 +26,13 @@ export default class LoadState extends Phaser.State {
     Dialog.addGroup('door-closed', ['door-closed-1', 'door-closed-2']);
 
     game.load.json('dialog-intro', require('file!../assets/dialogs/intro.json'));
+    Dialog.add('intro', 'dialog-intro');
   }
 
   create() {
     const text = this.game.add.text(0, 0, 'dummy', { font: '20px Munro' });
     text.destroy();
-    this.game.state.start('HubState');
+    this.game.state.start('IntroState');
   }
 
 }

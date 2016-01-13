@@ -8,9 +8,6 @@ export default class HubState extends Phaser.State {
   create() {
     const { game } = this;
 
-    const cw = game.width;
-    const ch = game.height;
-
     // Load tilemap
     const map = game.add.tilemap('auditorium_map');
     map.addTilesetImage('soulsilver tileset', 'soulsilver tileset');
@@ -72,7 +69,7 @@ export default class HubState extends Phaser.State {
     });
 
     // Camera
-    game.camera.follow(this.player, Phaser.Camera.FOLLOW_TOPDOWN);
+    game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON);
 
     this.dialog = new Dialog();
     this.dialog.create(game, (state) => {
