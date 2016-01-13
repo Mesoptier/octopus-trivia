@@ -13,17 +13,19 @@ export default class Player extends BasePerson {
     const { body, cursors } = this;
 
     const speed = 160;
+    body.velocity.set(0, 0);
 
     if (cursors.left.isDown) {
-      body.velocity.set(-speed, 0);
-    } else if (cursors.right.isDown) {
-      body.velocity.set(+speed, 0);
-    } else if (cursors.up.isDown) {
-      body.velocity.set(0, -speed);
-    } else if (cursors.down.isDown) {
-      body.velocity.set(0, +speed);
-    } else {
-      body.velocity.set(0, 0);
+      body.velocity.x = -speed;
+    }
+    if (cursors.right.isDown) {
+      body.velocity.x = speed;
+    }
+    if (cursors.up.isDown) {
+      body.velocity.y = -speed;
+    }
+    if (cursors.down.isDown) {
+      body.velocity.y = +speed;
     }
 
     super.update();
