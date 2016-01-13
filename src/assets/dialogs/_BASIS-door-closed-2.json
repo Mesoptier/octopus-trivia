@@ -1,6 +1,6 @@
 {
-  "character": INFORMATION SCREEN
-  "lines": [
+  ["character": "INFORMATION SCREEN"],
+
     "<THE DOOR WONT OPEN>"
-  ]
+
 }

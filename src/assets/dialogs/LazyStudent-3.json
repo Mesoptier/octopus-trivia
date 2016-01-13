@@ -1,6 +1,5 @@
 {
-  "character": LazyStudent
-  "lines": [
-    "Lectures can be a great spot to catch up on some sleep."
-  ]
+  ["character": "LazyStudent"],
+    "Lectures can be a great place to catch up on some sleep."
+  
 }

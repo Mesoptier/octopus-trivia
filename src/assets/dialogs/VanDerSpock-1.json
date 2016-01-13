@@ -1,7 +1,6 @@
 {
-  "character": VanDerSpock
-  "lines": [
-    "Ah you must be the player!",
+  ["character": "VanDerSpock"],
+    "You must be the player!",
 	"Nice to meet you."
-  ]
+  
 }

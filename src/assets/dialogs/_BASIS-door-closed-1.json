@@ -1,6 +1,4 @@
 {
-  "character": INFORMATION SCREEN
-  "lines": [
-    "<THE DOOR APPEARS TO BE CLOSED>"
-  ]
+  ["character": "INFORMATION SCREEN"],
+  "<THE DOOR APPEARS TO BE CLOSED>"
 }

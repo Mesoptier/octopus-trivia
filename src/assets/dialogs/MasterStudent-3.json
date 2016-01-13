@@ -1,6 +1,5 @@
 {
-  "character": MasterStudent
-  "lines": [
+  ["character": "MasterStudent"],
     "Back in my days the Bachelor College was a broken mess. They did manage to improve it a lot though..."
-  ]
+  
 }

@@ -1,6 +1,5 @@
 {
-  "character": MasterStudent
-  "lines": [
+  ["character": "MasterStudent"],
     "OASE can be a pain to use sometimes... I heard next year we will have a better funtioning website."
-  ]
+  
 }

@@ -1,6 +1,4 @@
 {
-  "character": FirstYearStudent
-  "lines": [
+  ["character": "FirstYearStudent"],
     "Hey, did you talk to Mr. Van der Spock yet? He is such an amazing teacher!"
-  ]
 }

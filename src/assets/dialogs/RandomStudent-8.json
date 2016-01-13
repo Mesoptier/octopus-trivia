@@ -1,6 +1,5 @@
 {
-  "character": RandomStudent
-  "lines": [
+  ["character": "RandomStudent"],
     "Don't forget to register for next quartile's subjects in time. You don't want to miss the deadline."
-  ]
+  
 }

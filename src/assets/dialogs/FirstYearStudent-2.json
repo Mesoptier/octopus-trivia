@@ -1,6 +1,5 @@
 {
-  "character": FirstYearStudent
-  "lines": [
+  ["character": "FirstYearStudent"],
     "Have you already ordered your books? I forgot to do it. I'm going to GEWIS in a bit."
-  ]
+  
 }

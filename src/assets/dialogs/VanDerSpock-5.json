@@ -1,6 +1,5 @@
 {
-  "character": VanDerSpock
-  "lines": [
+  ["character": "VanDerSpock"],
     "You may have already figured this out, but talking to people seems to randomly select their response to you."
-  ]
+  
 }

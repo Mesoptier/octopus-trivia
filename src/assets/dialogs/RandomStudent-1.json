@@ -1,6 +1,5 @@
 {
-  "character": RandomStudent
-  "lines": [
+  ["character": "RandomStudent"],
     "Have you seen Arnol driving through town on his mobility scooter? Such a nice guy."
-  ]
+  
 }

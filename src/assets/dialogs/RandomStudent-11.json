@@ -1,6 +1,5 @@
 {
-  "character": RandomStudent
-  "lines": [
+  ["character": "RandomStudent"],
     "Don't become like that old guy over there. This is his 28th year here."
-  ]
+  
 }
