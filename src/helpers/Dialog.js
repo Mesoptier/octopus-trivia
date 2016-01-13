@@ -14,12 +14,12 @@ export default class Dialog {
 
     const group = this.group = game.add.group();
     group.fixedToCamera = true;
-    group.cameraOffset.setTo(80, 80);
+    group.cameraOffset.setTo(0, 192);
 
-    const back = new Phaser.Sprite(game, 0, 0, 'player');
+    const back = new Phaser.Image(game, 0, 0, 'dialog-back-large');
     group.add(back);
 
-    this.text = new Phaser.Text(game, 0, 0, '', { font: '12px munro' });
+    this.text = new Phaser.Text(game, 10, 6, '', { font: '18px Munro' });
     group.add(this.text);
 
     game.input.keyboard.addCallbacks(this, (e) => {
