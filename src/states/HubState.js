@@ -74,24 +74,39 @@ export default class HubState extends Phaser.State {
     // Camera
     game.camera.follow(this.player, Phaser.Camera.FOLLOW_TOPDOWN);
 
-    // Dialog
-    this.dialog = new Dialog(game);
+    this.dialog = new Dialog();
+    this.dialog.create(game, (state) => {
+      switch (state) {
+        case 'play':
+          this.player.paused = true;
+          break;
+        case 'stop':
+          this.player.paused = false;
+          break;
+      }
+    });
   }
 
   update() {
     const { game } = this;
 
+    this.dialog.update();
+
     game.physics.arcade.collide(this.player, this.solids);
-    game.physics.arcade.collide(this.player, this.doors, this.collideDoor);
+    game.physics.arcade.collide(this.player, this.doors, this.collideDoor.bind(this));
   }
 
   collideDoor(player, door) {
-    console.log(door.tiledProperties);
+    const open = door.tiledProperties.open == 'true';
+
+    if (open) {
+      this.state.start('PuzzleState');
+    } else {
+      this.dialog.playGroupRandom('door-closed');
+    }
   }
 
   render() {
-    this.dialog.render();
-
     renderer.render();
   }
 

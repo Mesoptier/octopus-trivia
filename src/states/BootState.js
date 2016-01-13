@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 import renderer from '../renderer';
 import LoadState from './LoadState';
-import GameState from './GameState';
 import HubState from './HubState';
+import PuzzleState from './PuzzleState';
 
 export default class BootState extends Phaser.State {
 
@@ -18,8 +18,8 @@ export default class BootState extends Phaser.State {
 
     // Add states
     this.state.add('LoadState', LoadState, false);
-    this.state.add('GameState', GameState, false);
     this.state.add('HubState', HubState, false);
+    this.state.add('PuzzleState', PuzzleState, false);
   }
 
   create() {
