@@ -1,13 +1,12 @@
 import Phaser from 'phaser';
 import Dialog from '../helpers/Dialog';
 
+require('../assets/fonts/munro/stylesheet.css');
+
 export default class LoadState extends Phaser.State {
 
   preload() {
     const { game } = this;
-
-    // Load font
-    game.load.bitmapFont('pixelade', require('file!../assets/fonts/Pixelade/font.png'), require('file!../assets/fonts/Pixelade/font.fnt'));
 
     // Load sprites
     game.load.spritesheet('player', require('file!../assets/spritesheets/player.png'), 32, 32);
