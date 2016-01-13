@@ -1588,7 +1588,7 @@
                  "name":"Door1",
                  "properties":
                     {
-                     "open":"false"
+                     "open":"true"
                     },
                  "rotation":0,
                  "type":"",
