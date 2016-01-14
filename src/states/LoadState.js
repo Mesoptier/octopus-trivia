@@ -197,8 +197,10 @@ export default class LoadState extends Phaser.State {
     Dialog.add('RandomStudent-11', 'dialog-RandomStudent-11');
     game.load.json('dialog-RandomStudent-12', require('file!../assets/dialogs/RandomStudent-12.json'));
     Dialog.add('RandomStudent-12', 'dialog-RandomStudent-12');
-    Dialog.addGroup('RandomStudent', ['RandomStudent-1', 'RandomStudent-2', 'RandomStudent-3', 'RandomStudent-4', 'RandomStudent-5', 'RandomStudent-6', 'RandomStudent-7', 'RandomStudent-8', 'RandomStudent-9', 'RandomStudent-10', 'RandomStudent-11', 'RandomStudent-12']);
+    Dialog.addGroup('RandomStudent-1', ['RandomStudent-1', 'RandomStudent-2', 'RandomStudent-3', 'RandomStudent-4', 'RandomStudent-5', 'RandomStudent-6', 'RandomStudent-7', 'RandomStudent-8', 'RandomStudent-9', 'RandomStudent-10', 'RandomStudent-11', 'RandomStudent-12']);
+    Dialog.addGroup('RandomStudent-2', ['RandomStudent-1', 'RandomStudent-2', 'RandomStudent-3', 'RandomStudent-4', 'RandomStudent-5', 'RandomStudent-6', 'RandomStudent-7', 'RandomStudent-8', 'RandomStudent-9', 'RandomStudent-10', 'RandomStudent-11', 'RandomStudent-12']);
 
+    
     game.load.json('dialog-RaoulBloke-1', require('file!../assets/dialogs/RaoulBloke-1.json'));
     Dialog.add('RaoulBloke-1', 'dialog-RaoulBloke-1');
     game.load.json('dialog-RaoulBloke-2', require('file!../assets/dialogs/RaoulBloke-2.json'));

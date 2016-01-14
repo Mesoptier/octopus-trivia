@@ -141,6 +141,18 @@ export default class Dialog {
       case 'RaoulBloke': name = 'Raoul Bloke'; break;
       case 'VanDerSpock': name = 'Mr. Van Der Spock'; break;
       case 'FirstYearStudent': name = 'First Year Student'; break;
+      case 'AsianStudent': name = 'Asian Student'; break;
+      case 'CanteenLady': name = 'Canteen Lady'; break;
+      case 'DesignStudent': name = 'Design Student'; break;
+      case 'FraternityBoy': name = 'Fraternity Boy'; break;
+      case 'GewisMember': name = 'Gewis Member'; break;
+      case 'HonourStudent': name = 'Honour Student'; break;
+      case 'LazyStudent': name = 'Lazy Student'; break;
+      case 'MasterStudent': name = 'Master Student'; break;
+      case 'RandomStudent-1': name = 'Random Student'; break;
+      case 'RandomStudent-2': name = 'Random Student'; break;
+      case 'SeniorStudent': name = 'Senior Student'; break;
+      case 'WebScienceStudent': name = 'Web Science Student'; break;
       default: name = this.activeCharacter;
     }
 

@@ -9,5 +9,5 @@
     { "in": [1, 1], "out": [1] }
   ],
 
-  "gates": { "and": 999, "or": 0, "xor": 0, "not": 0, "mem": 0}
+  "gates": { "and": 99, "or": 99, "xor": 99, "not": 99, "mem": 99}
 }

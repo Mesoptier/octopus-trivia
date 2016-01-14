@@ -68,8 +68,8 @@ export default class PuzzleState extends Phaser.State {
     this.dialog.play(this.activePuzzle.dialog);
 
     // add background music
-    const puzzleMusic = game.add.audio('puzzleMusic');
-    puzzleMusic.play();
+    //const puzzleMusic = game.add.audio('puzzleMusic');
+    //puzzleMusic.play();
 
   }
 
