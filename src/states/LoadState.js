@@ -22,6 +22,12 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('FraternityBoy', require('file!../assets/spritesheets/FraternityBoy.png'), 32, 32);
     game.load.spritesheet('RaoulBloke', require('file!../assets/spritesheets/RaoulBloke.png'), 32, 32);
     game.load.spritesheet('VanDerSpock', require('file!../assets/spritesheets/VanDerSpock.png'), 32, 32);
+    game.load.spritesheet('GewisMember', require('file!../assets/spritesheets/GewisMember.png'), 32, 32);
+    game.load.spritesheet('HonourStudent', require('file!../assets/spritesheets/HonourStudent.png'), 32, 32);
+    game.load.spritesheet('MasterStudent', require('file!../assets/spritesheets/MasterStudent.png'), 32, 32);
+    game.load.spritesheet('RandomStudent-1', require('file!../assets/spritesheets/RandomStudent-1.png'), 32, 32);
+    game.load.spritesheet('RandomStudent-2', require('file!../assets/spritesheets/RandomStudent-2.png'), 32, 32);
+    game.load.spritesheet('WebScienceStudent', require('file!../assets/spritesheets/WebScienceStudent.png'), 32, 32);
 
     game.load.image('dialog-back-large', require('file!../assets/dialog-back-large.png'));
     game.load.image('dialog-back-small', require('file!../assets/dialog-back-small.png'));
@@ -43,8 +49,21 @@ export default class LoadState extends Phaser.State {
 
     game.load.image('character-VanDerSpock', require('file!../assets/spritesheets/thumbnails/VanDerSpock.png'));
     game.load.image('character-asianStudent', require('file!../assets/spritesheets/thumbnails/asianStudent.png'));
-    game.load.image('character-CanteenLady', require('file!../assets/spritesheets/thumbnails/VanDerSpock.png'));
-
+    game.load.image('character-CanteenLady', require('file!../assets/spritesheets/thumbnails/CanteenLady.png'));
+    game.load.image('character-DesignStudent', require('file!../assets/spritesheets/thumbnails/DesignStudent.png'));
+    game.load.image('character-FirstYearStudent', require('file!../assets/spritesheets/thumbnails/FirstYearStudent.png'));
+    game.load.image('character-FraternityBoy', require('file!../assets/spritesheets/thumbnails/FraternityBoy.png'));
+    game.load.image('character-GewisMember', require('file!../assets/spritesheets/thumbnails/GewisMember.png'));
+    game.load.image('character-HonourStudent', require('file!../assets/spritesheets/thumbnails/HonourStudent.png'));
+    game.load.image('character-LazyStudent', require('file!../assets/spritesheets/thumbnails/LazyStudent.png'));
+    game.load.image('character-MasterStudent', require('file!../assets/spritesheets/thumbnails/MasterStudent.png'));
+    game.load.image('character-RandomStudent-1', require('file!../assets/spritesheets/thumbnails/RandomStudent-1.png'));
+    game.load.image('character-RandomStudent-2', require('file!../assets/spritesheets/thumbnails/RandomStudent-2.png'));
+    game.load.image('character-RaoulBloke', require('file!../assets/spritesheets/thumbnails/RaoulBloke.png'));
+    game.load.image('character-SeniorStudent', require('file!../assets/spritesheets/thumbnails/SeniorStudent.png'));
+    game.load.image('character-WebScienceStudent', require('file!../assets/spritesheets/thumbnails/WebScienceStudent.png'));
+    
+    
     // Load map
     game.load.tilemap('auditorium_map', require('file!../assets/levels/auditorium.json'), null, Phaser.Tilemap.TILED_JSON);
     game.load.image('soulsilver tileset', require('file!../assets/levels/soulsilver tileset.png'));
