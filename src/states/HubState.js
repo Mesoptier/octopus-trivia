@@ -94,7 +94,7 @@ export default class HubState extends Phaser.State {
           entity.frame = BasePerson.getFrameIndex(object.properties.facing);
         }
 
-        if (object.properties.firstTalk === 'true') {
+        if (this.startDialog && object.properties.startDialog === this.startDialog) {
           this.dialogEntity = entity;
           entity.pause();
         }
