@@ -44,6 +44,19 @@ export default class BasePerson extends Phaser.Sprite {
     }
   }
 
+  setFacing(state) {
+    switch (state) {
+      case 'up':
+        this.body.velocity.setTo(0, -1); break;
+      case 'right':
+        this.body.velocity.setTo(1, 0); break;
+      case 'down':
+        this.body.velocity.setTo(0, 1); break;
+      case 'left':
+        this.body.velocity.setTo(-1, 0); break;
+    }
+  }
+
   static getFrameIndex(state) {
     switch (state) {
       case 'left':

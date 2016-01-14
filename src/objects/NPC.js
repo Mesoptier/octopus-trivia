@@ -36,6 +36,14 @@ export default class NPC extends BasePerson {
         if (pos2.y >= this.y) this.body.velocity.y = +speed;
         if (pos1.y <= this.y) this.body.velocity.y = -speed;
       }
+
+      if (pos1.x == pos2.x) {
+        this.body.velocity.x = 0;
+      }
+
+      if (pos1.y == pos2.y) {
+        this.body.velocity.y = 0;
+      }
     } else {
       this.body.velocity.setTo(0, 0);
     }

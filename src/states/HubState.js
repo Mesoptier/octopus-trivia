@@ -90,8 +90,10 @@ export default class HubState extends Phaser.State {
       }
 
       if (entity) {
+        console.log(object.properties.facing);
+
         if (object.properties.facing) {
-          entity.frame = BasePerson.getFrameIndex(object.properties.facing);
+          entity.setFacing(object.properties.facing);
         }
 
         if (this.startDialog && object.properties.startDialog === this.startDialog) {
