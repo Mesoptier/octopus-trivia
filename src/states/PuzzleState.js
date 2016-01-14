@@ -15,7 +15,7 @@ export default class PuzzleState extends Phaser.State {
     };
 
     for (let i = 0; i < numHints; i++) {
-      puzzles[key].hints.push(key + '-Hint-' + i);
+      puzzles[key].hints.push(key + '-Hint-' + (i + 1));
     }
   }
 
@@ -24,6 +24,7 @@ export default class PuzzleState extends Phaser.State {
     this.activePuzzle = puzzles[key];
     this.activePuzzleConfig = this.game.cache.getJSON(key);
     this.playerPosition = playerPosition;
+    this.hintIndex = 0;
   }
 
   create() {
@@ -42,7 +43,7 @@ export default class PuzzleState extends Phaser.State {
 
     ['and', 'or', 'not', 'xor', 'mem'].forEach((gate, pos) => {
       let num = puzzleConfig.gates[gate];
-      let numText = new Phaser.BitmapText(game, 90, 6 + 49 * pos, 'pixelade', num, 13, 'right');
+      let numText = new Phaser.BitmapText(game, 90, 6 + 49 * pos, 'pixelade', '' + num, 13, 'right');
       numText.anchor.setTo(1, 0);
       numText.tint = '#000022';
       game.world.add(numText);
@@ -83,7 +84,17 @@ export default class PuzzleState extends Phaser.State {
   }
 
   onHint() {
+    const hints = this.activePuzzle.hints;
+    const hint = hints[this.hintIndex];
 
+    console.log(hint);
+    this.dialog.play(hint);
+
+    if (this.hintIndex < hints.length - 1) {
+      this.hintIndex++;
+    } else {
+      this.hintIndex = 0;
+    }
   }
 
   onWire() {

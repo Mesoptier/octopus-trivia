@@ -101,6 +101,7 @@ export default class Dialog {
 
   playGroupRandom(key) {
     const group = _groups[key];
+    console.log(key, group);
     const dialogKey = Phaser.ArrayUtils.getRandomItem(group);
     return this.play(dialogKey);
   }
@@ -160,7 +161,14 @@ export default class Dialog {
   }
 
   getActiveCharacterImage() {
-    return 'character-' + this.activeCharacter;
+    if (this.activeCharacter === 'RandomStudent') {
+      if (this.randomCharacterNum === undefined) {
+        this.randomCharacterNum = this.game.rnd.integerInRange(1, 2);
+      }
+      return 'character-' + this.activeCharacter + '-' + this.randomCharacterNum;
+    } else {
+      return 'character-' + this.activeCharacter;
+    }
   }
 
 }
