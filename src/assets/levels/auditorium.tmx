@@ -117,6 +117,7 @@
    <properties>
     <property name="dialog" value="FirstYearStudent"/>
     <property name="facing" value="right"/>
+    <property name="firstDialog" value="true"/>
     <property name="moveX" value="0"/>
     <property name="moveY" value="-50"/>
     <property name="sprite" value="FirstYearStudent"/>

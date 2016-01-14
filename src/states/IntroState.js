@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import renderer from '../renderer';
 import Dialog from '../helpers/Dialog';
+import BasePerson from '../objects/BasePerson';
 
 export default class IntroState extends Phaser.State {
 
@@ -38,28 +39,35 @@ export default class IntroState extends Phaser.State {
 
     // Create entities
     map.objects.IntroEntities.forEach((object) => {
-      const FRAME_LOOK_RIGHT = 3;
-      const FRAME_LOOK_LEFT = 0;
       let entity;
 
       switch (object.type) {
-        case 'bloke':
-          // Raoul bloke
-          break;
         case 'player':
           // Player
           entity = game.add.sprite(object.x, object.y, 'player');
-          entity.frame = FRAME_LOOK_RIGHT;
           game.camera.follow(entity, Phaser.Camera.FOLLOW_LOCKON);
           break;
         default:
           // Random NPCs
-          entity = game.add.sprite(object.x, object.y, Phaser.ArrayUtils.getRandomItem(['student-f1', 'student-f2', 'student-m1']));
-          entity.frame = FRAME_LOOK_RIGHT;
+          let sprite;
+
+          if (object.properties.sprite) {
+            sprite = object.properties.sprite;
+          } else {
+            sprite = Phaser.ArrayUtils.getRandomItem(['RandomStudent-1', 'RandomStudent-2', 'FirstYearStudent', 'DesignStudent', 'FraternityBoy', 'GewisMember']);
+          }
+
+          entity = game.add.sprite(object.x, object.y, sprite);
           break;
       }
 
       if (entity) {
+        if (object.properties.facing) {
+          entity.frame = BasePerson.getFrameIndex(object.properties.facing);
+        } else {
+          entity.frame = BasePerson.getFrameIndex('right');
+        }
+
         entity.anchor.setTo(0.5, 0.5);
         mapGroup.add(entity);
       }

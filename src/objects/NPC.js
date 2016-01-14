@@ -6,8 +6,6 @@ export default class NPC extends BasePerson {
   constructor(game, x, y, { dialog = '', moveX = 0, moveY = 0, sprite = '' }) {
     super(game, x, y, sprite);
 
-    console.log(sprite, dialog);
-
     moveX = parseInt(moveX);
     moveY = parseInt(moveY);
 

@@ -44,4 +44,17 @@ export default class BasePerson extends Phaser.Sprite {
     }
   }
 
+  static getFrameIndex(state) {
+    switch (state) {
+      case 'left':
+        return 9;
+      case 'right':
+        return 3;
+      case 'up':
+        return 0;
+      case 'down':
+        return 6;
+    }
+  }
+
 }

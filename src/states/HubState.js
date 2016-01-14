@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Player from '../objects/Player';
 import NPC from '../objects/NPC';
+import BasePerson from '../objects/NPC';
 import renderer from '../renderer';
 import Dialog from '../helpers/Dialog';
 
@@ -67,23 +68,36 @@ export default class HubState extends Phaser.State {
     this.entities = game.add.group();
 
     map.objects.Entities.forEach((object) => {
+      let entity;
+
       switch (object.type) {
         case 'player':
           // Create player
           if (this.startPlayerPosition) {
-            this.player = new Player(game, this.startPlayerPosition.x, this.startPlayerPosition.y);
+            entity = this.player = new Player(game, this.startPlayerPosition.x, this.startPlayerPosition.y);
           } else {
-            this.player = new Player(game, object.x + object.width / 2, object.y + object.height / 2);
+            entity = this.player = new Player(game, object.x + object.width / 2, object.y + object.height / 2);
           }
           this.entities.add(this.player);
           break;
 
         case 'npc':
           // Create NPC
-          const npc = new NPC(game, object.x + object.width / 2, object.y + object.height / 2, object.properties);
+          const npc = entity = new NPC(game, object.x + object.width / 2, object.y + object.height / 2, object.properties);
           npc.body.immovable = true;
           this.entities.add(npc);
           break;
+      }
+
+      if (entity) {
+        if (object.properties.facing) {
+          entity.frame = BasePerson.getFrameIndex(object.properties.facing);
+        }
+
+        if (object.properties.firstTalk === 'true') {
+          this.dialogEntity = entity;
+          entity.pause();
+        }
       }
     });
 
