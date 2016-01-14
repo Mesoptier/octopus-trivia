@@ -42,7 +42,7 @@ export default class PuzzleState extends Phaser.State {
 
     ['and', 'or', 'not', 'xor', 'mem'].forEach((gate, pos) => {
       let num = puzzleConfig.gates[gate];
-      let numText = new Phaser.BitmapText(game, 90, 6 + 49 * pos, 'pixelade', 'x' + num, 13, 'right');
+      let numText = new Phaser.BitmapText(game, 90, 6 + 49 * pos, 'pixelade', num, 13, 'right');
       numText.anchor.setTo(1, 0);
       numText.tint = '#000022';
       game.world.add(numText);
