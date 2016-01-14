@@ -49,13 +49,23 @@ export default class IntroState extends Phaser.State {
           break;
         default:
           // Random NPCs
-          entity = game.add.sprite(object.x, object.y, object.properties.sprite);
+          let sprite;
+
+          if (object.properties.sprite) {
+            sprite = object.properties.sprite;
+          } else {
+            sprite = Phaser.ArrayUtils.getRandomItem(['RandomStudent-1', 'RandomStudent-2', 'FirstYearStudent', 'DesignStudent', 'FraternityBoy', 'GewisMember']);
+          }
+
+          entity = game.add.sprite(object.x, object.y, sprite);
           break;
       }
 
       if (entity) {
         if (object.properties.facing) {
           entity.frame = BasePerson.getFrameIndex(object.properties.facing);
+        } else {
+          entity.frame = BasePerson.getFrameIndex('right');
         }
 
         entity.anchor.setTo(0.5, 0.5);

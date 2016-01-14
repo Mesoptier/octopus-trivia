@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Player from '../objects/Player';
 import NPC from '../objects/NPC';
+import BasePerson from '../objects/NPC';
 import renderer from '../renderer';
 import Dialog from '../helpers/Dialog';
 
@@ -91,6 +92,11 @@ export default class HubState extends Phaser.State {
       if (entity) {
         if (object.properties.facing) {
           entity.frame = BasePerson.getFrameIndex(object.properties.facing);
+        }
+
+        if (object.properties.firstTalk === 'true') {
+          this.dialogEntity = entity;
+          entity.pause();
         }
       }
     });
