@@ -152,7 +152,7 @@
                  "name":"Player",
                  "properties":
                     {
-
+                     "facing":"left"
                     },
                  "type":"player",
                  "visible":true,
@@ -198,6 +198,7 @@
                  "properties":
                     {
                      "dialog":"CanteenLady",
+                     "facing":"left",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"CanteenLady"
@@ -230,15 +231,16 @@
                  "properties":
                     {
                      "dialog":"FirstYearStudent",
+                     "facing":"right",
                      "moveX":"0",
-                     "moveY":"50",
+                     "moveY":"-50",
                      "sprite":"FirstYearStudent"
                     },
                  "type":"npc",
                  "visible":true,
                  "width":16,
                  "x":1088,
-                 "y":624
+                 "y":576
                 }, 
                 {
                  "height":16,
@@ -262,6 +264,7 @@
                  "properties":
                     {
                      "dialog":"LazyStudent",
+                     "facing":"right",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"LazyStudent"
@@ -294,6 +297,7 @@
                  "properties":
                     {
                      "dialog":"RandomStudent",
+                     "facing":"up",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"RandomStudent-1"
@@ -310,6 +314,7 @@
                  "properties":
                     {
                      "dialog":"RandomStudent",
+                     "facing":"left",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"RandomStudent-2"
@@ -319,6 +324,57 @@
                  "width":16,
                  "x":864,
                  "y":464
+                }, 
+                {
+                 "height":16,
+                 "name":"Honour Student",
+                 "properties":
+                    {
+                     "dialog":"HonourStudent",
+                     "facing":"right",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"HonourStudent"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":992,
+                 "y":656
+                }, 
+                {
+                 "height":16,
+                 "name":"Master Student",
+                 "properties":
+                    {
+                     "dialog":"MasterStudent",
+                     "facing":"left",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"MasterStudent"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":720,
+                 "y":656
+                }, 
+                {
+                 "height":16,
+                 "name":"Web Science Student",
+                 "properties":
+                    {
+                     "dialog":"WebScienceStudent",
+                     "facing":"up",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"WebScienceStudent"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":608,
+                 "y":832
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1616,10 +1672,11 @@
          "objects":[
                 {
                  "height":16,
-                 "name":"Bloke",
+                 "name":"Raoul Bloke",
                  "properties":
                     {
-
+                     "facing":"left",
+                     "sprite":"RaoulBloke"
                     },
                  "type":"bloke",
                  "visible":true,
