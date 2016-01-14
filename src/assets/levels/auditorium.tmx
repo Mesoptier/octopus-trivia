@@ -92,7 +92,7 @@
     <property name="sprite" value="DesignStudent"/>
    </properties>
   </object>
-  <object name="Canteen Lady" type="npc" x="464" y="640">
+  <object name="Canteen Lady" type="npc" x="448" y="624" width="16" height="16">
    <properties>
     <property name="dialog" value="CanteenLady"/>
     <property name="moveX" value="0"/>
@@ -100,7 +100,7 @@
     <property name="sprite" value="CanteenLady"/>
    </properties>
   </object>
-  <object name="Senior Student" type="npc" x="336" y="336">
+  <object name="Senior Student" type="npc" x="336" y="320" width="16" height="16">
    <properties>
     <property name="dialog" value="SeniorStudent"/>
     <property name="moveX" value="160"/>
@@ -108,7 +108,7 @@
     <property name="sprite" value="SeniorStudent"/>
    </properties>
   </object>
-  <object name="First Year Student" type="npc" x="1088" y="624">
+  <object name="First Year Student" type="npc" x="1088" y="624" width="16" height="16">
    <properties>
     <property name="dialog" value="FirstYearStudent"/>
     <property name="moveX" value="0"/>
@@ -116,7 +116,7 @@
     <property name="sprite" value="FirstYearStudent"/>
    </properties>
   </object>
-  <object name="Fraternity Boy" x="960" y="448">
+  <object name="Fraternity Boy" type="npc" x="960" y="448" width="16" height="16">
    <properties>
     <property name="dialog" value="FraternityBoy"/>
     <property name="moveX" value="64"/>
@@ -124,7 +124,7 @@
     <property name="sprite" value="FraternityBoy"/>
    </properties>
   </object>
-  <object name="Lazy Student" type="npc" x="704" y="496">
+  <object name="Lazy Student" type="npc" x="704" y="480" width="16" height="16">
    <properties>
     <property name="dialog" value="LazyStudent"/>
     <property name="moveX" value="0"/>
@@ -132,7 +132,7 @@
     <property name="sprite" value="LazyStudent"/>
    </properties>
   </object>
-  <object name="Raoul Bloke" type="npc" x="1296" y="512">
+  <object name="Raoul Bloke" type="npc" x="1296" y="512" width="16" height="16">
    <properties>
     <property name="dialog" value="RaoulBloke"/>
     <property name="moveX" value="0"/>
