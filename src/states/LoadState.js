@@ -22,6 +22,12 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('FraternityBoy', require('file!../assets/spritesheets/FraternityBoy.png'), 32, 32);
     game.load.spritesheet('RaoulBloke', require('file!../assets/spritesheets/RaoulBloke.png'), 32, 32);
     game.load.spritesheet('VanDerSpock', require('file!../assets/spritesheets/VanDerSpock.png'), 32, 32);
+    game.load.spritesheet('GewisMember', require('file!../assets/spritesheets/GewisMember.png'), 32, 32);
+    game.load.spritesheet('HonourStudent', require('file!../assets/spritesheets/HonourStudent.png'), 32, 32);
+    game.load.spritesheet('MasterStudent', require('file!../assets/spritesheets/MasterStudent.png'), 32, 32);
+    game.load.spritesheet('RandomStudent-1', require('file!../assets/spritesheets/RandomStudent-1.png'), 32, 32);
+    game.load.spritesheet('RandomStudent-2', require('file!../assets/spritesheets/RandomStudent-2.png'), 32, 32);
+    game.load.spritesheet('WebScienceStudent', require('file!../assets/spritesheets/WebScienceStudents.png'), 32, 32);
 
     game.load.image('dialog-back-large', require('file!../assets/dialog-back-large.png'));
     game.load.image('dialog-back-small', require('file!../assets/dialog-back-small.png'));
