@@ -232,6 +232,7 @@
                     {
                      "dialog":"FirstYearStudent",
                      "facing":"right",
+                     "firstDialog":"true",
                      "moveX":"0",
                      "moveY":"-50",
                      "sprite":"FirstYearStudent"
