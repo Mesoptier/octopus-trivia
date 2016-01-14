@@ -120,7 +120,7 @@ export default class Dialog {
       let line = this.activeDialog[this.activeLine];
 
       if (characterName) {
-        line = '{ ' + characterName + ' }\n' + line;
+        line = '[ ' + characterName + ' ]\n' + line;
       }
 
       this.text.text = line;

@@ -105,8 +105,6 @@ export default class HubState extends Phaser.State {
     game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON);
 
     // Add dialog
-    this.dialogEntity = null;
-
     this.dialog = new Dialog();
     this.dialog.create(game, (state) => {
       switch (state) {
@@ -127,8 +125,9 @@ export default class HubState extends Phaser.State {
       }
     });
 
-    if (this.startDialog)
+    if (this.startDialog) {
       this.dialog.play(this.startDialog);
+    }
 
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
