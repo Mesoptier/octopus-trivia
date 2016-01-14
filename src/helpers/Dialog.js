@@ -41,6 +41,9 @@ export default class Dialog {
     const moreArrow = new Phaser.Image(game, 0, 2, 'dialog-arrow-more');
     this.moreGroup.add(moreArrow);
 
+    this.characterImage = new Phaser.Image(game, 322, 3, '');
+    group.add(this.characterImage);
+
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     spaceKey.onDown.add(this.nextLine, this);
@@ -68,6 +71,8 @@ export default class Dialog {
 
         if (type === 'character') {
           this.activeCharacter = params[0];
+          // console.log(this.getActiveCharacterImage());
+          this.characterImage.loadTexture(this.getActiveCharacterImage());
         }
 
         if (type === 'event') {
@@ -87,6 +92,7 @@ export default class Dialog {
     this.activeCharacter = '';
     this.activeLine = -1;
     this.lastLine = dialog.length - 1;
+    // this.characterImage.loadTexture('');
 
     this.nextLine();
 
@@ -135,14 +141,14 @@ export default class Dialog {
       case 'RaoulBloke': name = 'Raoul Bloke'; break;
       case 'VanDerSpock': name = 'Mr. Van Der Spock'; break;
       case 'FirstYearStudent': name = 'First Year Student'; break;
-      default: name = 'UNKNOWN CHARACTER ' + this.activeCharacter;
+      default: name = this.activeCharacter;
     }
 
     return name;
   }
 
   getActiveCharacterImage() {
-    return this.activeCharacter;
+    return 'character-' + this.activeCharacter;
   }
 
 }
