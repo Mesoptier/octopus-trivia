@@ -17,7 +17,27 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('student-m1', require('file!../assets/spritesheets/student-m1.png'), 32, 32);
 
     game.load.image('dialog-back-large', require('file!../assets/dialog-back-large.png'));
+    game.load.image('dialog-back-small', require('file!../assets/dialog-back-small.png'));
     game.load.image('dialog-arrow-more', require('file!../assets/dialog-arrow-more.png'));
+
+    game.load.image('gate-and', require('file!../assets/gate-and.png'));
+    game.load.image('gate-mem', require('file!../assets/gate-mem.png'));
+    game.load.image('gate-not', require('file!../assets/gate-not.png'));
+    game.load.image('gate-or', require('file!../assets/gate-or.png'));
+    game.load.image('gate-xor', require('file!../assets/gate-xor.png'));
+
+    game.load.image('puzzle-background', require('file!../assets/puzzle-background.png'));
+    game.load.image('puzzle-gate-back', require('file!../assets/puzzle-gate-back.png'));
+    game.load.image('puzzle-discard', require('file!../assets/puzzle-discard.png'));
+    game.load.image('puzzle-discard-active', require('file!../assets/puzzle-discard-active.png'));
+    game.load.image('puzzle-exit', require('file!../assets/puzzle-exit.png'));
+    game.load.image('puzzle-exit-active', require('file!../assets/puzzle-exit-active.png'));
+    game.load.image('puzzle-hint', require('file!../assets/puzzle-hint.png'));
+    game.load.image('puzzle-hint-active', require('file!../assets/puzzle-hint-active.png'));
+    game.load.image('puzzle-submit', require('file!../assets/puzzle-submit.png'));
+    game.load.image('puzzle-submit-active', require('file!../assets/puzzle-submit-active.png'));
+    game.load.image('puzzle-wire', require('file!../assets/puzzle-wire.png'));
+    game.load.image('puzzle-wire-active', require('file!../assets/puzzle-wire-active.png'));
 
     // Load map
     game.load.tilemap('auditorium_map', require('file!../assets/levels/auditorium.json'), null, Phaser.Tilemap.TILED_JSON);
@@ -31,9 +51,9 @@ export default class LoadState extends Phaser.State {
     Dialog.add('door-closed-2', 'dialog-door-closed-2');
     game.load.json('dialog-door-closed-3', require('file!../assets/dialogs/_BASIS-door-closed-3.json'));
     Dialog.add('door-closed-3', 'dialog-door-closed-3');
-	game.load.json('dialog-door-closed-4', require('file!../assets/dialogs/_BASIS-door-closed-4.json'));
+  	game.load.json('dialog-door-closed-4', require('file!../assets/dialogs/_BASIS-door-closed-4.json'));
     Dialog.add('door-closed-4', 'dialog-door-closed-4');
-	game.load.json('dialog-door-closed-5', require('file!../assets/dialogs/_BASIS-door-closed-5.json'));
+  	game.load.json('dialog-door-closed-5', require('file!../assets/dialogs/_BASIS-door-closed-5.json'));
     Dialog.add('door-closed-5', 'dialog-door-closed-5');
     Dialog.addGroup('door-closed', ['door-closed-1', 'door-closed-2', 'door-closed-3', 'door-closed-4', 'door-closed-5']);
 
@@ -189,7 +209,7 @@ export default class LoadState extends Phaser.State {
     this.loadingText.anchor.setTo(0.5, 0.5);
 
     setTimeout(() => {
-      this.game.stateTransition.to('HubState', true, false);
+      this.game.stateTransition.to('PuzzleState', true, false);
     }, 200);
   }
 
