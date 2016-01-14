@@ -6,7 +6,7 @@ import Dialog from '../helpers/Dialog';
 
 export default class HubState extends Phaser.State {
 
-  init({ startDialog = null }) {
+  init({ startDialog = null } = {}) {
     this.startDialog = startDialog;
   }
 
