@@ -149,7 +149,9 @@ export default class LoadState extends Phaser.State {
     Dialog.add('LazyStudent-3', 'dialog-LazyStudent-3');
     game.load.json('dialog-LazyStudent-4', require('file!../assets/dialogs/LazyStudent-4.json'));
     Dialog.add('LazyStudent-4', 'dialog-LazyStudent-4');
-    Dialog.addGroup('LazyStudent', ['LazyStudent-1', 'LazyStudent-2', 'LazyStudent-3', 'LazyStudent-4']);
+    game.load.json('dialog-LazyStudent-5', require('file!../assets/dialogs/LazyStudent-5.json'));
+    Dialog.add('LazyStudent-5', 'dialog-LazyStudent-5');
+    Dialog.addGroup('LazyStudent', ['LazyStudent-1', 'LazyStudent-2', 'LazyStudent-3', 'LazyStudent-4', 'LazyStudent-5']);
 
     game.load.json('dialog-MasterStudent-1', require('file!../assets/dialogs/MasterStudent-1.json'));
     Dialog.add('MasterStudent-1', 'dialog-MasterStudent-1');
