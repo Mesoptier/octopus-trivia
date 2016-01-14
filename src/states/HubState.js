@@ -6,8 +6,9 @@ import Dialog from '../helpers/Dialog';
 
 export default class HubState extends Phaser.State {
 
-  init({ startDialog = null } = {}) {
+  init({ startDialog = null, playerPosition = null } = {}) {
     this.startDialog = startDialog;
+    this.startPlayerPosition = playerPosition;
   }
 
   create() {
@@ -69,7 +70,11 @@ export default class HubState extends Phaser.State {
       switch (object.type) {
         case 'player':
           // Create player
-          this.player = new Player(game, object.x + object.width / 2, object.y + object.height / 2);
+          if (this.startPlayerPosition) {
+            this.player = new Player(game, this.startPlayerPosition.x, this.startPlayerPosition.y);
+          } else {
+            this.player = new Player(game, object.x + object.width / 2, object.y + object.height / 2);
+          }
           this.entities.add(this.player);
           break;
 
@@ -140,7 +145,7 @@ export default class HubState extends Phaser.State {
     if (open) {
       this.game.stateTransition.to('BlackState', true, false, {
         nextState: 'PuzzleState',
-        nextParams: [{ key: 'Puzzle-LogicAndSet-1' }],
+        nextParams: [{ key: 'Puzzle-LogicAndSet-1', playerPosition: this.player.position }],
         title: 'Logic & Set\n#1'
       });
     } else {

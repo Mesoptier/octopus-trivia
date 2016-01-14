@@ -19,9 +19,10 @@ export default class PuzzleState extends Phaser.State {
     }
   }
 
-  init({ key }) {
+  init({ key, playerPosition = null }) {
     this.key = key;
     this.activePuzzle = puzzles[key];
+    this.playerPosition = playerPosition;
   }
 
   create() {
@@ -51,7 +52,12 @@ export default class PuzzleState extends Phaser.State {
   }
 
   onExit() {
-
+    this.game.stateTransition.to('BlackState', true, false, {
+      nextState: 'HubState',
+      nextParams: [{
+        playerPosition: this.playerPosition
+      }]
+    });
   }
 
   onHint() {
