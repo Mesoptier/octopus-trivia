@@ -198,6 +198,7 @@
                  "properties":
                     {
                      "dialog":"CanteenLady",
+                     "facing":"left",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"CanteenLady"
@@ -263,6 +264,7 @@
                  "properties":
                     {
                      "dialog":"LazyStudent",
+                     "facing":"right",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"LazyStudent"
@@ -312,6 +314,7 @@
                  "properties":
                     {
                      "dialog":"RandomStudent",
+                     "facing":"left",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"RandomStudent-2"
@@ -327,7 +330,11 @@
                  "name":"Honour Student",
                  "properties":
                     {
-
+                     "dialog":"HonourStudent",
+                     "facing":"right",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"HonourStudent"
                     },
                  "type":"npc",
                  "visible":true,
@@ -341,6 +348,7 @@
                  "properties":
                     {
                      "dialog":"MasterStudent",
+                     "facing":"left",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"MasterStudent"
@@ -362,7 +370,7 @@
                      "moveY":"0",
                      "sprite":"WebScienceStudent"
                     },
-                 "type":"",
+                 "type":"npc",
                  "visible":true,
                  "width":16,
                  "x":608,
