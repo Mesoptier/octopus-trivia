@@ -45,21 +45,21 @@ export default class LoadState extends Phaser.State {
     game.load.image('tileset2', require('file!../assets/levels/tileset2.png'));
 
     // Load dialogs
-    game.load.json('dialog-door-closed-1', require('file!../assets/dialogs/_BASIS-door-closed-1.json'));
+    game.load.json('dialog-door-closed-1', require('file!../assets/dialogs/Basis/DoorClosed-1.json'));
     Dialog.add('door-closed-1', 'dialog-door-closed-1');
-    game.load.json('dialog-door-closed-2', require('file!../assets/dialogs/_BASIS-door-closed-2.json'));
+    game.load.json('dialog-door-closed-2', require('file!../assets/dialogs/Basis/DoorClosed-2.json'));
     Dialog.add('door-closed-2', 'dialog-door-closed-2');
-    game.load.json('dialog-door-closed-3', require('file!../assets/dialogs/_BASIS-door-closed-3.json'));
+    game.load.json('dialog-door-closed-3', require('file!../assets/dialogs/Basis/DoorClosed-3.json'));
     Dialog.add('door-closed-3', 'dialog-door-closed-3');
-  	game.load.json('dialog-door-closed-4', require('file!../assets/dialogs/_BASIS-door-closed-4.json'));
+  	game.load.json('dialog-door-closed-4', require('file!../assets/dialogs/Basis/DoorClosed-4.json'));
     Dialog.add('door-closed-4', 'dialog-door-closed-4');
-  	game.load.json('dialog-door-closed-5', require('file!../assets/dialogs/_BASIS-door-closed-5.json'));
+  	game.load.json('dialog-door-closed-5', require('file!../assets/dialogs/Basis/DoorClosed-5.json'));
     Dialog.add('door-closed-5', 'dialog-door-closed-5');
     Dialog.addGroup('door-closed', ['door-closed-1', 'door-closed-2', 'door-closed-3', 'door-closed-4', 'door-closed-5']);
 
-    game.load.json('dialog-intro-1', require('file!../assets/dialogs/_BASIS-intro-1.json'));
+    game.load.json('dialog-intro-1', require('file!../assets/dialogs/Basis/Intro-1.json'));
     Dialog.add('intro-1', 'dialog-intro-1');
-	  game.load.json('dialog-intro-2', require('file!../assets/dialogs/_BASIS-intro-2.json'));
+	  game.load.json('dialog-intro-2', require('file!../assets/dialogs/Basis/Intro-2.json'));
     Dialog.add('intro-2', 'dialog-intro-2');
 
   	game.load.json('dialog-CanteenLady-1', require('file!../assets/dialogs/CanteenLady-1.json'));

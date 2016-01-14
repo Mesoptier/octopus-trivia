@@ -112,12 +112,7 @@ export default class HubState extends Phaser.State {
 
     // TEST
     this.game.stateTransition.to('PuzzleState', true, false, {
-      dialog: 'Puzzle-LogicAndSet-1-Dialog',
-      question: 'Puzzle-LogicAndSet-1-Question',
-      hints: [
-        'Puzzle-LogicAndSet-1-Hint-1',
-        'Puzzle-LogicAndSet-1-Hint-2'
-      ]
+      key: 'Puzzle-LogicAndSet-1'
     });
   }
 

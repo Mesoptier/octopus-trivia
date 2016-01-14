@@ -5,8 +5,8 @@ import renderer from '../renderer';
 
 export default class PuzzleState extends Phaser.State {
 
-  init(params) {
-    this.params = params;
+  init({ key }) {
+    this.key = key;
   }
 
   create() {
@@ -17,6 +17,8 @@ export default class PuzzleState extends Phaser.State {
     this.dialog.create(game, (state) => {
       // Dialog event handler
     });
+
+    this.dialog.play(`${this.key}-Dialog`);
   }
 
   update() {

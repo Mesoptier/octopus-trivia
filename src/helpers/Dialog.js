@@ -26,7 +26,7 @@ export default class Dialog {
     // Text
     this.text = new Phaser.BitmapText(game, 10, 10, 'pixelade', '', 13);
     this.text.tint = '#000000';
-    this.text.maxWidth = 300;
+    this.text.maxWidth = (this.type == 'large' ? 300 : 200);
     group.add(this.text);
 
     // More (arrow + text)
@@ -114,7 +114,7 @@ export default class Dialog {
       let line = this.activeDialog[this.activeLine];
 
       if (characterName) {
-        line = characterName + '\n' + characterName.replace(/./g, '-') + '\n' + line;
+        line = '{ ' + characterName + ' }\n' + line;
       }
 
       this.text.text = line;
@@ -135,7 +135,7 @@ export default class Dialog {
       case 'RaoulBloke': name = 'Raoul Bloke'; break;
       case 'VanDerSpock': name = 'Mr. Van Der Spock'; break;
       case 'FirstYearStudent': name = 'First Year Student'; break;
-      default: console.log('UNKNOWN CHARACTER', this.activeCharacter);
+      default: name = 'UNKNOWN CHARACTER ' + this.activeCharacter;
     }
 
     return name;
