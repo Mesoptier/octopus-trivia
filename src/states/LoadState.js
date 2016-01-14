@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Dialog from '../helpers/Dialog';
+import PuzzleState from './PuzzleState';
 import renderer from '../renderer';
 
 export default class LoadState extends Phaser.State {
@@ -211,11 +212,9 @@ export default class LoadState extends Phaser.State {
     Dialog.add('Puzzle-LogicAndSet-1-Hint-1', 'dialog-Puzzle-LogicAndSet-1-Hint-1');
     game.load.json('dialog-Puzzle-LogicAndSet-1-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Hint-2.json'));
     Dialog.add('Puzzle-LogicAndSet-1-Hint-2', 'dialog-Puzzle-LogicAndSet-1-Hint-2');
-  }
 
-  preloadDialog(name) {
-    game.load.json('dialog-' + name, require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Question.json'));
-    Dialog.add(name, 'dialog-' + name);
+    game.load.json('Puzzle-LogicAndSet-1', require('file!../assets/puzzles/Puzzle-LogicAndSet-1.json'));
+    PuzzleState.add('Puzzle-LogicAndSet-1', 2);
   }
 
   create() {

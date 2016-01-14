@@ -109,6 +109,8 @@ export default class HubState extends Phaser.State {
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     spaceKey.onDown.add(this.handleSpaceDown, this);
+
+    this.game.stateTransition.to('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
   }
 
   update() {
