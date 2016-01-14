@@ -15,12 +15,25 @@ export default class BootState extends Phaser.State {
   }
 
   init() {
+    // Load query params
+    if (document.location.search) {
+      this.game.env = document.location.search
+        .substring(1)
+        .split('&')
+        .map((part) => part.split('='))
+        .reduce((env, pair) => {
+          env[pair[0]] = pair.length > 1 ? pair[1] : true;
+          return env;
+        }, {});
+    }
+
     // Use scaled pixel renderer
-    // renderer.init(this.game);
-    this.game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-    this.game.scale.setUserScale(2, 2);
-    this.game.stage.smoothed = false;
-    Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
+    renderer.init(this.game);
+    // this.game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+    // this.game.scale.setUserScale(2, 2);
+    // this.game.stage.smoothed = false;
+    // Phaser.Canvas.setSmoothingEnabled(this.game.canvas, false);
+    // Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 
     this.game.debug.font = '10px Munro';
     this.game.debug.lineHeight = 12;
