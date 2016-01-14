@@ -143,8 +143,8 @@ export default class HubState extends Phaser.State {
     // });
 
     // add background music
-    const music = game.add.audio('hubMusic');
-    music.play();
+    const hubMusic = game.add.audio('hubMusic');
+    hubMusic.play();
 
   }
 
