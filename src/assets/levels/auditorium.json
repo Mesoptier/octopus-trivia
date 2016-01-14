@@ -235,7 +235,7 @@
                      "moveX":"0",
                      "moveY":"-50",
                      "sprite":"FirstYearStudent",
-                     "startDialog":"intrp-2"
+                     "startDialog":"intro-2"
                     },
                  "type":"npc",
                  "visible":true,
