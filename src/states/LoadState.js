@@ -63,6 +63,8 @@ export default class LoadState extends Phaser.State {
     game.load.image('character-SeniorStudent', require('file!../assets/spritesheets/thumbnails/SeniorStudent.png'));
     game.load.image('character-WebScienceStudent', require('file!../assets/spritesheets/thumbnails/WebScienceStudent.png'));
     game.load.image('character-LeTique', require('file!../assets/spritesheets/thumbnails/LeTique.png'));
+    game.load.image('character-Message', require('file!../assets/spritesheets/thumbnails/Message.png'));
+    game.load.image('character-Question', require('file!../assets/spritesheets/thumbnails/Question.png'));
 
     // Load music
     game.load.audio('hubMusic', require('file!../assets/audio/hubmusic.mp3'));
