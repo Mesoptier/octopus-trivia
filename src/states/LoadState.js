@@ -31,7 +31,11 @@ export default class LoadState extends Phaser.State {
     Dialog.add('door-closed-2', 'dialog-door-closed-2');
     game.load.json('dialog-door-closed-3', require('file!../assets/dialogs/_BASIS-door-closed-3.json'));
     Dialog.add('door-closed-3', 'dialog-door-closed-3');
-    Dialog.addGroup('door-closed', ['door-closed-1', 'door-closed-2', 'door-closed-3']);
+	game.load.json('dialog-door-closed-4', require('file!../assets/dialogs/_BASIS-door-closed-4.json'));
+    Dialog.add('door-closed-4', 'dialog-door-closed-4');
+	game.load.json('dialog-door-closed-5', require('file!../assets/dialogs/_BASIS-door-closed-5.json'));
+    Dialog.add('door-closed-5', 'dialog-door-closed-5');
+    Dialog.addGroup('door-closed', ['door-closed-1', 'door-closed-2', 'door-closed-3', 'door-closed-4', 'door-closed-5']);
 
     game.load.json('dialog-intro-1', require('file!../assets/dialogs/_BASIS-intro-1.json'));
     Dialog.add('intro-1', 'dialog-intro-1');
