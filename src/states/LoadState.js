@@ -66,6 +66,7 @@ export default class LoadState extends Phaser.State {
 
     // Load music
     game.load.audio('hubMusic', require('file!../assets/audio/hubmusic.mp3'));
+    game.load.audio('puzzleMusic', require('file!../assets/audio/Logicpuzzlemusic.mp3'));
 
     // Load map
     game.load.tilemap('auditorium_map', require('file!../assets/levels/auditorium.json'), null, Phaser.Tilemap.TILED_JSON);
