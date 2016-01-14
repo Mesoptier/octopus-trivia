@@ -62,6 +62,10 @@ export default class HubState extends Phaser.State {
       door.body.setSize(object.width, object.height);
       door.body.immovable = true;
       door.tiledProperties = object.properties;
+
+      if (door.tiledProperties.open === 'true') {
+        game.add.image(object.x, object.y, 'door-open');
+      }
     });
 
     // Create entities
