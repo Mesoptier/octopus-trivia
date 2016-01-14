@@ -93,7 +93,7 @@ export default class Dialog {
     }
   }
 
-  play(key, { entity = null, x, y }) {
+  play(key, { entity = null, x, y } = {}) {
     const jsonKey = _dialogs[key];
     const dialog = this.game.cache.getJSON(jsonKey);
 
@@ -105,8 +105,8 @@ export default class Dialog {
     this.characterImage.loadTexture('');
 
     this.activeEntity = entity;
-    this.activeX = entity ? entity.x : x;
-    this.activeY = entity ? entity.y : y;
+    this.activeX = entity ? entity.x : (x !== undefined ? x : this.game.camera.x);
+    this.activeY = entity ? entity.y : (y !== undefined ? y : this.game.camera.y);
 
     this.nextLine();
 

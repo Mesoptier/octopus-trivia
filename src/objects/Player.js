@@ -10,6 +10,14 @@ export default class Player extends BasePerson {
     this.cursors = game.input.keyboard.createCursorKeys();
   }
 
+  pause() {
+    this.paused = true;
+  }
+
+  unpause() {
+    this.paused = false;
+  }
+
   update() {
     const { body, cursors, speed } = this;
 

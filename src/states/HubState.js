@@ -114,7 +114,7 @@ export default class HubState extends Phaser.State {
     this.dialog.create(game, (state) => {
       switch (state) {
         case 'play':
-          this.player.paused = true;
+          this.player.pause();
           break;
         case 'stop':
           let entity = this.dialog.activeEntity;
@@ -124,7 +124,7 @@ export default class HubState extends Phaser.State {
 
           // Wait a few milliseconds, so a new dialog doesn't instantly start
           setTimeout(() => {
-            this.player.paused = false;
+            this.player.unpause();
           }, 10);
           break;
       }

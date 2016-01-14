@@ -11,14 +11,18 @@ const renderer = {
 
   init(_game) {
     game = _game;
-    game.stage.smoothed = false;
 
-    Phaser.Canvas.setImageRenderingCrisp(game.canvas);
-    game.canvas.style['display'] = 'none';
     this.canvas = Phaser.Canvas.create(renderer, game.width * scale, game.height * scale);
     this.context = this.canvas.getContext('2d');
     Phaser.Canvas.addToDOM(this.canvas, 'container');
+
+    game.stage.smoothed = false;
+    Phaser.Canvas.setSmoothingEnabled(game.context, false);
     Phaser.Canvas.setSmoothingEnabled(this.context, false);
+    Phaser.Canvas.setImageRenderingCrisp(game.canvas);
+    Phaser.Canvas.setImageRenderingCrisp(this.canvas);
+
+    game.canvas.style['display'] = 'none';
 
     width = this.canvas.width;
     height = this.canvas.height;

@@ -279,6 +279,9 @@ export default class LoadState extends Phaser.State {
         case 'hub':
           this.game.state.start('HubState');
           break;
+        case 'puzzle':
+          this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
+          break;
       }
     } else {
       // Regular launch
