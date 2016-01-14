@@ -228,7 +228,7 @@ export default class LoadState extends Phaser.State {
     this.loadingText.anchor.setTo(0.5, 0.5);
 
     setTimeout(() => {
-      this.game.stateTransition.to('HubState', true, false);
+      this.game.stateTransition.to('IntroState', true, false);
     }, 200);
   }
 

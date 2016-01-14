@@ -73,7 +73,10 @@ export default class IntroState extends Phaser.State {
           game.add.tween(mapGroup).to({ alpha: 0 }, 500, Phaser.Easing.Exponential.InOut, true);
           break;
         case 'stop':
-          game.stateTransition.to('BlackState', true, false, 'HubState');
+          game.stateTransition.to('BlackState', true, false, {
+            nextState: 'HubState',
+            nextParams: []
+          });
           break;
       }
     });

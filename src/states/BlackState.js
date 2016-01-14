@@ -3,21 +3,29 @@ import renderer from '../renderer';
 
 export default class BlackState {
 
-  init(nextState, duration = 1000) {
+  init({ nextState, nextParams, duration = 1000, title }) {
     this.nextState = nextState;
+    this.nextParams = nextParams;
     this.duration = duration;
+    this.title = title;
   }
 
   create() {
-    this.game.stage.backgroundColor = '#000000';
-    this.graphics = this.game.add.graphics(0, 0);
+    const { game } = this;
+
+    game.stage.backgroundColor = '#000000';
+    this.graphics = game.add.graphics(0, 0);
+
+    const titleText = new Phaser.BitmapText(game, game.width / 2, game.height / 2, 'pixelade', this.title, 26, 'center');
+    titleText.anchor.setTo(0.5, 0.5);
+    game.world.add(titleText);
 
     setTimeout(this.exitState.bind(this), this.duration);
   }
 
   exitState() {
     // game.stateTransition.to('BlackState', true, false, 'HubState');
-    this.game.stateTransition.to(this.nextState);
+    this.game.stateTransition.to(this.nextState, true, false, ...this.nextParams);
   }
 
   render() {
