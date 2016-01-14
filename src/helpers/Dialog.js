@@ -103,7 +103,6 @@ export default class Dialog {
 
   playGroupRandom(key) {
     const group = _groups[key];
-    console.log(key, group);
     const dialogKey = Phaser.ArrayUtils.getRandomItem(group);
     return this.play(dialogKey);
   }
@@ -160,6 +159,7 @@ export default class Dialog {
       case 'RandomStudent-2': name = 'Random Student'; break;
       case 'SeniorStudent': name = 'Senior Student'; break;
       case 'WebScienceStudent': name = 'Web Science Student'; break;
+      case 'LeTique': name = 'Mr. Le Tique'; break;
       default: name = this.activeCharacter;
     }
 

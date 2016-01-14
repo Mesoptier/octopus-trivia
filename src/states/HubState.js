@@ -127,6 +127,13 @@ export default class HubState extends Phaser.State {
 
     if (this.startDialog) {
       this.dialog.play(this.startDialog);
+
+      // TODO: make this better...
+      if (this.startDialog === 'intro-2') {
+        // Add background music
+        this.music = game.add.audio('hubMusic');
+        this.music.play();
+      }
     }
 
     // Add input callbacks
@@ -138,11 +145,6 @@ export default class HubState extends Phaser.State {
     //   nextParams: [{ key: 'Puzzle-LogicAndSet-1' }],
     //   title: 'Logic & Set\n#1'
     // });
-
-    // add background music
-    //const hubMusic = game.add.audio('hubMusic');
-    //hubMusic.play();
-
   }
 
   update() {
