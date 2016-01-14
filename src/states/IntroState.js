@@ -75,7 +75,7 @@ export default class IntroState extends Phaser.State {
         case 'stop':
           game.stateTransition.to('BlackState', true, false, {
             nextState: 'HubState',
-            nextParams: []
+            nextParams: [{ startDialog: 'intro-2' }]
           });
           break;
       }

@@ -6,6 +6,10 @@ import Dialog from '../helpers/Dialog';
 
 export default class HubState extends Phaser.State {
 
+  init({ startDialog = null }) {
+    this.startDialog = startDialog;
+  }
+
   create() {
     const { game } = this;
 
@@ -104,13 +108,18 @@ export default class HubState extends Phaser.State {
       }
     });
 
-    this.dialog.play('intro-2');
+    if (this.startDialog)
+      this.dialog.play(this.startDialog);
 
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     spaceKey.onDown.add(this.handleSpaceDown, this);
 
-    // this.game.stateTransition.to('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
+    // this.game.stateTransition.to('BlackState', true, false, {
+    //   nextState: 'PuzzleState',
+    //   nextParams: [{ key: 'Puzzle-LogicAndSet-1' }],
+    //   title: 'Logic & Set\n#1'
+    // });
   }
 
   update() {

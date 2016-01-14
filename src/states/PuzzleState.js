@@ -30,12 +30,6 @@ export default class PuzzleState extends Phaser.State {
     game.add.image(0, 0, 'puzzle-background');
     game.add.image(0, 0, 'puzzle-gate-back');
 
-    game.add.button(0, 249, 'puzzle-exit', this.onExit, this, 0, 0, 0);
-    game.add.button(48, 249, 'puzzle-hint', this.onHint, this, 0, 0, 0);
-    game.add.button(344, 0, 'puzzle-wire', this.onWire, this, 0, 0, 0);
-    game.add.button(344, 114, 'puzzle-discard', this.onDiscard, this, 0, 0, 0);
-    game.add.button(344, 153, 'puzzle-submit', this.onSubmit, this, 0, 0, 0);
-
     // Create dialog
     this.dialog = new Dialog('small');
     this.dialog.create(game, (state, ...params) => {
@@ -48,6 +42,12 @@ export default class PuzzleState extends Phaser.State {
 
     // Start puzzle dialog
     this.dialog.play(this.activePuzzle.dialog);
+
+    game.add.button(0, 249, 'puzzle-exit', this.onExit, this, 0, 0, 1, 0);
+    game.add.button(48, 249, 'puzzle-hint', this.onHint, this, 0, 0, 1, 0);
+    game.add.button(344, 0, 'puzzle-wire', this.onWire, this, 0, 0, 1, 0);
+    game.add.button(344, 114, 'puzzle-discard', this.onDiscard, this, 0, 0, 1, 0);
+    game.add.button(344, 153, 'puzzle-submit', this.onSubmit, this, 0, 0, 1, 0);
   }
 
   onExit() {

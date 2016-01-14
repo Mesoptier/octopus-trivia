@@ -32,16 +32,11 @@ export default class LoadState extends Phaser.State {
 
     game.load.image('puzzle-background', require('file!../assets/puzzle-background.png'));
     game.load.image('puzzle-gate-back', require('file!../assets/puzzle-gate-back.png'));
-    game.load.image('puzzle-discard', require('file!../assets/puzzle-discard.png'));
-    game.load.image('puzzle-discard-active', require('file!../assets/puzzle-discard-active.png'));
-    game.load.image('puzzle-exit', require('file!../assets/puzzle-exit.png'));
-    game.load.image('puzzle-exit-active', require('file!../assets/puzzle-exit-active.png'));
-    game.load.image('puzzle-hint', require('file!../assets/puzzle-hint.png'));
-    game.load.image('puzzle-hint-active', require('file!../assets/puzzle-hint-active.png'));
-    game.load.image('puzzle-submit', require('file!../assets/puzzle-submit.png'));
-    game.load.image('puzzle-submit-active', require('file!../assets/puzzle-submit-active.png'));
-    game.load.image('puzzle-wire', require('file!../assets/puzzle-wire.png'));
-    game.load.image('puzzle-wire-active', require('file!../assets/puzzle-wire-active.png'));
+    game.load.spritesheet('puzzle-discard', require('file!../assets/puzzle-discard.png'), 40, 40);
+    game.load.spritesheet('puzzle-exit', require('file!../assets/puzzle-exit.png'), 49, 39);
+    game.load.spritesheet('puzzle-hint', require('file!../assets/puzzle-hint.png'), 48, 39);
+    game.load.spritesheet('puzzle-submit', require('file!../assets/puzzle-submit.png'), 40, 40);
+    game.load.spritesheet('puzzle-wire', require('file!../assets/puzzle-wire.png'), 40, 40);
 
     game.load.image('character-VanDerSpock', require('file!../assets/spritesheets/thumbnails/VanDerSpock.png'));
 
@@ -228,7 +223,7 @@ export default class LoadState extends Phaser.State {
     this.loadingText.anchor.setTo(0.5, 0.5);
 
     setTimeout(() => {
-      this.game.stateTransition.to('IntroState', true, false);
+      this.game.stateTransition.to('HubState', true, false);
     }, 200);
   }
 

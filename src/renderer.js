@@ -25,7 +25,9 @@ const renderer = {
   },
 
   render() {
-    this.context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, width, height);
+    if (this.canvas) {
+      this.context.drawImage(game.canvas, 0, 0, game.width, game.height, 0, 0, width, height);
+    }
   }
 };
 

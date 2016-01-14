@@ -16,7 +16,11 @@ export default class BootState extends Phaser.State {
 
   init() {
     // Use scaled pixel renderer
-    renderer.init(this.game);
+    // renderer.init(this.game);
+    this.game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+    this.game.scale.setUserScale(2, 2);
+    this.game.stage.smoothed = false;
+    Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
 
     this.game.debug.font = '10px Munro';
     this.game.debug.lineHeight = 12;
