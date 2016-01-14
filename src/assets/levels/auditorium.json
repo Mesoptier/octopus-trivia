@@ -152,7 +152,7 @@
                  "name":"Player",
                  "properties":
                     {
-
+                     "facing":"left"
                     },
                  "type":"player",
                  "visible":true,
@@ -230,15 +230,16 @@
                  "properties":
                     {
                      "dialog":"FirstYearStudent",
+                     "facing":"right",
                      "moveX":"0",
-                     "moveY":"50",
+                     "moveY":"-50",
                      "sprite":"FirstYearStudent"
                     },
                  "type":"npc",
                  "visible":true,
                  "width":16,
                  "x":1088,
-                 "y":624
+                 "y":576
                 }, 
                 {
                  "height":16,
@@ -294,6 +295,7 @@
                  "properties":
                     {
                      "dialog":"RandomStudent",
+                     "facing":"up",
                      "moveX":"0",
                      "moveY":"0",
                      "sprite":"RandomStudent-1"
@@ -319,6 +321,52 @@
                  "width":16,
                  "x":864,
                  "y":464
+                }, 
+                {
+                 "height":16,
+                 "name":"Honour Student",
+                 "properties":
+                    {
+
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":992,
+                 "y":656
+                }, 
+                {
+                 "height":16,
+                 "name":"Master Student",
+                 "properties":
+                    {
+                     "dialog":"MasterStudent",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"MasterStudent"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":720,
+                 "y":656
+                }, 
+                {
+                 "height":16,
+                 "name":"Web Science Student",
+                 "properties":
+                    {
+                     "dialog":"WebScienceStudent",
+                     "facing":"up",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"WebScienceStudent"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":608,
+                 "y":832
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1616,10 +1664,11 @@
          "objects":[
                 {
                  "height":16,
-                 "name":"Bloke",
+                 "name":"Raoul Bloke",
                  "properties":
                     {
-
+                     "facing":"left",
+                     "sprite":"RaoulBloke"
                     },
                  "type":"bloke",
                  "visible":true,

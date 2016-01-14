@@ -75,7 +75,11 @@
   </data>
  </layer>
  <objectgroup name="Entities" width="0" height="0">
-  <object name="Player" type="player" x="1120" y="576" width="16" height="16"/>
+  <object name="Player" type="player" x="1120" y="576" width="16" height="16">
+   <properties>
+    <property name="facing" value="left"/>
+   </properties>
+  </object>
   <object name="VanDerSpock" type="npc" x="1120" y="832" width="16" height="16">
    <properties>
     <property name="dialog" value="VanDerSpock"/>
@@ -108,11 +112,12 @@
     <property name="sprite" value="SeniorStudent"/>
    </properties>
   </object>
-  <object name="First Year Student" type="npc" x="1088" y="624" width="16" height="16">
+  <object name="First Year Student" type="npc" x="1088" y="576" width="16" height="16">
    <properties>
     <property name="dialog" value="FirstYearStudent"/>
+    <property name="facing" value="right"/>
     <property name="moveX" value="0"/>
-    <property name="moveY" value="50"/>
+    <property name="moveY" value="-50"/>
     <property name="sprite" value="FirstYearStudent"/>
    </properties>
   </object>
@@ -143,6 +148,7 @@
   <object name="Random Student 1" type="npc" x="416" y="528" width="16" height="16">
    <properties>
     <property name="dialog" value="RandomStudent"/>
+    <property name="facing" value="up"/>
     <property name="moveX" value="0"/>
     <property name="moveY" value="0"/>
     <property name="sprite" value="RandomStudent-1"/>
@@ -154,6 +160,24 @@
     <property name="moveX" value="0"/>
     <property name="moveY" value="0"/>
     <property name="sprite" value="RandomStudent-2"/>
+   </properties>
+  </object>
+  <object name="Honour Student" type="npc" x="992" y="656" width="16" height="16"/>
+  <object name="Master Student" type="npc" x="720" y="656" width="16" height="16">
+   <properties>
+    <property name="dialog" value="MasterStudent"/>
+    <property name="moveX" value="0"/>
+    <property name="moveY" value="0"/>
+    <property name="sprite" value="MasterStudent"/>
+   </properties>
+  </object>
+  <object name="Web Science Student" x="608" y="832" width="16" height="16">
+   <properties>
+    <property name="dialog" value="WebScienceStudent"/>
+    <property name="facing" value="up"/>
+    <property name="moveX" value="0"/>
+    <property name="moveY" value="0"/>
+    <property name="sprite" value="WebScienceStudent"/>
    </properties>
   </object>
  </objectgroup>
@@ -275,7 +299,12 @@
   </object>
  </objectgroup>
  <objectgroup name="IntroEntities" width="0" height="0" visible="0">
-  <object name="Bloke" type="bloke" x="1296" y="576" width="16" height="16"/>
+  <object name="Raoul Bloke" type="bloke" x="1296" y="576" width="16" height="16">
+   <properties>
+    <property name="facing" value="left"/>
+    <property name="sprite" value="RaoulBloke"/>
+   </properties>
+  </object>
   <object name="Player" type="player" x="1120" y="576" width="16" height="16"/>
   <object x="1088" y="512" width="16" height="16"/>
   <object x="1072" y="560" width="16" height="16"/>
