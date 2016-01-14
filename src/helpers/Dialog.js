@@ -85,18 +85,21 @@ export default class Dialog {
   }
 
   play(key) {
+    console.log(key);
+
     const jsonKey = _dialogs[key];
     const dialog = this.game.cache.getJSON(jsonKey);
 
+    this.activeKey = key;
     this.activeDialog = dialog;
     this.activeCharacter = '';
     this.activeLine = -1;
     this.lastLine = dialog.length - 1;
-    // this.characterImage.loadTexture('');
+    this.characterImage.loadTexture('');
 
     this.nextLine();
 
-    this.callback('play');
+    this.callback('play', this.activeKey);
   }
 
   playGroupRandom(key) {
@@ -106,7 +109,7 @@ export default class Dialog {
   }
 
   stop() {
-    this.callback('stop');
+    this.callback('stop', this.activeKey);
     this.activeDialog = null;
     this.activeLine = 0;
   }

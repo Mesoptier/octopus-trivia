@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Dialog from '../helpers/Dialog';
+import PuzzleState from './PuzzleState';
 import renderer from '../renderer';
 
 export default class LoadState extends Phaser.State {
@@ -12,9 +13,12 @@ export default class LoadState extends Phaser.State {
 
     // Load sprites
     game.load.spritesheet('player', require('file!../assets/spritesheets/player.png'), 32, 32);
-    game.load.spritesheet('student-f1', require('file!../assets/spritesheets/student-f1.png'), 32, 32);
-    game.load.spritesheet('student-f2', require('file!../assets/spritesheets/student-f2.png'), 32, 32);
-    game.load.spritesheet('student-m1', require('file!../assets/spritesheets/student-m1.png'), 32, 32);
+    game.load.spritesheet('asianStudent', require('file!../assets/spritesheets/asianStudent.png'), 32, 32);
+    game.load.spritesheet('CanteenLady', require('file!../assets/spritesheets/CanteenLady.png'), 32, 32);
+    game.load.spritesheet('LazyStudent', require('file!../assets/spritesheets/LazyStudent.png'), 32, 32);
+    game.load.spritesheet('pinkhairStudent', require('file!../assets/spritesheets/pinkhairStudent.png'), 32, 32);
+    game.load.spritesheet('RaoulBloke', require('file!../assets/spritesheets/RaoulBloke.png'), 32, 32);
+    game.load.spritesheet('VanDerSpock', require('file!../assets/spritesheets/VanDerSpock.png'), 32, 32);
 
     game.load.image('dialog-back-large', require('file!../assets/dialog-back-large.png'));
     game.load.image('dialog-back-small', require('file!../assets/dialog-back-small.png'));
@@ -211,11 +215,9 @@ export default class LoadState extends Phaser.State {
     Dialog.add('Puzzle-LogicAndSet-1-Hint-1', 'dialog-Puzzle-LogicAndSet-1-Hint-1');
     game.load.json('dialog-Puzzle-LogicAndSet-1-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Hint-2.json'));
     Dialog.add('Puzzle-LogicAndSet-1-Hint-2', 'dialog-Puzzle-LogicAndSet-1-Hint-2');
-  }
 
-  preloadDialog(name) {
-    game.load.json('dialog-' + name, require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Question.json'));
-    Dialog.add(name, 'dialog-' + name);
+    game.load.json('Puzzle-LogicAndSet-1', require('file!../assets/puzzles/Puzzle-LogicAndSet-1.json'));
+    PuzzleState.add('Puzzle-LogicAndSet-1', 2);
   }
 
   create() {
