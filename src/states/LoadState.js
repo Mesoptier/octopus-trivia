@@ -62,8 +62,10 @@ export default class LoadState extends Phaser.State {
     game.load.image('character-RaoulBloke', require('file!../assets/spritesheets/thumbnails/RaoulBloke.png'));
     game.load.image('character-SeniorStudent', require('file!../assets/spritesheets/thumbnails/SeniorStudent.png'));
     game.load.image('character-WebScienceStudent', require('file!../assets/spritesheets/thumbnails/WebScienceStudent.png'));
-    
-    
+
+    // Load music
+    game.load.audio('hubMusic', require('file!../assets/audio/hubmusic.mp3'));
+
     // Load map
     game.load.tilemap('auditorium_map', require('file!../assets/levels/auditorium.json'), null, Phaser.Tilemap.TILED_JSON);
     game.load.image('soulsilver tileset', require('file!../assets/levels/soulsilver tileset.png'));

@@ -139,6 +139,11 @@ export default class HubState extends Phaser.State {
     //   nextParams: [{ key: 'Puzzle-LogicAndSet-1' }],
     //   title: 'Logic & Set\n#1'
     // });
+
+    // add background music
+    const music = game.add.audio('hubMusic');
+    music.play();
+
   }
 
   update() {
