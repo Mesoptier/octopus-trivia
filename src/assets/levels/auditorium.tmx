@@ -120,7 +120,7 @@
     <property name="moveX" value="0"/>
     <property name="moveY" value="-50"/>
     <property name="sprite" value="FirstYearStudent"/>
-    <property name="startDialog" value="intrp-2"/>
+    <property name="startDialog" value="intro-2"/>
    </properties>
   </object>
   <object name="Fraternity Boy" type="npc" x="960" y="448" width="16" height="16">
