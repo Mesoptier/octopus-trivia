@@ -42,6 +42,8 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('puzzle-wire', require('file!../assets/puzzle-wire.png'), 40, 40);
 
     game.load.image('character-VanDerSpock', require('file!../assets/spritesheets/thumbnails/VanDerSpock.png'));
+    game.load.image('character-asianStudent', require('file!../assets/spritesheets/thumbnails/asianStudent.png'));
+    game.load.image('character-CanteenLady', require('file!../assets/spritesheets/thumbnails/VanDerSpock.png'));
 
     // Load map
     game.load.tilemap('auditorium_map', require('file!../assets/levels/auditorium.json'), null, Phaser.Tilemap.TILED_JSON);
