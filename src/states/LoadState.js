@@ -63,6 +63,10 @@ export default class LoadState extends Phaser.State {
 	  game.load.json('dialog-intro-2', require('file!../assets/dialogs/Basis/Intro-2.json'));
     Dialog.add('intro-2', 'dialog-intro-2');
 
+    game.load.json('dialog-AsianStudent-1', require('file!../assets/dialogs/AsianStudent-1.json'));
+    Dialog.add('AsianStudent-1', 'dialog-AsianStudent-1');
+    Dialog.addGroup('AsianStudent', ['AsianStudent-1']);
+    
   	game.load.json('dialog-CanteenLady-1', require('file!../assets/dialogs/CanteenLady-1.json'));
     Dialog.add('CanteenLady-1', 'dialog-CanteenLady-1');
   	game.load.json('dialog-CanteenLady-2', require('file!../assets/dialogs/CanteenLady-2.json'));
