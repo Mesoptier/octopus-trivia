@@ -119,12 +119,12 @@
   <object name="Fraternity Boy" type="npc" x="960" y="448" width="16" height="16">
    <properties>
     <property name="dialog" value="FraternityBoy"/>
-    <property name="moveX" value="64"/>
+    <property name="moveX" value="0"/>
     <property name="moveY" value="0"/>
     <property name="sprite" value="FraternityBoy"/>
    </properties>
   </object>
-  <object name="Lazy Student" type="npc" x="704" y="480" width="16" height="16">
+  <object name="Lazy Student" type="npc" x="800" y="464" width="16" height="16">
    <properties>
     <property name="dialog" value="LazyStudent"/>
     <property name="moveX" value="0"/>
@@ -138,6 +138,22 @@
     <property name="moveX" value="0"/>
     <property name="moveY" value="128"/>
     <property name="sprite" value="RaoulBloke"/>
+   </properties>
+  </object>
+  <object name="Random Student 1" type="npc" x="416" y="528" width="16" height="16">
+   <properties>
+    <property name="dialog" value="RandomStudent"/>
+    <property name="moveX" value="0"/>
+    <property name="moveY" value="0"/>
+    <property name="sprite" value="RandomStudent-1"/>
+   </properties>
+  </object>
+  <object name="Random Student 2" type="npc" x="864" y="464" width="16" height="16">
+   <properties>
+    <property name="dialog" value="RandomStudent"/>
+    <property name="moveX" value="0"/>
+    <property name="moveY" value="0"/>
+    <property name="sprite" value="RandomStudent-2"/>
    </properties>
   </object>
  </objectgroup>

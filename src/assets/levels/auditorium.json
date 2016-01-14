@@ -246,7 +246,7 @@
                  "properties":
                     {
                      "dialog":"FraternityBoy",
-                     "moveX":"64",
+                     "moveX":"0",
                      "moveY":"0",
                      "sprite":"FraternityBoy"
                     },
@@ -269,8 +269,8 @@
                  "type":"npc",
                  "visible":true,
                  "width":16,
-                 "x":704,
-                 "y":480
+                 "x":800,
+                 "y":464
                 }, 
                 {
                  "height":16,
@@ -287,6 +287,38 @@
                  "width":16,
                  "x":1296,
                  "y":512
+                }, 
+                {
+                 "height":16,
+                 "name":"Random Student 1",
+                 "properties":
+                    {
+                     "dialog":"RandomStudent",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"RandomStudent-1"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":416,
+                 "y":528
+                }, 
+                {
+                 "height":16,
+                 "name":"Random Student 2",
+                 "properties":
+                    {
+                     "dialog":"RandomStudent",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"RandomStudent-2"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":864,
+                 "y":464
                 }],
          "opacity":1,
          "type":"objectgroup",
