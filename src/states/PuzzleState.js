@@ -9,7 +9,7 @@ export default class PuzzleState extends Phaser.State {
     const { game } = this;
 
     // Create dialog
-    this.dialog = new Dialog();
+    this.dialog = new Dialog('small');
     this.dialog.create(game, (state) => {
       // Dialog event handler
     });

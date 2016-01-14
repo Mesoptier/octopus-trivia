@@ -5,6 +5,10 @@ const _groups = {};
 
 export default class Dialog {
 
+  constructor(type = 'large') {
+    this.type = type;
+  }
+
   create(game, callback) {
     this.game = game;
     this.callback = callback;
@@ -14,9 +18,9 @@ export default class Dialog {
 
     const group = this.group = game.add.group();
     group.fixedToCamera = true;
-    group.cameraOffset.setTo(0, 192);
+    group.cameraOffset.setTo(this.type == 'large' ? 0 : 96, 192);
 
-    const back = new Phaser.Image(game, 0, 0, 'dialog-back-large');
+    const back = new Phaser.Image(game, 0, 0, 'dialog-back-' + this.type);
     group.add(back);
 
     // Text
