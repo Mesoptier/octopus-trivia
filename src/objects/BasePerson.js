@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 export default class BasePerson extends Phaser.Sprite {
 
   constructor(game, x, y, key) {
-    super(game, x, y, key, 0);
+    super(game, Math.ceil(x), Math.ceil(y), key, 0);
 
     this.anchor.set(0.5, 0.5);
 
@@ -42,6 +42,8 @@ export default class BasePerson extends Phaser.Sprite {
       this.animations.currentAnim.setFrame(1, true);
       this.animations.stop();
     }
+
+    super.update();
   }
 
   setFacing(state) {

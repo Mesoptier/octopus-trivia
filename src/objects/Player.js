@@ -30,8 +30,8 @@ export default class Player extends BasePerson {
       }
 
       // Limit speed
-      if (body.velocity.getMagnitude() > speed) {
-        body.velocity.setMagnitude(speed);
+      if (body.velocity.getMagnitude() > speed * 1.07) {
+        body.velocity.setMagnitude(speed * 1.07);
       }
     }
 

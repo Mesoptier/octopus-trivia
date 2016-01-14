@@ -7,6 +7,7 @@ import HubState from './HubState';
 import PuzzleState from './PuzzleState';
 
 require('phaser-state-transition-plugin');
+require('nine-patch-phaser-plugin');
 
 export default class BootState extends Phaser.State {
 

@@ -58,7 +58,8 @@ export default class HubState extends Phaser.State {
     doors.physicsBodyType = Phaser.Physics.ARCADE;
 
     map.objects.Doors.forEach((object) => {
-      const door = doors.create(object.x, object.y, null);
+      const door = doors.create(object.x + object.width / 2, object.y + object.height / 2, null);
+      door.anchor.setTo(0.5, 0.5);
       door.body.setSize(object.width, object.height);
       door.body.immovable = true;
       door.tiledProperties = object.properties;
@@ -99,7 +100,7 @@ export default class HubState extends Phaser.State {
         }
 
         if (this.startDialog && object.properties.startDialog === this.startDialog) {
-          this.dialogEntity = entity;
+          this.dialog.play(this.startDialog, { entity });
           entity.pause();
         }
       }
@@ -116,22 +117,20 @@ export default class HubState extends Phaser.State {
           this.player.paused = true;
           break;
         case 'stop':
+          let entity = this.dialog.activeEntity;
+          if (entity && entity.paused) {
+            entity.unpause();
+          }
+
           // Wait a few milliseconds, so a new dialog doesn't instantly start
           setTimeout(() => {
             this.player.paused = false;
-
-            if (this.dialogEntity) {
-              this.dialogEntity.unpause();
-              this.dialogEntity = null;
-            }
           }, 10);
           break;
       }
     });
 
     if (this.startDialog) {
-      this.dialog.play(this.startDialog);
-
       // TODO: make this better...
       if (this.startDialog === 'intro-2') {
         // Add background music
@@ -143,12 +142,6 @@ export default class HubState extends Phaser.State {
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     spaceKey.onDown.add(this.handleSpaceDown, this);
-
-    // this.game.stateTransition.to('BlackState', true, false, {
-    //   nextState: 'PuzzleState',
-    //   nextParams: [{ key: 'Puzzle-LogicAndSet-1' }],
-    //   title: 'Logic & Set\n#1'
-    // });
   }
 
   update() {
@@ -157,33 +150,22 @@ export default class HubState extends Phaser.State {
     this.dialog.update();
 
     game.physics.arcade.collide(this.player, this.solids);
-    game.physics.arcade.collide(this.player, this.doors, this.collideDoor.bind(this));
+    game.physics.arcade.collide(this.player, this.doors);
     game.physics.arcade.collide(this.player, this.entities);
 
     this.entities.sort('y', Phaser.Group.SORT_ASCENDING);
   }
 
-  collideDoor(player, door) {
-    const open = door.tiledProperties.open == 'true';
-
-    if (open) {
-      this.game.stateTransition.to('BlackState', true, false, {
-        nextState: 'PuzzleState',
-        nextParams: [{ key: 'Puzzle-LogicAndSet-1', playerPosition: this.player.position }],
-        title: 'Logic & Set\n#1'
-      });
-    } else {
-      this.dialog.playGroupRandom('door-closed');
-    }
-  }
-
+  // TODO: maybe move this to Player?
   handleSpaceDown() {
     if (!this.player.paused) {
-      let closestDistance = 40;
-      let closest = null;
-
-      // Prefer NPCs in front of player
+      let closestDistance;
+      let closest;
       let target = Phaser.Point.add(this.player.position, new Phaser.Point(20, 0).rotate(0, 0, this.player.body.angle));
+
+      // Entities
+      closestDistance = 12;
+      closest = null;
 
       this.entities.forEachAlive((entity) => {
         if (entity instanceof NPC) {
@@ -198,8 +180,38 @@ export default class HubState extends Phaser.State {
 
       if (closest && closest.dialog) {
         closest.pause();
-        this.dialog.playGroupRandom(closest.dialog);
-        this.dialogEntity = closest;
+        this.dialog.playGroupRandom(closest.dialog, { entity: closest });
+        return;
+      }
+
+      // Doors
+      closestDistance = 16;
+      closest = null;
+
+      this.doors.forEachAlive((door) => {
+        let distance = door.position.distance(target);
+
+        if (closestDistance > distance) {
+          closest = door;
+          closestDistance = distance;
+        }
+      });
+
+      if (closest) {
+        if (closest.tiledProperties.open == 'true') {
+          this.game.stateTransition.to('BlackState', true, false, {
+            nextState: 'PuzzleState',
+            nextParams: [{ key: 'Puzzle-LogicAndSet-1', playerPosition: this.player.position }],
+            title: 'Logic & Set\n#1'
+          });
+        } else {
+          this.dialog.playGroupRandom('door-closed', {
+            x: closest.x,
+            y: closest.y - 22
+          });
+        }
+
+        return;
       }
     }
   }

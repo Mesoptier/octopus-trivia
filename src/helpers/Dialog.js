@@ -15,34 +15,40 @@ export default class Dialog {
 
     this.activeDialog = null;
     this.activeLine = 0;
+    this.showCharacterName = 0;
 
     const group = this.group = game.add.group();
-    group.fixedToCamera = true;
-    group.cameraOffset.setTo(this.type == 'large' ? 0 : 96, 192);
+    // group.fixedToCamera = true;
+    // group.cameraOffset.setTo(this.type == 'large' ? 0 : 96, 192);
 
-    const back = new Phaser.Image(game, 0, 0, 'dialog-back-' + this.type);
-    group.add(back);
+    this.back = new Phaser.NinePatchImage(game, 0, 0, 'dialog-bubble-back');
+    group.add(this.back);
+
+    this.backArrow = new Phaser.Image(game, 0, 0, 'dialog-bubble-arrow');
+    this.backArrow.anchor.setTo(0.5, 0);
+    group.add(this.backArrow);
 
     // Text
-    this.text = new Phaser.BitmapText(game, 10, 10, 'pixelade', '', 13);
+    const maxWidth = 200;
+
+    this.text = new Phaser.BitmapText(game, 8, 8, 'Pixel Operator', '', 8);
     this.text.tint = '#000000';
-    this.text.maxWidth = (this.type == 'large' ? 300 : 200);
+    this.text.maxWidth = maxWidth;
     group.add(this.text);
 
+    this.nameText = new Phaser.BitmapText(game, 8, 8, 'Pixel Operator Bold', '', 8);
+    this.nameText.tint = '#000000';
+    this.nameText.maxWidth = maxWidth;
+    group.add(this.nameText);
+
     // More (arrow + text)
-    this.moreGroup = game.add.group();
-    this.moreGroup.position.setTo(10, 75);
-    group.add(this.moreGroup);
-
-    const moreText = new Phaser.BitmapText(game, 13, 0, 'pixelade', '[SPACE]', 13);
-    moreText.tint = '#000000';
-    this.moreGroup.add(moreText);
-
-    const moreArrow = new Phaser.Image(game, 0, 2, 'dialog-arrow-more');
-    this.moreGroup.add(moreArrow);
+    this.moreArrow = new Phaser.Image(game, 0, 2, 'dialog-arrow-more');
+    this.moreArrow.anchor.setTo(1, 1);
+    group.add(this.moreArrow);
 
     this.characterImage = new Phaser.Image(game, 322, 3, '');
     group.add(this.characterImage);
+    this.characterImage.visible = false;
 
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
@@ -72,6 +78,7 @@ export default class Dialog {
         if (type === 'character') {
           this.activeCharacter = params[0];
           this.characterImage.loadTexture(this.getActiveCharacterImage());
+          this.showCharacterName = 2;
         }
 
         if (type === 'event') {
@@ -81,11 +88,12 @@ export default class Dialog {
         this.nextLine();
       } else {
         this.currentPosition = 0;
+        this.showCharacterName--;
       }
     }
   }
 
-  play(key) {
+  play(key, { entity = null, x, y }) {
     const jsonKey = _dialogs[key];
     const dialog = this.game.cache.getJSON(jsonKey);
 
@@ -96,21 +104,26 @@ export default class Dialog {
     this.lastLine = dialog.length - 1;
     this.characterImage.loadTexture('');
 
+    this.activeEntity = entity;
+    this.activeX = entity ? entity.x : x;
+    this.activeY = entity ? entity.y : y;
+
     this.nextLine();
 
-    this.callback('play', this.activeKey);
+    this.callback('play', this.activeKey, entity);
   }
 
-  playGroupRandom(key) {
+  playGroupRandom(key, entity) {
     const group = _groups[key];
     const dialogKey = Phaser.ArrayUtils.getRandomItem(group);
-    return this.play(dialogKey);
+    return this.play(dialogKey, entity);
   }
 
   stop() {
     this.callback('stop', this.activeKey);
     this.activeDialog = null;
     this.activeLine = 0;
+    this.activeEntity = null;
   }
 
   update() {
@@ -121,18 +134,60 @@ export default class Dialog {
 
       let line = this.activeDialog[this.activeLine];
 
-      if (characterName) {
-        line = '[ ' + characterName + ' ]\n' + line;
+      this.text.text = line;
+
+      if (!isLastLine) {
+        // Add padding for the "more" arrow
+        this.text.text = this.text.text + ' __';
+      }
+
+      if (characterName && this.showCharacterName > 0) {
+        // Add extra line for the name
+        this.text.text = '\n' + this.text.text;
+
+        this.nameText.text = characterName;
+        this.nameText.visible = true;
+      } else {
+        this.nameText.visible = false;
+      }
+
+      let textWidth = this.text.textWidth;
+      let textHeight = this.text.textHeight;
+
+      if (this.nameText.visible) {
+        textWidth = Math.max(textWidth, this.nameText.textWidth);
+        textHeight += 4;
+      }
+
+      // Move the text down a few pixels when the name is visible
+      this.text.y = this.nameText.visible ? 12 : 8;
+
+      this.back.targetWidth = textWidth + 16;
+      this.back.targetHeight = textHeight + 13;
+
+      this.backArrow.x = this.back.currentWidth / 2;
+      this.backArrow.y = this.back.currentHeight - 2;
+      this.moreArrow.x = this.back.currentWidth - 8;
+      this.moreArrow.y = this.back.currentHeight - 7;
+
+      this.group.x = Math.round(this.activeX - this.back.currentWidth / 2);
+      this.group.y = Math.round(this.activeY - this.back.currentHeight);
+
+      if (this.activeEntity) {
+        this.group.y = this.group.y - 20;
       }
 
       this.text.text = line.substring(0, this.currentPosition);
+
+      if (characterName && this.showCharacterName > 0) {
+        this.text.text = '\n' + this.text.text;
+      }
 
       if (this.currentPosition < line.length) {
         this.currentPosition++;
       }
 
-      // Hide "v [SPACE]" when on the last line
-      // this.moreGroup.visible = !isLastLine;
+      this.moreArrow.visible = !isLastLine && this.currentPosition >= line.length;
 
     } else {
       this.group.visible = false;
@@ -155,8 +210,9 @@ export default class Dialog {
       case 'HonourStudent': name = 'Honour Student'; break;
       case 'LazyStudent': name = 'Lazy Student'; break;
       case 'MasterStudent': name = 'Master Student'; break;
-      case 'RandomStudent-1': name = 'Random Student'; break;
-      case 'RandomStudent-2': name = 'Random Student'; break;
+      case 'RandomStudent': break;
+      case 'RandomStudent-1': break;
+      case 'RandomStudent-2': break;
       case 'SeniorStudent': name = 'Senior Student'; break;
       case 'WebScienceStudent': name = 'Web Science Student'; break;
       case 'LeTique': name = 'Mr. Le Tique'; break;

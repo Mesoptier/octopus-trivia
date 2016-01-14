@@ -10,6 +10,10 @@ export default class LoadState extends Phaser.State {
 
     // Load font
     game.load.bitmapFont('pixelade', require('file!../assets/fonts/Pixelade/font.png'), require('file!../assets/fonts/Pixelade/font.fnt'));
+    game.load.bitmapFont('Press Start 2P', require('file!../assets/fonts/Press Start 2P/font_0.png'), require('file!../assets/fonts/Press Start 2P/font.fnt'));
+    game.load.bitmapFont('PixelMix', require('file!../assets/fonts/PixelMix/font_0.png'), require('file!../assets/fonts/PixelMix/font.fnt'));
+    game.load.bitmapFont('Pixel Operator', require('file!../assets/fonts/Pixel Operator/font_0.png'), require('file!../assets/fonts/Pixel Operator/font.fnt'));
+    game.load.bitmapFont('Pixel Operator Bold', require('file!../assets/fonts/Pixel Operator Bold/font_0.png'), require('file!../assets/fonts/Pixel Operator Bold/font.fnt'));
 
     // Load sprites
     game.load.spritesheet('player', require('file!../assets/spritesheets/player.png'), 32, 32);
@@ -34,6 +38,8 @@ export default class LoadState extends Phaser.State {
     game.load.image('dialog-back-large', require('file!../assets/dialog-back-large.png'));
     game.load.image('dialog-back-small', require('file!../assets/dialog-back-small.png'));
     game.load.image('dialog-arrow-more', require('file!../assets/dialog-arrow-more.png'));
+    game.load.image('dialog-bubble-back', require('file!../assets/dialog-bubble-back.png'));
+    game.load.image('dialog-bubble-arrow', require('file!../assets/dialog-bubble-arrow.png'));
 
     game.load.image('gate-and', require('file!../assets/gate-and.png'));
     game.load.image('gate-mem', require('file!../assets/gate-mem.png'));
@@ -254,6 +260,13 @@ export default class LoadState extends Phaser.State {
   }
 
   create() {
+    // Create nine-patch images
+    this.game.cache.addNinePatch('dialog-bubble-back', 'dialog-bubble-back', 0, 4, 4, 4, 4);
+
+    this.game.cache.getBitmapFont('Pixel Operator').font.lineHeight = 40;
+    this.game.cache.getBitmapFont('Pixel Operator Bold').font.lineHeight = 40;
+
+    // Create stage
     this.stage.backgroundColor = '#000000';
     this.graphics = this.game.add.graphics(0, 0);
 
