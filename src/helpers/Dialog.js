@@ -79,6 +79,8 @@ export default class Dialog {
         }
 
         this.nextLine();
+      } else {
+        this.currentPosition = 0;
       }
     }
   }
@@ -124,7 +126,11 @@ export default class Dialog {
         line = '[ ' + characterName + ' ]\n' + line;
       }
 
-      this.text.text = line;
+      this.text.text = line.substring(0, this.currentPosition);
+
+      if (this.currentPosition < line.length) {
+        this.currentPosition++;
+      }
 
       // Hide "v [SPACE]" when on the last line
       // this.moreGroup.visible = !isLastLine;
