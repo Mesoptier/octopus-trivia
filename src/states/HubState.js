@@ -94,7 +94,7 @@ export default class HubState extends Phaser.State {
           // Wait a few milliseconds, so a new dialog doesn't instantly start
           setTimeout(() => {
             this.player.paused = false;
-            
+
             if (this.dialogEntity) {
               this.dialogEntity.unpause();
               this.dialogEntity = null;
@@ -109,6 +109,16 @@ export default class HubState extends Phaser.State {
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     spaceKey.onDown.add(this.handleSpaceDown, this);
+
+    // TEST
+    this.game.stateTransition.to('PuzzleState', true, false, {
+      dialog: 'Puzzle-LogicAndSet-1-Dialog',
+      question: 'Puzzle-LogicAndSet-1-Question',
+      hints: [
+        'Puzzle-LogicAndSet-1-Hint-1',
+        'Puzzle-LogicAndSet-1-Hint-2'
+      ]
+    });
   }
 
   update() {

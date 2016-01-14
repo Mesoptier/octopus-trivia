@@ -199,6 +199,21 @@ export default class LoadState extends Phaser.State {
     game.load.json('dialog-WebScienceStudent-3', require('file!../assets/dialogs/WebScienceStudent-3.json'));
     Dialog.add('WebScienceStudent-3', 'dialog-WebScienceStudent-3');
     Dialog.addGroup('WebScienceStudent', ['WebScienceStudent-1', 'WebScienceStudent-2', 'WebScienceStudent-3']);
+
+    // Load puzzles
+    game.load.json('dialog-Puzzle-LogicAndSet-1-Question', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Question.json'));
+    Dialog.add('Puzzle-LogicAndSet-1-Question', 'dialog-Puzzle-LogicAndSet-1-Question');
+    game.load.json('dialog-Puzzle-LogicAndSet-1-Dialog', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Dialog.json'));
+    Dialog.add('Puzzle-LogicAndSet-1-Dialog', 'dialog-Puzzle-LogicAndSet-1-Dialog');
+    game.load.json('dialog-Puzzle-LogicAndSet-1-Hint-1', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Hint-1.json'));
+    Dialog.add('Puzzle-LogicAndSet-1-Hint-1', 'dialog-Puzzle-LogicAndSet-1-Hint-1');
+    game.load.json('dialog-Puzzle-LogicAndSet-1-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Hint-2.json'));
+    Dialog.add('Puzzle-LogicAndSet-1-Hint-2', 'dialog-Puzzle-LogicAndSet-1-Hint-2');
+  }
+
+  preloadDialog(name) {
+    game.load.json('dialog-' + name, require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Question.json'));
+    Dialog.add(name, 'dialog-' + name);
   }
 
   create() {
@@ -209,7 +224,7 @@ export default class LoadState extends Phaser.State {
     this.loadingText.anchor.setTo(0.5, 0.5);
 
     setTimeout(() => {
-      this.game.stateTransition.to('PuzzleState', true, false);
+      this.game.stateTransition.to('HubState', true, false);
     }, 200);
   }
 

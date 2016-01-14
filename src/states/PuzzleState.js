@@ -5,6 +5,10 @@ import renderer from '../renderer';
 
 export default class PuzzleState extends Phaser.State {
 
+  init(params) {
+    this.params = params;
+  }
+
   create() {
     const { game } = this;
 
