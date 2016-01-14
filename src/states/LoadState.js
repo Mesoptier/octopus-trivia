@@ -156,7 +156,7 @@ export default class LoadState extends Phaser.State {
     Dialog.add('SeniorStudent-4', 'dialog-SeniorStudent-4');
     Dialog.addGroup('SeniorStudent', ['SeniorStudent-1', 'SeniorStudent-2', 'SeniorStudent-3', 'SeniorStudent-4']);
 
-    game.load.json('dialog-VanDenSpock-1', require('file!../assets/dialogs/VanDerSpock-1.json'));
+    game.load.json('dialog-VanDerSpock-1', require('file!../assets/dialogs/VanDerSpock-1.json'));
     Dialog.add('VanDerSpock-1', 'dialog-VanDerSpock-1');
     game.load.json('dialog-VanDerSpock-2', require('file!../assets/dialogs/VanDerSpock-2.json'));
     Dialog.add('VanDerSpock-2', 'dialog-VanDerSpock-2');
@@ -185,7 +185,7 @@ export default class LoadState extends Phaser.State {
     this.loadingText.anchor.setTo(0.5, 0.5);
 
     setTimeout(() => {
-      this.game.stateTransition.to('IntroState', true, false);
+      this.game.stateTransition.to('HubState', true, false);
     }, 200);
   }
 

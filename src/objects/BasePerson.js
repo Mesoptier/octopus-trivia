@@ -23,7 +23,7 @@ export default class BasePerson extends Phaser.Sprite {
     const angle = this.body.angle * 180 / Math.PI;
     let animation;
 
-    switch (angle) {
+    switch (Math.round(angle)) {
       case -90: // Up
         animation = 'walk_u'; break;
       case 0: // Right

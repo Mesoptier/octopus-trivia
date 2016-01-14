@@ -6,12 +6,12 @@ export default class Player extends BasePerson {
   constructor(game, x, y) {
     super(game, x, y, 'player');
 
+    this.speed = 120;
     this.cursors = game.input.keyboard.createCursorKeys();
   }
 
   update() {
-    const { body, cursors } = this;
-    const speed = 160;
+    const { body, cursors, speed } = this;
 
     body.velocity.set(0, 0);
 

@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Player from '../objects/Player';
+import NPC from '../objects/NPC';
 import renderer from '../renderer';
 import Dialog from '../helpers/Dialog';
 
@@ -58,18 +59,30 @@ export default class HubState extends Phaser.State {
     });
 
     // Create entities
+    this.entities = game.add.group();
+
     map.objects.Entities.forEach((object) => {
       switch (object.type) {
         case 'player':
           // Create player
           this.player = new Player(game, object.x + object.width / 2, object.y + object.height / 2);
-          this.world.add(this.player);
-          return;
+          this.entities.add(this.player);
+          break;
+
+        case 'npc':
+          // Create NPC
+          const npc = new NPC(game, object.x + object.width / 2, object.y + object.height / 2, object.properties);
+          npc.body.immovable = true;
+          this.entities.add(npc);
+          break;
       }
     });
 
     // Camera
     game.camera.follow(this.player, Phaser.Camera.FOLLOW_LOCKON);
+
+    // Add dialog
+    this.dialogEntity = null;
 
     this.dialog = new Dialog();
     this.dialog.create(game, (state) => {
@@ -78,12 +91,24 @@ export default class HubState extends Phaser.State {
           this.player.paused = true;
           break;
         case 'stop':
-          this.player.paused = false;
+          // Wait a few milliseconds, so a new dialog doesn't instantly start
+          setTimeout(() => {
+            this.player.paused = false;
+            
+            if (this.dialogEntity) {
+              this.dialogEntity.unpause();
+              this.dialogEntity = null;
+            }
+          }, 10);
           break;
       }
     });
 
     this.dialog.play('intro-2');
+
+    // Add input callbacks
+    const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
+    spaceKey.onDown.add(this.handleSpaceDown, this);
   }
 
   update() {
@@ -93,6 +118,9 @@ export default class HubState extends Phaser.State {
 
     game.physics.arcade.collide(this.player, this.solids);
     game.physics.arcade.collide(this.player, this.doors, this.collideDoor.bind(this));
+    game.physics.arcade.collide(this.player, this.entities);
+
+    this.entities.sort('y', Phaser.Group.SORT_ASCENDING);
   }
 
   collideDoor(player, door) {
@@ -102,6 +130,33 @@ export default class HubState extends Phaser.State {
       this.game.stateTransition.to('PuzzleState', true, false, 'param1');
     } else {
       this.dialog.playGroupRandom('door-closed');
+    }
+  }
+
+  handleSpaceDown() {
+    if (!this.player.paused) {
+      let closestDistance = 40;
+      let closest = null;
+
+      // Prefer NPCs in front of player
+      let target = Phaser.Point.add(this.player.position, new Phaser.Point(20, 0).rotate(0, 0, this.player.body.angle));
+
+      this.entities.forEachAlive((entity) => {
+        if (entity instanceof NPC) {
+          let distance = entity.position.distance(target);
+
+          if (closestDistance > distance) {
+            closest = entity;
+            closestDistance = distance;
+          }
+        }
+      });
+
+      if (closest && closest.dialog) {
+        closest.pause();
+        this.dialog.playGroupRandom(closest.dialog);
+        this.dialogEntity = closest;
+      }
     }
   }
 

@@ -162,6 +162,24 @@
                  "width":16,
                  "x":1120,
                  "y":576
+                }, 
+                {
+                 "height":16,
+                 "id":179,
+                 "name":"VanDerSpock",
+                 "properties":
+                    {
+                     "dialog":"VanDerSpock",
+                     "moveX":"80",
+                     "moveY":"0",
+                     "sprite":"student-m1"
+                    },
+                 "rotation":0,
+                 "type":"npc",
+                 "visible":true,
+                 "width":16,
+                 "x":1120,
+                 "y":832
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2001,12 +2019,12 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":96,
          "x":0,
          "y":0
         }],
- "nextobjectid":179,
+ "nextobjectid":180,
  "orientation":"orthogonal",
  "properties":
     {

@@ -38,13 +38,8 @@ export default class Dialog {
     this.moreGroup.add(moreArrow);
 
     // Add input callbacks
-    game.input.keyboard.addCallbacks(this, (e) => {
-      switch (e.keyCode) {
-        case Phaser.KeyCode.SPACEBAR:
-          this.nextLine();
-          break;
-      }
-    });
+    const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
+    spaceKey.onDown.add(this.nextLine, this);
   }
 
   static add(key, jsonKey) {
@@ -134,6 +129,7 @@ export default class Dialog {
     switch (this.activeCharacter) {
       case 'InformationScreen': break;
       case 'RaoulBloke': name = 'Raoul Bloke'; break;
+      case 'VanDerSpock': name = 'Mr. Van Der Spock'; break;
       case 'FirstYearStudent': name = 'First Year Student'; break;
       default: console.log('UNKNOWN CHARACTER', this.activeCharacter);
     }
