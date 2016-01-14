@@ -193,7 +193,7 @@
                  "y":464
                 }, 
                 {
-                 "height":0,
+                 "height":16,
                  "name":"Canteen Lady",
                  "properties":
                     {
@@ -204,12 +204,12 @@
                     },
                  "type":"npc",
                  "visible":true,
-                 "width":0,
-                 "x":464,
-                 "y":640
+                 "width":16,
+                 "x":448,
+                 "y":624
                 }, 
                 {
-                 "height":0,
+                 "height":16,
                  "name":"Senior Student",
                  "properties":
                     {
@@ -220,12 +220,12 @@
                     },
                  "type":"npc",
                  "visible":true,
-                 "width":0,
+                 "width":16,
                  "x":336,
-                 "y":336
+                 "y":320
                 }, 
                 {
-                 "height":0,
+                 "height":16,
                  "name":"First Year Student",
                  "properties":
                     {
@@ -236,12 +236,12 @@
                     },
                  "type":"npc",
                  "visible":true,
-                 "width":0,
+                 "width":16,
                  "x":1088,
                  "y":624
                 }, 
                 {
-                 "height":0,
+                 "height":16,
                  "name":"Fraternity Boy",
                  "properties":
                     {
@@ -250,14 +250,14 @@
                      "moveY":"0",
                      "sprite":"FraternityBoy"
                     },
-                 "type":"",
+                 "type":"npc",
                  "visible":true,
-                 "width":0,
+                 "width":16,
                  "x":960,
                  "y":448
                 }, 
                 {
-                 "height":0,
+                 "height":16,
                  "name":"Lazy Student",
                  "properties":
                     {
@@ -268,12 +268,12 @@
                     },
                  "type":"npc",
                  "visible":true,
-                 "width":0,
+                 "width":16,
                  "x":704,
-                 "y":496
+                 "y":480
                 }, 
                 {
-                 "height":0,
+                 "height":16,
                  "name":"Raoul Bloke",
                  "properties":
                     {
@@ -284,7 +284,7 @@
                     },
                  "type":"npc",
                  "visible":true,
-                 "width":0,
+                 "width":16,
                  "x":1296,
                  "y":512
                 }],
