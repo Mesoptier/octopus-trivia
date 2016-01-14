@@ -71,7 +71,6 @@ export default class Dialog {
 
         if (type === 'character') {
           this.activeCharacter = params[0];
-          // console.log(this.getActiveCharacterImage());
           this.characterImage.loadTexture(this.getActiveCharacterImage());
         }
 
@@ -85,8 +84,6 @@ export default class Dialog {
   }
 
   play(key) {
-    console.log(key);
-
     const jsonKey = _dialogs[key];
     const dialog = this.game.cache.getJSON(jsonKey);
 

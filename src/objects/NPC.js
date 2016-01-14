@@ -6,12 +6,14 @@ export default class NPC extends BasePerson {
   constructor(game, x, y, { dialog = '', moveX = 0, moveY = 0, sprite = '' }) {
     super(game, x, y, sprite);
 
+    console.log(sprite, dialog);
+
     moveX = parseInt(moveX);
     moveY = parseInt(moveY);
 
     this.paused = false;
 
-    this.speed = 40;
+    this.speed = 30;
     this.dialog = dialog;
     this.pos1 = new Phaser.Point(x, y);
     this.pos2 = new Phaser.Point(x + moveX, y + moveY);

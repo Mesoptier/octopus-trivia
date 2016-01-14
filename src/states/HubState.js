@@ -110,7 +110,7 @@ export default class HubState extends Phaser.State {
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
     spaceKey.onDown.add(this.handleSpaceDown, this);
 
-    this.game.stateTransition.to('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
+    // this.game.stateTransition.to('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
   }
 
   update() {
@@ -129,7 +129,11 @@ export default class HubState extends Phaser.State {
     const open = door.tiledProperties.open == 'true';
 
     if (open) {
-      this.game.stateTransition.to('PuzzleState', true, false, 'param1');
+      this.game.stateTransition.to('BlackState', true, false, {
+        nextState: 'PuzzleState',
+        nextParams: [{ key: 'Puzzle-LogicAndSet-1' }],
+        title: 'Logic & Set\n#1'
+      });
     } else {
       this.dialog.playGroupRandom('door-closed');
     }

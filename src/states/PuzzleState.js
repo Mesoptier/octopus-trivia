@@ -39,8 +39,6 @@ export default class PuzzleState extends Phaser.State {
     // Create dialog
     this.dialog = new Dialog('small');
     this.dialog.create(game, (state, ...params) => {
-      console.log(state, params);
-
       switch (state) {
         case 'stop':
           setTimeout(() => { this.dialog.play(this.activePuzzle.question); });
