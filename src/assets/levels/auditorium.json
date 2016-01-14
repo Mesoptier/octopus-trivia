@@ -178,19 +178,19 @@
                 }, 
                 {
                  "height":16,
-                 "name":"Student",
+                 "name":"Design Student",
                  "properties":
                     {
                      "dialog":"DesignStudent",
                      "moveX":"0",
                      "moveY":"96",
-                     "sprite":"pinkhairStudent"
+                     "sprite":"DesignStudent"
                     },
                  "type":"npc",
                  "visible":true,
                  "width":16,
                  "x":544,
-                 "y":512
+                 "y":464
                 }, 
                 {
                  "height":0,
@@ -198,7 +198,7 @@
                  "properties":
                     {
                      "dialog":"CanteenLady",
-                     "moveX":"40",
+                     "moveX":"0",
                      "moveY":"0",
                      "sprite":"CanteenLady"
                     },
@@ -207,6 +207,86 @@
                  "width":0,
                  "x":464,
                  "y":640
+                }, 
+                {
+                 "height":0,
+                 "name":"Senior Student",
+                 "properties":
+                    {
+                     "dialog":"SeniorStudent",
+                     "moveX":"160",
+                     "moveY":"0",
+                     "sprite":"SeniorStudent"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":0,
+                 "x":336,
+                 "y":336
+                }, 
+                {
+                 "height":0,
+                 "name":"First Year Student",
+                 "properties":
+                    {
+                     "dialog":"FirstYearStudent",
+                     "moveX":"0",
+                     "moveY":"50",
+                     "sprite":"FirstYearStudent"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":0,
+                 "x":1088,
+                 "y":624
+                }, 
+                {
+                 "height":0,
+                 "name":"Fraternity Boy",
+                 "properties":
+                    {
+                     "dialog":"FraternityBoy",
+                     "moveX":"64",
+                     "moveY":"0",
+                     "sprite":"FraternityBoy"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":960,
+                 "y":448
+                }, 
+                {
+                 "height":0,
+                 "name":"Lazy Student",
+                 "properties":
+                    {
+                     "dialog":"LazyStudent",
+                     "moveX":"0",
+                     "moveY":"0",
+                     "sprite":"LazyStudent"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":0,
+                 "x":704,
+                 "y":496
+                }, 
+                {
+                 "height":0,
+                 "name":"Raoul Bloke",
+                 "properties":
+                    {
+                     "dialog":"RaoulBloke",
+                     "moveX":"0",
+                     "moveY":"128",
+                     "sprite":"RaoulBloke"
+                    },
+                 "type":"npc",
+                 "visible":true,
+                 "width":0,
+                 "x":1296,
+                 "y":512
                 }],
          "opacity":1,
          "type":"objectgroup",
