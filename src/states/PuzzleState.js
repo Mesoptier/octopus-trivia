@@ -49,6 +49,11 @@ export default class PuzzleState extends Phaser.State {
     game.add.button(344, 0, 'puzzle-wire', this.onWire, this, 0, 0, 1, 0);
     game.add.button(344, 114, 'puzzle-discard', this.onDiscard, this, 0, 0, 1, 0);
     game.add.button(344, 153, 'puzzle-submit', this.onSubmit, this, 0, 0, 1, 0);
+
+    // add background music
+    const puzzleMusic = game.add.audio('puzzleMusic');
+    puzzleMusic.play();
+
   }
 
   onExit() {
