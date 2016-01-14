@@ -19,6 +19,7 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('DesignStudent', require('file!../assets/spritesheets/DesignStudent.png'), 32, 32);
     game.load.spritesheet('SeniorStudent', require('file!../assets/spritesheets/SeniorStudent.png'), 32, 32);
     game.load.spritesheet('FirstYearStudent', require('file!../assets/spritesheets/FirstYearStudent.png'), 32, 32);
+    game.load.spritesheet('FraternityBoy', require('file!../assets/spritesheets/FraternityBoy.png'), 32, 32);
     game.load.spritesheet('RaoulBloke', require('file!../assets/spritesheets/RaoulBloke.png'), 32, 32);
     game.load.spritesheet('VanDerSpock', require('file!../assets/spritesheets/VanDerSpock.png'), 32, 32);
 
@@ -68,7 +69,7 @@ export default class LoadState extends Phaser.State {
     game.load.json('dialog-AsianStudent-1', require('file!../assets/dialogs/AsianStudent-1.json'));
     Dialog.add('AsianStudent-1', 'dialog-AsianStudent-1');
     Dialog.addGroup('AsianStudent', ['AsianStudent-1']);
-    
+
   	game.load.json('dialog-CanteenLady-1', require('file!../assets/dialogs/CanteenLady-1.json'));
     Dialog.add('CanteenLady-1', 'dialog-CanteenLady-1');
   	game.load.json('dialog-CanteenLady-2', require('file!../assets/dialogs/CanteenLady-2.json'));
