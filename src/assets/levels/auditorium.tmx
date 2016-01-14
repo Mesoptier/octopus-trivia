@@ -157,7 +157,7 @@
     <property name="sprite" value="RandomStudent-1"/>
    </properties>
   </object>
-  <object name="Random Student 2" type="npc" x="864" y="464" width="16" height="16">
+  <object name="Random Student 2" type="npc" x="864" y="448" width="16" height="16">
    <properties>
     <property name="dialog" value="RandomStudent"/>
     <property name="facing" value="left"/>
@@ -175,7 +175,7 @@
     <property name="sprite" value="HonourStudent"/>
    </properties>
   </object>
-  <object name="Master Student" type="npc" x="720" y="656" width="16" height="16">
+  <object name="Master Student" type="npc" x="720" y="640" width="16" height="16">
    <properties>
     <property name="dialog" value="MasterStudent"/>
     <property name="facing" value="left"/>
