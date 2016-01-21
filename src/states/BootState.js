@@ -16,16 +16,17 @@ export default class BootState extends Phaser.State {
   }
 
   init() {
+    this.game.env = {};
+
     // Load query params
     if (document.location.search) {
-      this.game.env = document.location.search
+      document.location.search
         .substring(1)
         .split('&')
         .map((part) => part.split('='))
-        .reduce((env, pair) => {
-          env[pair[0]] = pair.length > 1 ? pair[1] : true;
-          return env;
-        }, {});
+        .forEach((pair) => {
+          this.game.env[pair[0]] = pair.length > 1 ? pair[1] : true;
+        });
     }
 
     // Use scaled pixel renderer
