@@ -26,6 +26,7 @@ export default class HubState extends Phaser.State {
 
     // Create prop layers
     [
+      'Walls',
       'Chairs',
       'Tables',
       'Round tables',
