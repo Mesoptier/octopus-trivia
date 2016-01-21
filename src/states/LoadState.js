@@ -273,25 +273,24 @@ export default class LoadState extends Phaser.State {
     this.loadingText = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'loading');
     this.loadingText.anchor.setTo(0.5, 0.5);
 
-    if (this.game.env.state) {
+    switch (this.game.env.state) {
       // Debug launch to specific state
-      switch (this.game.env.state) {
-        case 'hub':
-          this.game.state.start('HubState');
-          break;
-        case 'puzzle':
-          this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
-          break;
-      }
-    } else {
-      // Regular launch
-      setTimeout(() => {
-        this.game.stateTransition.to('BlackState', true, false, {
-          nextState: 'IntroState',
-          nextParams: [],
-          title: 'Software\nShenanigans'
-        });
-      }, 200);
+      case 'hub':
+        this.game.state.start('HubState');
+        break;
+      case 'puzzle':
+        this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
+        break;
+
+      default:
+        // Regular launch
+        setTimeout(() => {
+          this.game.stateTransition.to('BlackState', true, false, {
+            nextState: 'IntroState',
+            nextParams: [],
+            title: 'Software\nShenanigans'
+          });
+        }, 100);
     }
   }
 
