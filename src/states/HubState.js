@@ -169,10 +169,11 @@ export default class HubState extends Phaser.State {
     if (!this.player.paused) {
       let closestDistance;
       let closest;
-      let target = Phaser.Point.add(this.player.position, new Phaser.Point(20, 0).rotate(0, 0, this.player.body.angle));
+      let target;
 
       // Entities
-      closestDistance = 12;
+      target = Phaser.Point.add(this.player.position, new Phaser.Point(20, 0).rotate(0, 0, this.player.body.angle));
+      closestDistance = 16;
       closest = null;
 
       this.entities.forEachAlive((entity) => {
@@ -193,6 +194,7 @@ export default class HubState extends Phaser.State {
       }
 
       // Doors
+      target = Phaser.Point.add(this.player.position, new Phaser.Point(20, 0).rotate(0, 0, this.player.body.angle));
       closestDistance = 16;
       closest = null;
 
