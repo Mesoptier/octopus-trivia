@@ -72,6 +72,7 @@ export default class HubState extends Phaser.State {
     // Create entities
     this.entities = game.add.group();
 
+    // TODO: make this a separate method in another class, so we can reuse it
     map.objects.Entities.forEach((object) => {
       let entity;
       let position = {
