@@ -56,7 +56,7 @@ export default class PuzzleState extends Phaser.State {
     });
 
     // Create dialog
-    this.dialog = new Dialog('small');
+    this.dialog = new Dialog();
     this.dialog.create(game, (state, ...params) => {
       switch (state) {
         case 'stop':

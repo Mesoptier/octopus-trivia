@@ -5,10 +5,6 @@ const _groups = {};
 
 export default class Dialog {
 
-  constructor(type = 'large') {
-    this.type = type;
-  }
-
   create(game, callback) {
     this.game = game;
     this.callback = callback;
@@ -18,8 +14,6 @@ export default class Dialog {
     this.showCharacterName = 0;
 
     const group = this.group = game.add.group();
-    // group.fixedToCamera = true;
-    // group.cameraOffset.setTo(this.type == 'large' ? 0 : 96, 192);
 
     this.back = new Phaser.NinePatchImage(game, 0, 0, 'dialog-bubble-back');
     group.add(this.back);
@@ -45,10 +39,6 @@ export default class Dialog {
     this.moreArrow = new Phaser.Image(game, 0, 2, 'dialog-arrow-more');
     this.moreArrow.anchor.setTo(1, 1);
     group.add(this.moreArrow);
-
-    this.characterImage = new Phaser.Image(game, 322, 3, '');
-    group.add(this.characterImage);
-    this.characterImage.visible = false;
 
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
@@ -77,7 +67,6 @@ export default class Dialog {
 
         if (type === 'character') {
           this.activeCharacter = params[0];
-          this.characterImage.loadTexture(this.getActiveCharacterImage());
           this.showCharacterName = 2;
         }
 
@@ -102,7 +91,6 @@ export default class Dialog {
     this.activeCharacter = '';
     this.activeLine = -1;
     this.lastLine = dialog.length - 1;
-    this.characterImage.loadTexture('');
 
     this.activeEntity = entity;
     this.activeX = entity ? entity.x : (x !== undefined ? x : this.game.camera.x);
@@ -220,17 +208,6 @@ export default class Dialog {
     }
 
     return name;
-  }
-
-  getActiveCharacterImage() {
-    if (this.activeCharacter === 'RandomStudent') {
-      if (this.randomCharacterNum === undefined) {
-        this.randomCharacterNum = this.game.rnd.integerInRange(1, 2);
-      }
-      return 'character-' + this.activeCharacter + '-' + this.randomCharacterNum;
-    } else {
-      return 'character-' + this.activeCharacter;
-    }
   }
 
 }
