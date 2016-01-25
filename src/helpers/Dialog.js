@@ -86,7 +86,7 @@ export default class Dialog {
     }
   }
 
-  play(key, { entity = null, x, y } = {}) {
+  play(key, { entity = null, x, y, align = 'center' } = {}) {
     const jsonKey = _dialogs[key];
     const dialog = this.game.cache.getJSON(jsonKey);
 
@@ -97,17 +97,32 @@ export default class Dialog {
     this.lastLine = dialog.length - 1;
 
     this.setEntity(entity);
-    this.setAlign('center');
+    this.setAlign(align);
 
     this.nextLine();
 
     this.callback('play', this.activeKey, entity);
   }
 
-  playGroupRandom(key, entity) {
+  playGroup(key, params) {
+    const group = _groups[key];
+    if (group.__index === undefined) {
+      group.__index = 0;
+    } else {
+      group.__index++;
+
+      if (group.__index >= group.length) {
+        group.__index = 0;
+      }
+    }
+
+    return this.play(group[group.__index], params);
+  }
+
+  playGroupRandom(key, params) {
     const group = _groups[key];
     const dialogKey = Phaser.ArrayUtils.getRandomItem(group);
-    return this.play(dialogKey, entity);
+    return this.play(dialogKey, params);
   }
 
   stop() {
@@ -163,14 +178,22 @@ export default class Dialog {
       this.moreArrow.x = this.back.currentWidth - 8;
       this.moreArrow.y = this.back.currentHeight - 7;
 
-      let dialogX = this.activeX;
+      let dialogX;
 
-      if (this.activeAlign === 'center') {
-        this.backArrow.x = this.back.currentWidth / 2;
-        dialogX -= this.back.currentWidth / 2;
-      } else if (this.activeAlign === 'right') {
-        this.backArrow.x = this.back.currentWidth - 13;
-        dialogX -= this.back.currentWidth - 12;
+      switch (this.activeAlign) {
+        case 'left':
+          dialogX = this.activeX - 12;
+          break;
+
+        case 'center':
+          this.backArrow.x = this.back.currentWidth / 2;
+          dialogX -= this.back.currentWidth / 2;
+          break;
+
+        case 'right':
+          this.backArrow.x = this.back.currentWidth - 13;
+          dialogX -= this.back.currentWidth - 12;
+          break;
       }
 
       this.group.x = Math.round(dialogX);

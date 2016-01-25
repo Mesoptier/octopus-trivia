@@ -265,6 +265,16 @@ export default class LoadState extends Phaser.State {
     Dialog.add('WebScienceStudent-3', 'dialog-WebScienceStudent-3');
     Dialog.addGroup('WebScienceStudent', ['WebScienceStudent-1', 'WebScienceStudent-2', 'WebScienceStudent-3']);
 
+    game.load.json('dialog-Puzzle-LogicAndSet-1-Intro', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Intro.json'));
+    Dialog.add('Puzzle-LogicAndSet-1-Intro', 'dialog-Puzzle-LogicAndSet-1-Intro');
+    game.load.json('dialog-Puzzle-LogicAndSet-1-Outro', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Outro.json'));
+    Dialog.add('Puzzle-LogicAndSet-1-Outro', 'dialog-Puzzle-LogicAndSet-1-Outro');
+    game.load.json('dialog-Puzzle-LogicAndSet-1-Hint-1', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Hint-1.json'));
+    Dialog.add('Puzzle-LogicAndSet-1-Hint-1', 'dialog-Puzzle-LogicAndSet-1-Hint-1');
+    game.load.json('dialog-Puzzle-LogicAndSet-1-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Hint-2.json'));
+    Dialog.add('Puzzle-LogicAndSet-1-Hint-2', 'dialog-Puzzle-LogicAndSet-1-Hint-2');
+    Dialog.addGroup('Puzzle-LogicAndSet-1-Hints', ['Puzzle-LogicAndSet-1-Hint-1', 'Puzzle-LogicAndSet-1-Hint-2']);
+
     // Load puzzles
     game.load.json('Puzzle-LogicAndSet-1', require('file!../assets/puzzles/LogicAndSet/Puzzle-1ROEL.json'));
     game.load.json('Puzzle-LogicAndSet-2', require('file!../assets/puzzles/LogicAndSet/Puzzle-2.json'));
@@ -295,7 +305,7 @@ export default class LoadState extends Phaser.State {
         this.game.state.start('HubState');
         break;
       case 'puzzle':
-        this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-3' });
+        this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
         break;
 
       default:

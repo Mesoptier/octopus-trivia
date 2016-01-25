@@ -46,5 +46,10 @@
     "xor": 0,
     "or": 0,
     "pass": 0
+  },
+  "dialogs": {
+    "intro": "Puzzle-LogicAndSet-1-Intro",
+    "outro": "Puzzle-LogicAndSet-1-Outro",
+    "hints": "Puzzle-LogicAndSet-1-Hints"
   }
 }

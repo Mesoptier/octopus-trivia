@@ -94,6 +94,10 @@ export default class PuzzleState extends Phaser.State {
           const npc = entity = new NPC(game, position.x, position.y, object.properties);
           npc.body.immovable = true;
           this.entities.add(npc);
+
+          if (object.properties.dialogEntityId === 'Teacher') {
+            this.teacherEntity = entity;
+          }
           break;
       }
     });
@@ -141,6 +145,10 @@ export default class PuzzleState extends Phaser.State {
     this.outputs = [];
     this.wires = [];
 
+    this.sockets = game.add.group();
+    this.sockets.enableBody = true;
+    this.sockets.physicsBodyType = Phaser.Physics.ARCADE;
+
     const FRAME_RATE = 20;
 
     Object.keys(puzzle.tiles).forEach((group) => {
@@ -185,6 +193,11 @@ export default class PuzzleState extends Phaser.State {
                   y: y + 16,
                   gate: null
                 };
+
+                let socketSolid = this.sockets.create(x + 3, y + 3, null);
+                socketSolid.body.setSize(26, 26);
+                socketSolid.body.immovable = true;
+                socketSolid.gatePlace = gatePlace;
                 break;
             }
 
@@ -272,7 +285,35 @@ export default class PuzzleState extends Phaser.State {
 
     // Create dialog
     this.dialog = new Dialog();
-    this.dialog.create(game, (state) => { });
+    this.dialog.create(game, (state, ...params) => {
+      switch (state) {
+        case 'play':
+          this.player.pause();
+          break;
+
+        case 'stop':
+          let entity = this.dialog.activeEntity;
+          if (entity && entity.paused) {
+            entity.unpause();
+          }
+
+          // Wait a few milliseconds, so a new dialog doesn't instantly start
+          setTimeout(() => {
+            this.player.unpause();
+          }, 10);
+          break;
+      }
+    });
+
+    if (this.activePuzzle.dialogs && this.activePuzzle.dialogs.intro) {
+      this.player.pause();
+      this.teacherEntity.pause();
+
+      this.dialog.play(this.activePuzzle.dialogs.intro, {
+        entity: this.teacherEntity,
+        align: 'left'
+      });
+    }
 
     // Add input callbacks
     const spaceKey = game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
@@ -313,7 +354,9 @@ export default class PuzzleState extends Phaser.State {
           let swap;
 
           if (!this.carryingGate || this.carryingGate.gateType !== closest.gateType) {
-            swap = closest.gates.pop();
+            swap = closest.gates.pop() || null;
+          } else {
+            swap = null;
           }
 
           if (this.carryingGate) {
@@ -354,6 +397,15 @@ export default class PuzzleState extends Phaser.State {
           }
         }
       });
+
+      if (closest === this.teacherEntity && this.activePuzzle.dialogs.hints) {
+        this.teacherEntity.pause();
+
+        this.dialog.playGroup(this.activePuzzle.dialogs.hints, {
+          entity: this.teacherEntity,
+          align: 'left'
+        });
+      }
 
       if (closest && closest.dialog) {
         closest.pause();
@@ -409,6 +461,18 @@ export default class PuzzleState extends Phaser.State {
         part.animations.play(animation, null, true);
       });
     });
+
+    // Check output
+    this.completed = this.outputs.reduce((completed, output) => {
+      return completed && output.state === output.goalState;
+    }, true);
+
+    if (this.completed) {
+      this.dialog.play(this.activePuzzle.dialogs.outro, {
+        entity: this.teacherEntity,
+        align: 'left'
+      });
+    }
   }
 
   updateNode(name) {
@@ -483,10 +547,22 @@ export default class PuzzleState extends Phaser.State {
     game.physics.arcade.collide(this.player, this.doors);
     game.physics.arcade.collide(this.player, this.entities);
 
+    this.sockets.forEachAlive((socket) => {
+      socket.body.enable = (this.carryingGate !== null) || (socket.gatePlace.gate !== null);
+    });
+
+    game.physics.arcade.collide(this.player, this.sockets);
+
     this.entities.sort('y', Phaser.Group.SORT_ASCENDING);
+
+    if (this.carryingGate) {
+      let position = new Phaser.Point(20, 0).rotate(0, 0, this.player.body.angle);
+      this.carryingGate.position = position;
+    }
 
     // Show active border around gate drop-off places
     let target = Phaser.Point.add(this.player.position, new Phaser.Point(20, 0).rotate(0, 0, this.player.body.angle));
+
     let closestDistance = 16;
     let closest = null;
 
