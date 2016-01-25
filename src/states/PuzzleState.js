@@ -94,7 +94,7 @@ export default class PuzzleState extends Phaser.State {
       switch (object.type) {
         case 'area':
           puzzleArea = {
-            x: object.x,
+            x: object.x + 8,
             y: object.y,
             width: object.width,
             height: object.height
@@ -117,6 +117,8 @@ export default class PuzzleState extends Phaser.State {
     this.nodes = {};
     this.outputs = [];
     this.wires = [];
+
+    const FRAME_RATE = 20;
 
     Object.keys(puzzle.tiles).forEach((group) => {
       switch (group) {
@@ -157,8 +159,29 @@ export default class PuzzleState extends Phaser.State {
             }
 
             let sprite = game.add.sprite(x, y, spriteKey);
-            sprite.animations.add('True');
-            sprite.animations.play('True', 20, true);
+            node.sprite = sprite;
+
+            switch (group) {
+              case 'inputs':
+                sprite.animations.add('True', [0, 1, 2, 3], FRAME_RATE);
+                sprite.animations.add('False', [4, 5, 6, 7], FRAME_RATE);
+                sprite.animations.add('Null');
+                break;
+
+              case 'outputs':
+                sprite.animations.add('True', [0, 1, 2, 3], FRAME_RATE);
+                sprite.animations.add('False', [4, 5, 6, 7], FRAME_RATE);
+                sprite.animations.add('Null', [8]);
+                break;
+
+              default:
+                sprite.animations.add('True');
+                sprite.animations.add('False');
+                sprite.animations.add('Null');
+                break;
+            }
+
+            sprite.animations.play('True', null, true);
           });
           break;
 
@@ -176,8 +199,10 @@ export default class PuzzleState extends Phaser.State {
               y = puzzleArea.y + y * 32;
 
               let sprite = game.add.sprite(x, y, 'Wire-' + type);
-              sprite.animations.add('True');
-              sprite.animations.play('True', 20, true);
+              sprite.animations.add('True', [0, 1, 2, 3], FRAME_RATE);
+              sprite.animations.add('False', [4, 5, 6, 7], FRAME_RATE);
+              sprite.animations.add('Null', [8]);
+              sprite.animations.play('True', null, true);
 
               wire.parts.push(sprite);
             });
@@ -197,23 +222,26 @@ export default class PuzzleState extends Phaser.State {
   }
 
   updateNodes() {
+    let keys = Object.keys(this.nodes);
+
     // Mark each node as unready
-    Object.keys(this.nodes).forEach((name) => {
+    keys.forEach((name) => {
       let node = this.nodes[name];
       node._done = false;
     });
 
     // Update each node
-    Object.keys(this.nodes).forEach((name) => {
+    keys.forEach((name) => {
       this.updateNode(name);
     });
 
     // Update wires
     this.wires.forEach(({ input, parts }) => {
       let { state } = this.nodes[input];
+      let animation = this.getAnimationFromState(state);
 
       parts.forEach((part) => {
-        console.log(part, state);
+        part.animations.play(animation, null, true);
       });
     });
   }
@@ -234,15 +262,27 @@ export default class PuzzleState extends Phaser.State {
 
           case 'sockets':
             // TODO: evaluate gates
-            node.state = inputStates[1];
+            node.state = null;
             break;
         }
       }
+
+      // Update animation
+      let animation = this.getAnimationFromState(node.state);
+      node.sprite.animations.play(animation, null, true);
 
       node._done = true;
     }
 
     return node;
+  }
+
+  getAnimationFromState(state) {
+    switch (state) {
+      case true:  return 'True';
+      case false: return 'False';
+      default:    return 'Null';
+    }
   }
 
   update() {
