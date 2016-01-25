@@ -50,6 +50,8 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('Pump-Right', require('file!../assets/puzzle-sprites/Pump-Right.png'), 32, 32);
     game.load.spritesheet('Sink-Left', require('file!../assets/puzzle-sprites/Sink-Left.png'), 32, 32);
     game.load.spritesheet('Socket', require('file!../assets/puzzle-sprites/Socket.png'), 32, 32);
+    game.load.spritesheet('Goal-True', require('file!../assets/puzzle-sprites/Goal-True.png'), 32, 32);
+    game.load.spritesheet('Goal-False', require('file!../assets/puzzle-sprites/Goal-False.png'), 32, 32);
 
     game.load.spritesheet('Wire-LeftRight', require('file!../assets/puzzle-sprites/Wire-LeftRight.png'), 32, 32);
     game.load.spritesheet('Wire-LeftTop', require('file!../assets/puzzle-sprites/Wire-LeftTop.png'), 32, 32);

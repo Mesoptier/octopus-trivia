@@ -183,6 +183,9 @@ export default class PuzzleState extends Phaser.State {
                 node.goalState = obj.goalState;
                 this.outputs.push(node);
                 spriteKey = 'Sink-Left';
+
+                game.add.image(x, y, 'Goal-' + (obj.goalState ? 'True' : 'False'));
+
                 break;
 
               case 'sockets':
