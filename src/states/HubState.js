@@ -104,13 +104,10 @@ export default class HubState extends Phaser.State {
       }
 
       if (entity) {
+        entity.tiledProperties = object.properties;
+
         if (object.properties.facing) {
           entity.setFacing(object.properties.facing);
-        }
-
-        if (this.startDialog && object.properties.startDialog === this.startDialog) {
-          this.dialog.play(this.startDialog, { entity });
-          entity.pause();
         }
       }
     });
@@ -120,11 +117,12 @@ export default class HubState extends Phaser.State {
 
     // Add dialog
     this.dialog = new Dialog();
-    this.dialog.create(game, (state) => {
+    this.dialog.create(game, (state, ...params) => {
       switch (state) {
         case 'play':
           this.player.pause();
           break;
+
         case 'stop':
           let entity = this.dialog.activeEntity;
           if (entity && entity.paused) {
@@ -136,11 +134,27 @@ export default class HubState extends Phaser.State {
             this.player.unpause();
           }, 10);
           break;
+
+        case 'entity':
+          let [dialogEntityId] = params;
+          let dialogEntity = null;
+
+          this.entities.forEachAlive((entity) => {
+            if (dialogEntity === null && entity.tiledProperties && entity.tiledProperties.dialogEntityId === dialogEntityId) {
+              dialogEntity = entity;
+            }
+          });
+
+          this.dialog.setEntity(dialogEntity);
+          dialogEntity.pause();
+
+          break;
       }
     });
 
     if (this.startDialog) {
-      // TODO: make this better...
+      this.dialog.play(this.startDialog);
+
       if (this.startDialog === 'intro-2') {
         // Add background music
         this.music = game.add.audio('hubMusic');

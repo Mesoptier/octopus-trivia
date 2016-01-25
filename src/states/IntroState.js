@@ -62,6 +62,8 @@ export default class IntroState extends Phaser.State {
       }
 
       if (entity) {
+        entity.tiledProperties = object.properties;
+
         if (object.properties.facing) {
           entity.frame = BasePerson.getFrameIndex(object.properties.facing);
         } else {
@@ -75,7 +77,7 @@ export default class IntroState extends Phaser.State {
 
     // Create dialog
     this.dialog = new Dialog();
-    this.dialog.create(game, (state) => {
+    this.dialog.create(game, (state, ...params) => {
       switch (state) {
         case 'blackout':
           game.add.tween(mapGroup).to({ alpha: 0 }, 500, Phaser.Easing.Exponential.InOut, true);
@@ -85,6 +87,19 @@ export default class IntroState extends Phaser.State {
             nextState: 'HubState',
             nextParams: [{ startDialog: 'intro-2' }]
           });
+          break;
+        case 'entity':
+          let [dialogEntityId] = params;
+          let dialogEntity = null;
+
+          mapGroup.forEachAlive((entity) => {
+            if (dialogEntity === null && entity.tiledProperties && entity.tiledProperties.dialogEntityId === dialogEntityId) {
+              dialogEntity = entity;
+            }
+          });
+
+          this.dialog.setEntity(dialogEntity);
+
           break;
       }
     });

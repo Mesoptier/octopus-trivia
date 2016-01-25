@@ -70,6 +70,10 @@ export default class Dialog {
           this.showCharacterName = 2;
         }
 
+        if (type === 'align') {
+          this.setAlign(params[0]);
+        }
+
         if (type === 'event') {
           this.callback(...params);
         }
@@ -92,9 +96,8 @@ export default class Dialog {
     this.activeLine = -1;
     this.lastLine = dialog.length - 1;
 
-    this.activeEntity = entity;
-    this.activeX = entity ? entity.x : (x !== undefined ? x : this.game.camera.x);
-    this.activeY = entity ? entity.y : (y !== undefined ? y : this.game.camera.y);
+    this.setEntity(entity);
+    this.setAlign('center');
 
     this.nextLine();
 
@@ -153,12 +156,24 @@ export default class Dialog {
       this.back.targetWidth = textWidth + 16;
       this.back.targetHeight = textHeight + 13;
 
-      this.backArrow.x = this.back.currentWidth / 2;
+      this.backArrow.visible = this.activeEntity !== null;
+
+      this.backArrow.x = 13;
       this.backArrow.y = this.back.currentHeight - 2;
       this.moreArrow.x = this.back.currentWidth - 8;
       this.moreArrow.y = this.back.currentHeight - 7;
 
-      this.group.x = Math.round(this.activeX - this.back.currentWidth / 2);
+      let dialogX = this.activeX;
+
+      if (this.activeAlign === 'center') {
+        this.backArrow.x = this.back.currentWidth / 2;
+        dialogX -= this.back.currentWidth / 2;
+      } else if (this.activeAlign === 'right') {
+        this.backArrow.x = this.back.currentWidth - 13;
+        dialogX -= this.back.currentWidth - 12;
+      }
+
+      this.group.x = Math.round(dialogX);
       this.group.y = Math.round(this.activeY - this.back.currentHeight);
 
       if (this.activeEntity) {
@@ -180,6 +195,16 @@ export default class Dialog {
     } else {
       this.group.visible = false;
     }
+  }
+
+  setEntity(entity) {
+    this.activeEntity = entity;
+    this.activeX = entity ? entity.x : this.game.camera.x + this.game.camera.width / 2;
+    this.activeY = entity ? entity.y : this.game.camera.y + this.game.camera.height / 2;
+  }
+
+  setAlign(align) {
+    this.activeAlign = align;
   }
 
   getActiveCharacterName() {

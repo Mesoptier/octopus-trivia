@@ -254,6 +254,7 @@
                  "properties":
                     {
                      "dialog":"FirstYearStudent",
+                     "dialogEntityId":"FirstYearStudent",
                      "facing":"right",
                      "moveX":"0",
                      "moveY":"-50",
@@ -1826,7 +1827,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":0,
          "x":0,
          "y":0
@@ -1898,7 +1899,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":0,
          "x":0,
          "y":0
@@ -1914,6 +1915,7 @@
                  "name":"Raoul Bloke",
                  "properties":
                     {
+                     "dialogEntityId":"RaoulBloke",
                      "facing":"left",
                      "sprite":"RaoulBloke"
                     },
@@ -1942,10 +1944,11 @@
                 {
                  "height":16,
                  "id":114,
-                 "name":"",
+                 "name":"FirstYearStudent",
                  "properties":
                     {
-
+                     "dialogEntityId":"FirstYearStudent",
+                     "sprite":"FirstYearStudent"
                     },
                  "rotation":0,
                  "type":"",

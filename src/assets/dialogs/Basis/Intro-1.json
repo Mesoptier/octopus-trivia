@@ -1,5 +1,7 @@
 [
   ["character", "RaoulBloke"],
+  ["event", "entity", "RaoulBloke"],
+  ["align", "right"],
   "Welcome students!",
   "Welcome to the Eindhoven University of Technology",
   "I hope everyone has had a great holiday.",
@@ -13,8 +15,12 @@
   "You are free to skip a class at any time, but this is not adviced. From my experience, those who skip classes won't pass the exam.",
   "Any questions thusfar?",
   ["character", "FirstYearStudent"],
+  ["event", "entity", "FirstYearStudent"],
+  ["align", "center"],
   "Sir? I seem to be stuck. How do we walk in this game?",
   ["character", "RaoulBloke"],
+  ["event", "entity", "RaoulBloke"],
+  ["align", "right"],
   "...",
   "Ehm...",
   "You walk around using [ARROW KEYS].",
@@ -39,6 +45,8 @@
   "Mhmmmhmhmmmmmhm...",
   "..................",
   ["character", "InformationScreen"],
+  ["event", "entity", null],
+  ["align", "center"],
   ["event", "blackout"],
   "<YOU BLACKED OUT>"
 ]

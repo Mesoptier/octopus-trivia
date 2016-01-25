@@ -121,6 +121,7 @@
   <object id="6" name="First Year Student" type="npc" x="1088" y="576" width="16" height="16">
    <properties>
     <property name="dialog" value="FirstYearStudent"/>
+    <property name="dialogEntityId" value="FirstYearStudent"/>
     <property name="facing" value="right"/>
     <property name="moveX" value="0"/>
     <property name="moveY" value="-50"/>
@@ -199,7 +200,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Solids">
+ <objectgroup name="Solids" visible="0">
   <object id="15" x="320" y="352" width="272"/>
   <object id="16" x="592" y="352" height="48"/>
   <object id="17" x="592" y="400" width="112"/>
@@ -294,7 +295,7 @@
   <object id="106" x="992" y="512" width="16" height="32"/>
   <object id="107" x="1040" y="496" width="16" height="32"/>
  </objectgroup>
- <objectgroup name="Doors">
+ <objectgroup name="Doors" visible="0">
   <object id="108" name="Door1" x="352" y="256" width="32" height="32">
    <properties>
     <property name="open" value="true"/>
@@ -319,12 +320,18 @@
  <objectgroup name="IntroEntities" visible="0">
   <object id="112" name="Raoul Bloke" type="bloke" x="1296" y="576" width="16" height="16">
    <properties>
+    <property name="dialogEntityId" value="RaoulBloke"/>
     <property name="facing" value="left"/>
     <property name="sprite" value="RaoulBloke"/>
    </properties>
   </object>
   <object id="113" name="Player" type="player" x="1120" y="576" width="16" height="16"/>
-  <object id="114" x="1088" y="544" width="16" height="16"/>
+  <object id="114" name="FirstYearStudent" x="1088" y="544" width="16" height="16">
+   <properties>
+    <property name="dialogEntityId" value="FirstYearStudent"/>
+    <property name="sprite" value="FirstYearStudent"/>
+   </properties>
+  </object>
   <object id="115" x="1072" y="592" width="16" height="16"/>
   <object id="116" x="1104" y="608" width="16" height="16"/>
   <object id="117" x="1072" y="656" width="16" height="16"/>
