@@ -187,12 +187,12 @@ export default class Dialog {
 
         case 'center':
           this.backArrow.x = this.back.currentWidth / 2;
-          dialogX -= this.back.currentWidth / 2;
+          dialogX = this.activeX - this.back.currentWidth / 2;
           break;
 
         case 'right':
           this.backArrow.x = this.back.currentWidth - 13;
-          dialogX -= this.back.currentWidth - 12;
+          dialogX = this.activeX - this.back.currentWidth + 12;
           break;
       }
 
