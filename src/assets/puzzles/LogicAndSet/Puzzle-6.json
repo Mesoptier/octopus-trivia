@@ -1,0 +1,63 @@
+{
+  "tiles": {
+    "inputs": {
+      "input-1": { "x": 0, "y": 0, "state": false },
+      "input-2": { "x": 0, "y": 2, "state": false },
+      "input-3": { "x": 0, "y": 3, "state": false },
+      "input-4": { "x": 0, "y": 5, "state": false }
+    },
+    "outputs": {
+      "output-1": { "x": 6, "y": 2, "input": ["socket-6"], "goalState": true },
+      "output-2": { "x": 6, "y": 3, "input": ["socket-4"], "goalState": true }
+    },
+    "sockets": {
+      "socket-1": { "x": 1, "y": 1, "input": ["input-1", "input-2"] },
+      "socket-2": { "x": 1, "y": 4, "input": ["input-3", "input-4"] },
+      "socket-3": { "x": 2, "y": 2, "input": ["socket-1", "input-3"], "gate": "and" },
+      "socket-4": { "x": 3, "y": 3, "input": ["socket-3", "socket-5"] },
+      "socket-5": { "x": 3, "y": 5, "input": ["socket-2"] },
+      "socket-6": { "x": 4, "y": 0, "input": ["socket-8", "socket-7"] },
+      "socket-7": { "x": 4, "y": 2, "input": ["socket-3"] },
+      "socket-8": { "x": 3, "y": 1, "input": ["socket-1"] }
+    },
+    "wires": [
+      {
+        "input": "input-1",
+        "parts": [
+          { "x": 1, "y": 0, "type": "LeftBottom" },
+          { "x": 1, "y": 1, "type": "Gate-Top-In"}
+        ]
+      },
+      {
+        "input": "input-2",
+        "parts": [
+          { "x": 1, "y": 2, "type": "LeftTop" },
+          { "x": 1, "y": 1, "type": "Gate-Bottom-In"}
+        ]
+      },
+      {
+        "input": "input-3",
+        "parts": [
+          { "x": 1, "y": 3, "type": "LeftRightBottom" },
+          { "x": 2, "y": 3, "type": "LeftTop" },
+          { "x": 2, "y": 2, "type": "Gate-Bottom-In" },
+          { "x": 1, "y": 4, "type": "Gate-Top-In"}
+        ]
+      },
+      {
+        "input": "input-4",
+        "parts": [
+          { "x": 1, "y": 5, "type": "LeftTop" },
+          { "x": 1, "y": 4, "type": "Gate-Bottom-In" }
+        ]
+      },
+    ]
+  },
+  "gates": {
+    "and": 2,
+    "not": 2,
+    "xor": 0,
+    "or": 2,
+    "pass": 2
+  }
+}

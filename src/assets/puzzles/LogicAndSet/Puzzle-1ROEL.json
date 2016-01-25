@@ -1,0 +1,50 @@
+{
+  "tiles": {
+    "inputs": {
+      "input-1": { "x": 0, "y": 1, "state": true },
+      "input-2": { "x": 0, "y": 4, "state": true }
+    },
+    "outputs": {
+      "output-1": { "x": 6, "y": 2, "input": ["socket-1"], "goalState": true }
+    },
+    "sockets": {
+      "socket-1": { "x": 3, "y": 2, "input": ["input-1", "input-2"] }
+    },
+    "wires": [
+      {
+        "input": "input-1",
+        "parts": [
+          { "x": 1, "y": 1, "type": "LeftRight" },
+          { "x": 2, "y": 1, "type": "LeftRight" },
+          { "x": 3, "y": 1, "type": "LeftBottom" },
+          { "x": 3, "y": 2, "type": "Gate-Top-In"}
+        ]
+      },
+      {
+        "input": "input-2",
+        "parts": [
+          { "x": 1, "y": 4, "type": "LeftRight" },
+          { "x": 2, "y": 4, "type": "LeftTop" },         
+          { "x": 2, "y": 3, "type": "BottomTop" }, 
+          { "x": 2, "y": 2, "type": "BottomRight" },
+          { "x": 3, "y": 2, "type": "Gate-Left-In" }
+        ]
+      }
+      {
+        "input": "socket-1",
+        "parts": [
+          { "x": 3, "y": 2, "type": "Gate-Right-Out" },
+          { "x": 4, "y": 2, "type": "LeftRight" },
+          { "x": 5, "y": 2, "type": "LeftRight" }
+        ]
+      }
+    ]
+  },
+  "gates": {
+    "and": 1,
+    "not": 0,
+    "xor": 0,
+    "or": 0,
+    "pass": 0
+  }
+}

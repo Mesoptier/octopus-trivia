@@ -1,0 +1,73 @@
+{
+  "tiles": {
+    "inputs": {
+      "input-1": { "x": 0, "y": 0, "state": true },
+      "input-2": { "x": 0, "y": 3, "state": false },
+      "input-3": { "x": 0, "y": 5, "state": true }
+    },
+    "outputs": {
+      "output-1": { "x": 6, "y": 1, "input": ["socket-1"], "goalState": true },
+      "output-2": { "x": 6, "y": 3, "input": ["socket-2"], "goalState": true }
+    },
+    "sockets": {
+      "socket-1": { "x": 3, "y": 1, "input": ["input-1", "socket-2"] },
+      "socket-2": { "x": 2, "y": 4, "input": ["input-2", "input-3"] }
+    },
+    "wires": [
+      {
+        "input": "input-1",
+        "parts": [
+          { "x": 1, "y": 0, "type": "LeftRight" },
+          { "x": 2, "y": 0, "type": "LeftBottom" },
+          { "x": 2, "y": 1, "type": "TopRight" },
+          { "x": 3, "y": 1, "type": "Gate-Left-In"}
+        ]
+      },
+      {
+        "input": "input-2",
+        "parts": [
+          { "x": 1, "y": 3, "type": "LeftRight" },
+          { "x": 2, "y": 3, "type": "LeftBottom" },   
+          { "x": 2, "y": 4, "type": "Gate-Top-In" }
+        ]
+      }
+      {
+        "input": "input-3",
+        "parts": [
+          { "x": 1, "y": 5, "type": "LeftRight" },
+          { "x": 2, "y": 5, "type": "LeftTop" },
+          { "x": 2, "y": 4, "type": "Gate-Bottom-In" }
+        ]
+      }
+      {
+        "input": "socket-1",
+        "parts": [
+          { "x": 3, "y": 1, "type": "Gate-Right-Out" },
+          { "x": 4, "y": 1, "type": "LeftRight" },
+          { "x": 5, "y": 1, "type": "LeftRight" }
+        ]
+      }
+      {
+        "input": "socket-2",
+        "parts": [
+          { "x": 2, "y": 4, "type": "Gate-Right-Out" },
+          { "x": 3, "y": 4, "type": "LeftRight" },
+          { "x": 4, "y": 4, "type": "LeftTop" },
+          { "x": 4, "y": 3, "type": "BottomRightLeft" },
+          { "x": 3, "y": 3, "type": "RightTop" },
+          { "x": 3, "y": 2, "type": "BottomTop" },
+          { "x": 3, "y": 1, "type": "Gate-Bottom-In" },
+          { "x": 5, "y": 3, "type": "LeftRight" },
+          { "x": 6, "y": 3, "type": "Gate-Left-In" }
+        ]
+      }
+    ]
+  },
+  "gates": {
+    "and": 1,
+    "not": 0,
+    "xor": 0,
+    "or": 1,
+    "pass": 0
+  }
+}
