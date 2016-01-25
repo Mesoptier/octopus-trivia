@@ -10,7 +10,7 @@
       "output-2": { "x": 6, "y": 3, "input": ["socket-2"], "goalState": true }
     },
     "sockets": {
-      "socket-1": { "x": 3, "y": 1, "input": ["input-1", "socket-1"] }
+      "socket-1": { "x": 3, "y": 1, "input": ["input-1", "socket-2"] },
       "socket-2": { "x": 2, "y": 4, "input": ["input-2", "input-3"] }
     },
     "wires": [

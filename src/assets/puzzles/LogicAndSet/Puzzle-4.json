@@ -1,0 +1,85 @@
+{
+  "tiles": {
+    "inputs": {
+      "input-1": { "x": 0, "y": 0, "state": true },
+      "input-2": { "x": 0, "y": 3, "state": true },
+      "input-3": { "x": 0, "y": 5, "state": false }
+    },
+    "outputs": {
+      "output-1": { "x": 6, "y": 1, "input": ["socket-1"], "goalState": false },
+      "output-2": { "x": 6, "y": 4, "input": ["socket-3"], "goalState": false }
+    },
+    "sockets": {
+      "socket-1": { "x": 4, "y": 0, "input": ["input-1", "socket-2"] },
+      "socket-2": { "x": 2, "y": 3, "input": ["input-2", "input-3"] },
+      "socket-3": { "x": 4, "y": 5, "input": ["input-3", "socket-2"] }
+    },
+    "wires": [
+      {
+        "input": "input-1",
+        "parts": [
+          { "x": 1, "y": 0, "type": "LeftRight" },
+          { "x": 2, "y": 0, "type": "LeftRight" },
+          { "x": 3, "y": 0, "type": "LeftRight" },
+          { "x": 4, "y": 0, "type": "Gate-Left-In"}
+        ]
+      },
+      {
+        "input": "input-2",
+        "parts": [
+          { "x": 1, "y": 3, "type": "LeftRight" },
+          { "x": 2, "y": 3, "type": "Gate-Left-In" }
+        ]
+      }
+      {
+        "input": "input-3",
+        "parts": [
+          { "x": 1, "y": 5, "type": "LeftRight" },
+          { "x": 2, "y": 5, "type": "LeftTopRight" },
+          { "x": 2, "y": 4, "type": "BottomTop" },
+          { "x": 2, "y": 3, "type": "Gate-Bottom-In" },
+          { "x": 3, "y": 5, "type": "LeftRight" },
+          { "x": 4, "y": 5, "type": "Gate-Left-In" }
+        ]
+      }
+      {
+        "input": "socket-1",
+        "parts": [
+          { "x": 4, "y": 1, "type": "Gate-Right-Out" },
+          { "x": 5, "y": 1, "type": "LeftBottom" },
+          { "x": 5, "y": 2, "type": "TopRight" },
+          { "x": 6, "y": 2, "type": "Gate-Left-In" }
+        ]
+      }
+      {
+        "input": "socket-2",
+        "parts": [
+          { "x": 2, "y": 3, "type": "Gate-Right-Out" },
+          { "x": 3, "y": 3, "type": "LeftRight" },
+          { "x": 4, "y": 3, "type": "LeftTopBottom" },
+          { "x": 4, "y": 2, "type": "BottomTop" },
+          { "x": 4, "y": 1, "type": "BottomTop" },
+          { "x": 4, "y": 0, "type": "Gate-Bottom-In" },
+          { "x": 4, "y": 4, "type": "TopBottom" },
+          { "x": 4, "y": 5, "type": "Gate-Top-In" }
+        ]
+      }
+      {
+        "input": "socket-3",
+        "parts": [
+          { "x": 4, "y": 5, "type": "Gate-Right-Out" },
+          { "x": 5, "y": 5, "type": "LeftTop" },
+          { "x": 5, "y": 4, "type": "TopRight" },
+          { "x": 6, "y": 4, "type": "Gate-Left-In" },
+        ]
+      }
+    ]
+  },
+  "gates": {
+    "and": 2,
+    "not": 0,
+    "xor": 0,
+    "or": 2,
+    "pass": 0
+  }
+}
