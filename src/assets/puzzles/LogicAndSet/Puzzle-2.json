@@ -2,7 +2,7 @@
   "tiles": {
     "inputs": {
       "input-1": { "x": 0, "y": 1, "state": true },
-      "input-2": { "x": 0, "y": 4, "state": true }
+      "input-2": { "x": 0, "y": 4, "state": false }
     },
     "outputs": {
       "output-1": { "x": 6, "y": 2, "input": ["socket-1"], "goalState": true }
@@ -44,7 +44,7 @@
     "and": 1,
     "not": 0,
     "xor": 0,
-    "or": 0,
+    "or": 1,
     "pass": 0
   }
 }
