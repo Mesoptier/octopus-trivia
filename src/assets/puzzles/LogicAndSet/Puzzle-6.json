@@ -51,6 +51,74 @@
           { "x": 1, "y": 4, "type": "Gate-Bottom-In" }
         ]
       },
+      {
+        "input": "socket-1",
+        "parts": [
+          { "x": 1, "y": 1, "type": "Gate-Right-Out" },
+          { "x": 2, "y": 1, "type": "LeftRightBottom" },
+          { "x": 3, "y": 1, "type": "Gate-Left-In" },
+          { "x": 2, "y": 2, "type": "Gate-Top-In" }
+        ]
+      },
+      {
+        "input": "socket-2",
+        "parts": [
+          { "x": 1, "y": 4, "type": "Gate-Right-Out" },
+          { "x": 2, "y": 4, "type": "LeftBottom" },
+          { "x": 2, "y": 5, "type": "TopRight" },
+          { "x": 3, "y": 5, "type": "Gate-Left-In" }
+        ]
+      },
+      {
+        "input": "socket-3",
+        "parts": [
+          { "x": 2, "y": 2, "type": "Gate-Right-Out" },
+          { "x": 3, "y": 2, "type": "LeftRightBottom" },
+          { "x": 4, "y": 2, "type": "Gate-Left-In" },
+          { "x": 3, "y": 3, "type": "Gate-Top-In" }
+        ]
+      },
+      {
+        "input": "socket-4",
+        "parts": [
+          { "x": 3, "y": 3, "type": "Gate-Right-Out" },
+          { "x": 4, "y": 3, "type": "LeftRight" },
+          { "x": 5, "y": 3, "type": "LeftBottom" },
+          { "x": 5, "y": 4, "type": "TopRight" }
+        ]
+      },
+      {
+        "input": "socket-5",
+        "parts": [
+          { "x": 3, "y": 5, "type": "Gate-Top-Out" },
+          { "x": 3, "y": 4, "type": "BottomTop" },
+          { "x": 3, "y": 3, "type": "Gate-Bottom-In" }
+        ]
+      },
+      {
+        "input": "socket-6",
+        "parts": [
+          { "x": 4, "y": 0, "type": "Gate-Right-Out" },
+          { "x": 5, "y": 0, "type": "LeftBottom" },          
+          { "x": 5, "y": 1, "type": "TopRight" }
+        ]
+      },
+      {
+        "input": "socket-7",
+        "parts": [
+          { "x": 4, "y": 2, "type": "Gate-Top-Out" },
+          { "x": 4, "y": 1, "type": "BottomTop" },
+          { "x": 4, "y": 0, "type": "Gate-Bottom-In" }
+        ]
+      },
+      {
+        "input": "socket-8",
+        "parts": [
+          { "x": 3, "y": 1, "type": "Gate-Top-Out" },
+          { "x": 3, "y": 0, "type": "BottomRight" },
+          { "x": 4, "y": 0, "type": "Gate-Left-In" }
+        ]
+      }
     ]
   },
   "gates": {
