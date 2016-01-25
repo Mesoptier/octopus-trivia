@@ -1,0 +1,14 @@
+[
+  ["character", "LeTique"],
+  "Hello students, welcome to the course of Logic & Set Theory.",
+	"In this course, I will be teaching you the principles of logic.",
+	"Logic is a core component of Computer Science and with this you can control the flow of programs and electrical circuits.",
+	"Using these principles, you can build various programs, even a whole computer… or a MIND-CONTROL DEVICE, MUHAHAHAHAH..*cough cough*.",
+	"Sorry about that, an old habit of mine.",
+	"Anyway, there will be sources on the left side. A green colour denotes true and will continue to flow over the wires.",
+	"The goal is to get the correct colour on the right side of the circuit as indicated by a little dot. These are called the sinks.",
+	"You can do this by grabbing a gate on the right side and putting them inside a socket using [SPACE].",
+	"Each gate has different properties, but you have to figure that out on your own as I am too lazy to explain everything to you.",
+	"If you are stuck in a puzzle, you can always come to me for help.",
+	"Good luck with your endeavours. You will need it, muhahaha!"
+]
