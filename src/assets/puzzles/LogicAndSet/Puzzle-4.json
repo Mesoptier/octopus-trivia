@@ -30,7 +30,7 @@
           { "x": 1, "y": 3, "type": "LeftRight" },
           { "x": 2, "y": 3, "type": "Gate-Left-In" }
         ]
-      }
+      },
       {
         "input": "input-3",
         "parts": [
@@ -41,7 +41,7 @@
           { "x": 3, "y": 5, "type": "LeftRight" },
           { "x": 4, "y": 5, "type": "Gate-Left-In" }
         ]
-      }
+      },
       {
         "input": "socket-1",
         "parts": [
@@ -50,7 +50,7 @@
           { "x": 5, "y": 2, "type": "TopRight" },
           { "x": 6, "y": 2, "type": "Gate-Left-In" }
         ]
-      }
+      },
       {
         "input": "socket-2",
         "parts": [
@@ -63,7 +63,7 @@
           { "x": 4, "y": 4, "type": "TopBottom" },
           { "x": 4, "y": 5, "type": "Gate-Top-In" }
         ]
-      }
+      },
       {
         "input": "socket-3",
         "parts": [

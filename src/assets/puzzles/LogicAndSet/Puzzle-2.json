@@ -24,12 +24,12 @@
         "input": "input-2",
         "parts": [
           { "x": 1, "y": 4, "type": "LeftRight" },
-          { "x": 2, "y": 4, "type": "LeftTop" },         
-          { "x": 2, "y": 3, "type": "BottomTop" }, 
-          { "x": 2, "y": 2, "type": "BottomRight" },
+          { "x": 2, "y": 4, "type": "LeftTop" },
+          { "x": 2, "y": 3, "type": "BottomTop" },
+          { "x": 2, "y": 2, "type": "RightBottom" },
           { "x": 3, "y": 2, "type": "Gate-Left-In" }
         ]
-      }
+      },
       {
         "input": "socket-1",
         "parts": [

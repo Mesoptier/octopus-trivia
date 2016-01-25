@@ -19,7 +19,7 @@
         "parts": [
           { "x": 1, "y": 0, "type": "LeftRight" },
           { "x": 2, "y": 0, "type": "LeftBottom" },
-          { "x": 2, "y": 1, "type": "TopRight" },
+          { "x": 2, "y": 1, "type": "RightTop" },
           { "x": 3, "y": 1, "type": "Gate-Left-In"}
         ]
       },
@@ -27,10 +27,10 @@
         "input": "input-2",
         "parts": [
           { "x": 1, "y": 3, "type": "LeftRight" },
-          { "x": 2, "y": 3, "type": "LeftBottom" },   
+          { "x": 2, "y": 3, "type": "LeftBottom" },
           { "x": 2, "y": 4, "type": "Gate-Top-In" }
         ]
-      }
+      },
       {
         "input": "input-3",
         "parts": [
@@ -38,7 +38,7 @@
           { "x": 2, "y": 5, "type": "LeftTop" },
           { "x": 2, "y": 4, "type": "Gate-Bottom-In" }
         ]
-      }
+      },
       {
         "input": "socket-1",
         "parts": [
@@ -46,14 +46,14 @@
           { "x": 4, "y": 1, "type": "LeftRight" },
           { "x": 5, "y": 1, "type": "LeftRight" }
         ]
-      }
+      },
       {
         "input": "socket-2",
         "parts": [
           { "x": 2, "y": 4, "type": "Gate-Right-Out" },
           { "x": 3, "y": 4, "type": "LeftRight" },
           { "x": 4, "y": 4, "type": "LeftTop" },
-          { "x": 4, "y": 3, "type": "BottomRightLeft" },
+          { "x": 4, "y": 3, "type": "RightBottom" },
           { "x": 3, "y": 3, "type": "RightTop" },
           { "x": 3, "y": 2, "type": "BottomTop" },
           { "x": 3, "y": 1, "type": "Gate-Bottom-In" },

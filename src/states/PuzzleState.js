@@ -150,6 +150,7 @@ export default class PuzzleState extends Phaser.State {
         case 'sockets':
           Object.keys(puzzle.tiles[group]).forEach((name) => {
             let spriteKey;
+            let gatePlace;
             let obj = puzzle.tiles[group][name];
             let { x, y, input, state } = obj;
             x = puzzleArea.x + x * 32;
@@ -178,18 +179,23 @@ export default class PuzzleState extends Phaser.State {
 
               case 'sockets':
                 spriteKey = 'Socket';
-                this.gatePlaces.push({
+                gatePlace = {
                   type: 'socket',
                   x: x + 16,
                   y: y + 16,
                   gate: null
-                });
+                };
                 break;
             }
 
             let sprite = game.add.sprite(x, y, spriteKey);
             node.sprite = sprite;
             this.puzzleArea.add(sprite);
+
+            if (gatePlace) {
+              this.gatePlaces.push(gatePlace);
+              sprite.gatePlace = gatePlace;
+            }
 
             switch (group) {
               case 'inputs':
@@ -328,6 +334,8 @@ export default class PuzzleState extends Phaser.State {
           this.carryingGate.y = 0;
           this.playerGroup.add(this.carryingGate);
         }
+
+        this.updateNodes();
         return;
       }
 
@@ -418,8 +426,32 @@ export default class PuzzleState extends Phaser.State {
             break;
 
           case 'sockets':
-            // TODO: evaluate gates
-            node.state = null;
+          node.state = null;
+
+            if (inputStates.indexOf(null) === -1) {
+              if (node.sprite.gatePlace && node.sprite.gatePlace.gate) {
+                switch(node.sprite.gatePlace.gate.gateType) {
+                  case 'and':
+                    node.state = inputStates[0] && inputStates[1];
+                    break;
+                  case 'or':
+                    node.state = inputStates[0] || inputStates[1];
+                    break;
+                  case 'not':
+                    node.state = !inputStates[0];
+                    break;
+                  case 'pass':
+                    node.state = inputStates[0];
+                    break;
+                  case 'xor':
+                    node.state = inputStates[0] !== inputStates[1];
+                    break;
+                  default:
+                    break;
+                }
+              }
+            }
+
             break;
         }
       }

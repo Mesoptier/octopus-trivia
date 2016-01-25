@@ -266,8 +266,13 @@ export default class LoadState extends Phaser.State {
     Dialog.addGroup('WebScienceStudent', ['WebScienceStudent-1', 'WebScienceStudent-2', 'WebScienceStudent-3']);
 
     // Load puzzles
-    game.load.json('Puzzle-LogicAndSet-1', require('file!../assets/puzzles/LogicAndSet/Puzzle-1.json'));
-    PuzzleState.add('Puzzle-LogicAndSet-1', 2);
+    game.load.json('Puzzle-LogicAndSet-1', require('file!../assets/puzzles/LogicAndSet/Puzzle-1ROEL.json'));
+    game.load.json('Puzzle-LogicAndSet-2', require('file!../assets/puzzles/LogicAndSet/Puzzle-2.json'));
+    game.load.json('Puzzle-LogicAndSet-3', require('file!../assets/puzzles/LogicAndSet/Puzzle-3.json'));
+    game.load.json('Puzzle-LogicAndSet-4', require('file!../assets/puzzles/LogicAndSet/Puzzle-4.json'));
+    game.load.json('Puzzle-LogicAndSet-5', require('file!../assets/puzzles/LogicAndSet/Puzzle-5.json'));
+    game.load.json('Puzzle-LogicAndSet-6', require('file!../assets/puzzles/LogicAndSet/Puzzle-6.json'));
+    // PuzzleState.add('Puzzle-LogicAndSet-1', 2);
   }
 
   create() {
@@ -290,7 +295,7 @@ export default class LoadState extends Phaser.State {
         this.game.state.start('HubState');
         break;
       case 'puzzle':
-        this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
+        this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-3' });
         break;
 
       default:
