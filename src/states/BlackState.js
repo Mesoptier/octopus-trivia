@@ -20,7 +20,8 @@ export default class BlackState {
     titleText.anchor.setTo(0.5, 0.5);
     game.world.add(titleText);
 
-    setTimeout(this.exitState.bind(this), this.duration);
+    if (this.nextState)
+      setTimeout(this.exitState.bind(this), this.duration);
   }
 
   exitState() {

@@ -93,7 +93,7 @@ export default class PuzzleState extends Phaser.State {
           }
           break;
       }
-      
+
       if (object.properties.facing) {
         entity.setFacing(object.properties.facing);
       }
@@ -181,8 +181,6 @@ export default class PuzzleState extends Phaser.State {
                 this.outputs.push(node);
                 spriteKey = 'Sink-Left';
 
-                game.add.image(x, y, 'Goal-' + (obj.goalState ? 'True' : 'False'));
-
                 break;
 
               case 'sockets':
@@ -231,6 +229,9 @@ export default class PuzzleState extends Phaser.State {
                 sprite.animations.add('True', [0, 1, 2, 3], FRAME_RATE);
                 sprite.animations.add('False', [4, 5, 6, 7], FRAME_RATE);
                 sprite.animations.add('Null', [8]);
+
+                let goal = game.add.image(x, y, 'Goal-' + (obj.goalState ? 'True' : 'False'));
+                this.puzzleArea.add(goal);
                 break;
 
               default:
@@ -308,6 +309,10 @@ export default class PuzzleState extends Phaser.State {
                 nextState: 'PuzzleState',
                 nextParams: [{ key: this.activePuzzle.nextPuzzle, playerPosition: this.playerPosition }],
                 title: this.game.cache.getJSON(this.activePuzzle.nextPuzzle).title
+              });
+            } else {
+              this.game.stateTransition.to('BlackState', true, false, {
+                title: 'Fin'
               });
             }
             break;
