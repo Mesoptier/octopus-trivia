@@ -16,7 +16,7 @@
         "parts": [
           { "x": 1, "y": 1, "type": "LeftRight" },
           { "x": 2, "y": 1, "type": "LeftRight" },
-          { "x": 3, "y": 1, "type": "LeftRight" },
+          { "x": 3, "y": 1, "type": "LeftBottom" },
           { "x": 3, "y": 2, "type": "TopBottom" },
           { "x": 3, "y": 3, "type": "Gate-Top-In" }
         ]
@@ -25,8 +25,8 @@
         "input": "input-2",
         "parts": [
           { "x": 1, "y": 4, "type": "LeftRight" },
-          { "x": 2, "y": 4, "type": "LeftRight" },
-          { "x": 2, "y": 3, "type": "BottomTop" },
+          { "x": 2, "y": 4, "type": "LeftTop" },
+          { "x": 2, "y": 3, "type": "RightBottom" },
           { "x": 3, "y": 3, "type": "Gate-Left-In" }
         ]
       },
@@ -35,8 +35,8 @@
         "parts": [
           { "x": 3, "y": 3, "type": "Gate-Right-Out" },
           { "x": 4, "y": 3, "type": "LeftRight" },
-          { "x": 5, "y": 3, "type": "BottomTop" },
-          { "x": 5, "y": 2, "type": "LeftRight" }
+          { "x": 5, "y": 3, "type": "LeftTop" },
+          { "x": 5, "y": 2, "type": "RightBottom" }
         ]
       }
     ]

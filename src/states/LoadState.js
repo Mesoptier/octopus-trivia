@@ -35,50 +35,44 @@ export default class LoadState extends Phaser.State {
 
     game.load.image('door-open', require('file!../assets/door-open.png'));
 
-    game.load.image('dialog-back-large', require('file!../assets/dialog-back-large.png'));
-    game.load.image('dialog-back-small', require('file!../assets/dialog-back-small.png'));
     game.load.image('dialog-arrow-more', require('file!../assets/dialog-arrow-more.png'));
     game.load.image('dialog-bubble-back', require('file!../assets/dialog-bubble-back.png'));
     game.load.image('dialog-bubble-arrow', require('file!../assets/dialog-bubble-arrow.png'));
 
-    game.load.image('gate-and', require('file!../assets/gate-and.png'));
-    game.load.image('gate-mem', require('file!../assets/gate-mem.png'));
-    game.load.image('gate-not', require('file!../assets/gate-not.png'));
-    game.load.image('gate-or', require('file!../assets/gate-or.png'));
-    game.load.image('gate-xor', require('file!../assets/gate-xor.png'));
+    game.load.spritesheet('SelectBorder', require('file!../assets/puzzle-sprites/SelectBorder.png'), 32, 32);
 
-    game.load.image('puzzle-background', require('file!../assets/puzzle-background.png'));
-    game.load.image('puzzle-gate-back', require('file!../assets/puzzle-gate-back.png'));
-    game.load.spritesheet('puzzle-discard', require('file!../assets/puzzle-discard.png'), 40, 40);
-    game.load.spritesheet('puzzle-exit', require('file!../assets/puzzle-exit.png'), 49, 39);
-    game.load.spritesheet('puzzle-hint', require('file!../assets/puzzle-hint.png'), 48, 39);
-    game.load.spritesheet('puzzle-submit', require('file!../assets/puzzle-submit.png'), 40, 40);
-    game.load.spritesheet('puzzle-wire', require('file!../assets/puzzle-wire.png'), 40, 40);
+    game.load.image('Gate-And', require('file!../assets/puzzle-sprites/Gate-And.png'));
+    game.load.image('Gate-Or', require('file!../assets/puzzle-sprites/Gate-Or.png'));
+    game.load.image('Gate-Not', require('file!../assets/puzzle-sprites/Gate-Not.png'));
+    game.load.image('Gate-Pass', require('file!../assets/puzzle-sprites/Gate-Pass.png'));
+    game.load.image('Gate-Xor', require('file!../assets/puzzle-sprites/Gate-Xor.png'));
 
     game.load.spritesheet('Pump-Right', require('file!../assets/puzzle-sprites/Pump-Right.png'), 32, 32);
     game.load.spritesheet('Sink-Left', require('file!../assets/puzzle-sprites/Sink-Left.png'), 32, 32);
     game.load.spritesheet('Socket', require('file!../assets/puzzle-sprites/Socket.png'), 32, 32);
 
     game.load.spritesheet('Wire-LeftRight', require('file!../assets/puzzle-sprites/Wire-LeftRight.png'), 32, 32);
-    game.load.spritesheet('Wire-LeftTop', require('file!../assets/puzzle-sprites/Wire-LeftTop-Green.png'), 32, 32);
-    game.load.spritesheet('Wire-LeftBottom', require('file!../assets/puzzle-sprites/Wire-LeftBottom-Green.png'), 32, 32);
+    game.load.spritesheet('Wire-LeftTop', require('file!../assets/puzzle-sprites/Wire-LeftTop.png'), 32, 32);
+    game.load.spritesheet('Wire-LeftBottom', require('file!../assets/puzzle-sprites/Wire-LeftBottom.png'), 32, 32);
 
     game.load.spritesheet('Wire-RightLeft', require('file!../assets/puzzle-sprites/Wire-RightLeft.png'), 32, 32);
+    game.load.spritesheet('Wire-RightTop', require('file!../assets/puzzle-sprites/Wire-RightTop.png'), 32, 32);
+    game.load.spritesheet('Wire-RightBottom', require('file!../assets/puzzle-sprites/Wire-RightBottom.png'), 32, 32);
 
     game.load.spritesheet('Wire-TopBottom', require('file!../assets/puzzle-sprites/Wire-TopBottom.png'), 32, 32);
 
     game.load.spritesheet('Wire-BottomTop', require('file!../assets/puzzle-sprites/Wire-BottomTop.png'), 32, 32);
-    game.load.spritesheet('Wire-BottomRight', require('file!../assets/puzzle-sprites/Wire-BottomRight-Green.png'), 32, 32);
+    // game.load.spritesheet('Wire-BottomRight', require('file!../assets/puzzle-sprites/Wire-BottomRight-Green.png'), 32, 32);
 
     game.load.spritesheet('Wire-Gate-Left-In', require('file!../assets/puzzle-sprites/Wire-Gate-Left-In.png'), 32, 32);
     game.load.spritesheet('Wire-Gate-Right-In', require('file!../assets/puzzle-sprites/Wire-Gate-Right-In.png'), 32, 32);
     game.load.spritesheet('Wire-Gate-Top-In', require('file!../assets/puzzle-sprites/Wire-Gate-Top-In.png'), 32, 32);
     game.load.spritesheet('Wire-Gate-Bottom-In', require('file!../assets/puzzle-sprites/Wire-Gate-Bottom-In.png'), 32, 32);
 
-      game.load.spritesheet('Wire-Gate-Left-Out', require('file!../assets/puzzle-sprites/Wire-Gate-Left-Out.png'), 32, 32);
-      game.load.spritesheet('Wire-Gate-Right-Out', require('file!../assets/puzzle-sprites/Wire-Gate-Right-Out.png'), 32, 32);
-      game.load.spritesheet('Wire-Gate-Top-Out', require('file!../assets/puzzle-sprites/Wire-Gate-Top-Out.png'), 32, 32);
-      game.load.spritesheet('Wire-Gate-Bottom-Out', require('file!../assets/puzzle-sprites/Wire-Gate-Bottom-Out.png'), 32, 32);
+    game.load.spritesheet('Wire-Gate-Left-Out', require('file!../assets/puzzle-sprites/Wire-Gate-Left-Out.png'), 32, 32);
+    game.load.spritesheet('Wire-Gate-Right-Out', require('file!../assets/puzzle-sprites/Wire-Gate-Right-Out.png'), 32, 32);
+    game.load.spritesheet('Wire-Gate-Top-Out', require('file!../assets/puzzle-sprites/Wire-Gate-Top-Out.png'), 32, 32);
+    game.load.spritesheet('Wire-Gate-Bottom-Out', require('file!../assets/puzzle-sprites/Wire-Gate-Bottom-Out.png'), 32, 32);
 
     game.load.image('character-VanDerSpock', require('file!../assets/spritesheets/thumbnails/VanDerSpock.png'));
     game.load.image('character-asianStudent', require('file!../assets/spritesheets/thumbnails/asianStudent.png'));
