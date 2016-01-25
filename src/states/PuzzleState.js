@@ -1,112 +1,237 @@
 import Phaser from 'phaser';
+import NPC from '../objects/NPC';
 import Player from '../objects/Player';
 import Dialog from '../helpers/Dialog';
 import renderer from '../renderer';
 
-const puzzles = {};
+const puzzles = [];
 
 export default class PuzzleState extends Phaser.State {
 
-  static add(key, numHints) {
-    puzzles[key] = {
-      dialog: key + '-Dialog',
-      question: key + '-Question',
-      hints: []
-    };
-
-    for (let i = 0; i < numHints; i++) {
-      puzzles[key].hints.push(key + '-Hint-' + (i + 1));
-    }
+  static add(key) {
+    puzzles.push(key);
   }
 
   init({ key, playerPosition = null }) {
     this.key = key;
-    this.activePuzzle = puzzles[key];
-    this.activePuzzleConfig = this.game.cache.getJSON(key);
+    this.activePuzzle = this.game.cache.getJSON(key);
     this.playerPosition = playerPosition;
-    this.hintIndex = 0;
   }
 
   create() {
-    const { game } = this;
+    const { game, activePuzzle: puzzle } = this;
 
-    game.add.image(0, 0, 'puzzle-background');
-    game.add.image(0, 0, 'puzzle-gate-back');
+    // Load tilemap
+    const map = game.add.tilemap('classroom_map');
+    map.addTilesetImage('soulsilver tileset', 'soulsilver tileset');
+    map.addTilesetImage('tileset2', 'tileset2');
 
-    game.add.button(0, 249, 'puzzle-exit', this.onExit, this, 0, 0, 1, 0);
-    game.add.button(48, 249, 'puzzle-hint', this.onHint, this, 0, 0, 1, 0);
-    game.add.button(344, 0, 'puzzle-wire', this.onWire, this, 0, 0, 1, 0);
-    game.add.button(344, 114, 'puzzle-discard', this.onDiscard, this, 0, 0, 1, 0);
-    game.add.button(344, 153, 'puzzle-submit', this.onSubmit, this, 0, 0, 1, 0);
+    // Create background layer
+    const backgroundLayer = map.createLayer('Floor+Walls');
+    backgroundLayer.resizeWorld();
 
-    const puzzleConfig = this.activePuzzleConfig;
-
-    ['and', 'or', 'not', 'xor', 'mem'].forEach((gate, pos) => {
-      let num = puzzleConfig.gates[gate];
-      let numText = new Phaser.BitmapText(game, 90, 6 + 49 * pos, 'pixelade', '' + num, 13, 'right');
-      numText.anchor.setTo(1, 0);
-      numText.tint = '#000022';
-      game.world.add(numText);
-
-      for (let i = 0; i < num; i++) {
-        let sprite = game.add.sprite(11, 11 + 49 * pos, 'gate-' + gate);
-        sprite.inputEnabled = true;
-        sprite.input.enableDrag(true);
-      }
+    // Create prop layers
+    [
+      'Under Furnitue', // Nouja zeg. ..
+      'Desk',
+      'Furniture',
+      'Outide', // Potverdriedubbeltjes...
+      'Window Frames',
+      'OnTop'
+    ].forEach((layerName) => {
+      const layer = map.createLayer(layerName);
     });
 
-    // Create dialog
-    this.dialog = new Dialog();
-    this.dialog.create(game, (state, ...params) => {
-      switch (state) {
-        case 'stop':
-          setTimeout(() => { this.dialog.play(this.activePuzzle.question); });
+    // Create entities
+    this.entities = game.add.group();
+
+    // TODO: make this a separate method in another class, so we can reuse it
+    map.objects.Entities.forEach((object) => {
+      let entity;
+      let position = {
+        x: object.x + object.width / 2,
+        y: object.y + object.height / 2
+      };
+
+      switch (object.type) {
+        case 'player':
+          // Create player
+          if (this.startPlayerPosition) {
+            position = {
+              x: this.startPlayerPosition.x,
+              y: this.startPlayerPosition.y
+            };
+          }
+
+          entity = this.player = new Player(game, position.x, position.y);
+          this.entities.add(this.player);
+          break;
+
+        case 'npc':
+          // Create NPC
+          const npc = entity = new NPC(game, position.x, position.y, object.properties);
+          npc.body.immovable = true;
+          this.entities.add(npc);
           break;
       }
     });
 
-    // Start puzzle dialog
-    this.dialog.play(this.activePuzzle.dialog);
+    let puzzleArea;
+    let baskets = [];
 
-    // add background music
-    //const puzzleMusic = game.add.audio('puzzleMusic');
-    //puzzleMusic.play();
+    map.objects.Puzzle.forEach((object) => {
+      switch (object.type) {
+        case 'area':
+          puzzleArea = {
+            x: object.x,
+            y: object.y,
+            width: object.width,
+            height: object.height
+          };
+          break;
 
+        case 'gate':
+          baskets.push({
+            x: object.x,
+            y: object.y
+          });
+          break;
+
+        default:
+          break;
+      }
+    });
+
+    // Load puzzle
+    this.nodes = {};
+    this.outputs = [];
+    this.wires = [];
+
+    Object.keys(puzzle.tiles).forEach((group) => {
+      switch (group) {
+        case 'inputs':
+        case 'outputs':
+        case 'sockets':
+          Object.keys(puzzle.tiles[group]).forEach((name) => {
+            let spriteKey;
+            let obj = puzzle.tiles[group][name];
+            let { x, y, input, state } = obj;
+            x = puzzleArea.x + x * 32;
+            y = puzzleArea.y + y * 32;
+
+            let node = {
+              name: name,
+              group: group,
+              input: input !== undefined ? input : null,
+              state: state !== undefined ? state : null,
+              _done: false
+            };
+
+            this.nodes[name] = node;
+
+            switch (group) {
+              case 'inputs':
+                spriteKey = 'Pump-Right';
+                break;
+
+              case 'outputs':
+                node.goalState = obj.goalState;
+                this.outputs.push(node);
+                spriteKey = 'Sink-Left';
+                break;
+
+              case 'sockets':
+                spriteKey = 'Socket';
+                break;
+            }
+
+            let sprite = game.add.sprite(x, y, spriteKey);
+            sprite.animations.add('True');
+            sprite.animations.play('True', 20, true);
+          });
+          break;
+
+        case 'wires':
+          puzzle.tiles[group].forEach(({ input, parts }) => {
+            let wire = {
+              input: input,
+              parts: []
+            };
+
+            this.wires.push(wire);
+
+            parts.forEach(({ x, y, type }) => {
+              x = puzzleArea.x + x * 32;
+              y = puzzleArea.y + y * 32;
+
+              let sprite = game.add.sprite(x, y, 'Wire-' + type);
+              sprite.animations.add('True');
+              sprite.animations.play('True', 20, true);
+
+              wire.parts.push(sprite);
+            });
+          });
+          break;
+
+        default:
+          break;
+      }
+    });
+
+    this.updateNodes();
+
+    // Create dialog
+    this.dialog = new Dialog();
+    this.dialog.create(game, (state) => { });
   }
 
-  onExit() {
-    this.game.stateTransition.to('BlackState', true, false, {
-      nextState: 'HubState',
-      nextParams: [{
-        playerPosition: this.playerPosition
-      }]
+  updateNodes() {
+    // Mark each node as unready
+    Object.keys(this.nodes).forEach((name) => {
+      let node = this.nodes[name];
+      node._done = false;
+    });
+
+    // Update each node
+    Object.keys(this.nodes).forEach((name) => {
+      this.updateNode(name);
+    });
+
+    // Update wires
+    this.wires.forEach(({ input, parts }) => {
+      let { state } = this.nodes[input];
+
+      parts.forEach((part) => {
+        console.log(part, state);
+      });
     });
   }
 
-  onHint() {
-    const hints = this.activePuzzle.hints;
-    const hint = hints[this.hintIndex];
+  updateNode(name) {
+    let node = this.nodes[name];
 
-    console.log(hint);
-    this.dialog.play(hint);
+    if (!node._done) {
+      if (node.input) {
+        let inputStates = node.input.map((input) => {
+          return this.updateNode(input).state;
+        });
 
-    if (this.hintIndex < hints.length - 1) {
-      this.hintIndex++;
-    } else {
-      this.hintIndex = 0;
+        switch (node.group) {
+          case 'outputs':
+            node.state = inputStates[0];
+            break;
+
+          case 'sockets':
+            // TODO: evaluate gates
+            node.state = inputStates[1];
+            break;
+        }
+      }
+
+      node._done = true;
     }
-  }
 
-  onWire() {
-
-  }
-
-  onDiscard() {
-
-  }
-
-  onSubmit() {
-
+    return node;
   }
 
   update() {

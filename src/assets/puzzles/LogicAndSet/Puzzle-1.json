@@ -1,0 +1,42 @@
+{
+  "tiles": {
+    "inputs": {
+      "input-1": { "x": 0, "y": 1, "state": false },
+      "input-2": { "x": 0, "y": 4, "state": true }
+    },
+    "outputs": {
+      "output-1": { "x": 8, "y": 8, "input": ["socket-1"], "goalState": true }
+    },
+    "sockets": {
+      "socket-1": { "x": 3, "y": 3, "input": ["input-1", "input-2"] }
+    },
+    "wires": [
+      {
+        "input": "input-1",
+        "parts": [
+          { "x": 1, "y": 1, "type": "LeftRight" },
+          { "x": 2, "y": 1, "type": "LeftRight" },
+          { "x": 3, "y": 1, "type": "LeftBottom" },
+          { "x": 3, "y": 2, "type": "TopBottom" },
+          { "x": 3, "y": 3, "type": "GateIn-Top" }
+        ]
+      },
+      {
+        "input": "input-2",
+        "parts": [
+          { "x": 1, "y": 4, "type": "LeftRight" },
+          { "x": 2, "y": 4, "type": "LeftTop" },
+          { "x": 2, "y": 3, "type": "BottomRight" },
+          { "x": 3, "y": 3, "type": "GateIn-Left" }
+        ]
+      }
+    ]
+  },
+  "gates": {
+    "and": 5,
+    "not": 4,
+    "xor": 3,
+    "or": 2,
+    "pass": 1
+  }
+}

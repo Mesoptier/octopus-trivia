@@ -55,6 +55,26 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('puzzle-submit', require('file!../assets/puzzle-submit.png'), 40, 40);
     game.load.spritesheet('puzzle-wire', require('file!../assets/puzzle-wire.png'), 40, 40);
 
+    game.load.spritesheet('Pump-Right', require('file!../assets/puzzle-sprites/Pump-Right-Green.png'), 32, 32);
+    game.load.spritesheet('Sink-Left', require('file!../assets/puzzle-sprites/Sink-Left-Green.png'), 32, 32);
+    game.load.spritesheet('Socket', require('file!../assets/puzzle-sprites/Socket.png'), 32, 32);
+
+    game.load.spritesheet('Wire-LeftRight', require('file!../assets/puzzle-sprites/Wire-LeftRight-Green.png'), 32, 32);
+    game.load.spritesheet('Wire-LeftTop', require('file!../assets/puzzle-sprites/Wire-LeftTop-Green.png'), 32, 32);
+    game.load.spritesheet('Wire-LeftBottom', require('file!../assets/puzzle-sprites/Wire-LeftBottom-Green.png'), 32, 32);
+
+    game.load.spritesheet('Wire-RightLeft', require('file!../assets/puzzle-sprites/Wire-RightLeft-Green.png'), 32, 32);
+
+    game.load.spritesheet('Wire-TopBottom', require('file!../assets/puzzle-sprites/Wire-TopBottom-Green.png'), 32, 32);
+
+    game.load.spritesheet('Wire-BottomTop', require('file!../assets/puzzle-sprites/Wire-BottomTop-Green.png'), 32, 32);
+    game.load.spritesheet('Wire-BottomRight', require('file!../assets/puzzle-sprites/Wire-BottomRight-Green.png'), 32, 32);
+
+    game.load.spritesheet('Wire-GateIn-Left', require('file!../assets/puzzle-sprites/Wire-GateIn-Left-Green.png'), 32, 32);
+    game.load.spritesheet('Wire-GateIn-Right', require('file!../assets/puzzle-sprites/Wire-GateIn-Right-Green.png'), 32, 32);
+    game.load.spritesheet('Wire-GateIn-Top', require('file!../assets/puzzle-sprites/Wire-GateIn-Top-Green.png'), 32, 32);
+    game.load.spritesheet('Wire-GateIn-Bottom', require('file!../assets/puzzle-sprites/Wire-GateIn-Bottom-Green.png'), 32, 32);
+
     game.load.image('character-VanDerSpock', require('file!../assets/spritesheets/thumbnails/VanDerSpock.png'));
     game.load.image('character-asianStudent', require('file!../assets/spritesheets/thumbnails/asianStudent.png'));
     game.load.image('character-CanteenLady', require('file!../assets/spritesheets/thumbnails/CanteenLady.png'));
@@ -80,6 +100,7 @@ export default class LoadState extends Phaser.State {
 
     // Load map
     game.load.tilemap('auditorium_map', require('file!../assets/levels/auditorium.json'), null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('classroom_map', require('file!../assets/levels/classroom.json'), null, Phaser.Tilemap.TILED_JSON);
     game.load.image('soulsilver tileset', require('file!../assets/levels/soulsilver tileset.png'));
     game.load.image('tileset2', require('file!../assets/levels/tileset2.png'));
 
@@ -246,16 +267,7 @@ export default class LoadState extends Phaser.State {
     Dialog.addGroup('WebScienceStudent', ['WebScienceStudent-1', 'WebScienceStudent-2', 'WebScienceStudent-3']);
 
     // Load puzzles
-    game.load.json('dialog-Puzzle-LogicAndSet-1-Question', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Question.json'));
-    Dialog.add('Puzzle-LogicAndSet-1-Question', 'dialog-Puzzle-LogicAndSet-1-Question');
-    game.load.json('dialog-Puzzle-LogicAndSet-1-Dialog', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Dialog.json'));
-    Dialog.add('Puzzle-LogicAndSet-1-Dialog', 'dialog-Puzzle-LogicAndSet-1-Dialog');
-    game.load.json('dialog-Puzzle-LogicAndSet-1-Hint-1', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Hint-1.json'));
-    Dialog.add('Puzzle-LogicAndSet-1-Hint-1', 'dialog-Puzzle-LogicAndSet-1-Hint-1');
-    game.load.json('dialog-Puzzle-LogicAndSet-1-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/1/Hint-2.json'));
-    Dialog.add('Puzzle-LogicAndSet-1-Hint-2', 'dialog-Puzzle-LogicAndSet-1-Hint-2');
-
-    game.load.json('Puzzle-LogicAndSet-1', require('file!../assets/puzzles/Puzzle-LogicAndSet-1.json'));
+    game.load.json('Puzzle-LogicAndSet-1', require('file!../assets/puzzles/LogicAndSet/Puzzle-1.json'));
     PuzzleState.add('Puzzle-LogicAndSet-1', 2);
   }
 
