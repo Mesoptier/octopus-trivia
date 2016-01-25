@@ -3,8 +3,8 @@ var webpack = require('webpack');
 module.exports = {
   entry: './src/entry.js',
   output: {
-    path: __dirname + "/public/assets",
-    publicPath: "/assets/",
+    path: __dirname + "/public/build",
+    publicPath: "/build/",
     filename: "bundle.js"
   },
   devtool: 'source-map',
