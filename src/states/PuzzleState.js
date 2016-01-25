@@ -197,6 +197,15 @@ export default class PuzzleState extends Phaser.State {
                   gate: null
                 };
 
+                if (obj.gate) {
+                  let gate = game.add.sprite(x + 16, y + 16, 'Gate-' + obj.gate.charAt(0).toUpperCase() + obj.gate.slice(1));
+                  gate.anchor.setTo(0.5, 0.5);
+                  this.puzzleGates.add(gate);
+                  gatePlace.gate = gate;
+                  gate.gateType = obj.gate;
+                  gate.gateFixed = true;
+                }
+
                 let socketSolid = this.sockets.create(x + 3, y + 3, null);
                 socketSolid.body.setSize(26, 26);
                 socketSolid.body.immovable = true;
@@ -211,6 +220,7 @@ export default class PuzzleState extends Phaser.State {
             if (gatePlace) {
               this.gatePlaces.push(gatePlace);
               sprite.gatePlace = gatePlace;
+              gatePlace.node = node;
             }
 
             switch (group) {
@@ -355,7 +365,7 @@ export default class PuzzleState extends Phaser.State {
       });
 
       if (closest) {
-        if (closest.type === 'socket') {
+        if (closest.type === 'socket' && !(closest.gate && closest.gate.gateFixed) && !(this.carryingGate && (this.carryingGate.gateType == 'not' || this.carryingGate.gateType == 'pass') === (closest.node.input.length === 2))) {
           let swap = closest.gate; // Gate or null
           closest.gate = this.carryingGate;
           this.carryingGate = swap;
@@ -364,7 +374,9 @@ export default class PuzzleState extends Phaser.State {
             closest.gate.position.setTo(closest.x, closest.y);
             this.puzzleGates.add(closest.gate);
           }
-        } else if (closest.type === 'basket') {
+        }
+
+        if (closest.type === 'basket') {
           let swap;
 
           if (!this.carryingGate || this.carryingGate.gateType !== closest.gateType) {
@@ -561,11 +573,11 @@ export default class PuzzleState extends Phaser.State {
     game.physics.arcade.collide(this.player, this.doors);
     game.physics.arcade.collide(this.player, this.entities);
 
-    this.sockets.forEachAlive((socket) => {
-      socket.body.enable = (this.carryingGate !== null) || (socket.gatePlace.gate !== null);
-    });
-
-    game.physics.arcade.collide(this.player, this.sockets);
+    // this.sockets.forEachAlive((socket) => {
+    //   socket.body.enable = (this.carryingGate !== null) || (socket.gatePlace.gate !== null);
+    // });
+    //
+    // game.physics.arcade.collide(this.player, this.sockets);
 
     this.entities.sort('y', Phaser.Group.SORT_ASCENDING);
 
@@ -592,7 +604,7 @@ export default class PuzzleState extends Phaser.State {
       }
     });
 
-    if (closest) {
+    if (closest && !(closest.type == 'socket' && closest.gate && closest.gate.gateFixed) && !(closest.type == 'socket' && this.carryingGate && (this.carryingGate.gateType == 'not' || this.carryingGate.gateType == 'pass') === (closest.node.input.length === 2))) {
       this.selectBorder.visible = true;
       this.selectBorder.position.setTo(closest.x, closest.y);
     } else {
