@@ -172,10 +172,15 @@
   <object id="10" name="Teacher" type="npc" x="16" y="128" width="32" height="16">
    <properties>
     <property name="dialogEntityId" value="Teacher"/>
+    <property name="facing" value="down"/>
     <property name="sprite" value="SeniorStudent"/>
    </properties>
   </object>
-  <object id="13" name="Player" type="player" x="32" y="256" width="32" height="32"/>
+  <object id="13" name="Player" type="player" x="32" y="240" width="32" height="32">
+   <properties>
+    <property name="facing" value="up"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Doors">
   <object id="12" name="Exit" type="door" x="16" y="288" width="64" height="16"/>

@@ -191,6 +191,7 @@
                  "properties":
                     {
                      "dialogEntityId":"Teacher",
+                     "facing":"down",
                      "sprite":"SeniorStudent"
                     },
                  "rotation":0,
@@ -206,14 +207,14 @@
                  "name":"Player",
                  "properties":
                     {
-
+                     "facing":"up"
                     },
                  "rotation":0,
                  "type":"player",
                  "visible":true,
                  "width":32,
                  "x":32,
-                 "y":256
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",

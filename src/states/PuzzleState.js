@@ -76,13 +76,6 @@ export default class PuzzleState extends Phaser.State {
       switch (object.type) {
         case 'player':
           // Create player
-          if (this.startPlayerPosition) {
-            position = {
-              x: this.startPlayerPosition.x,
-              y: this.startPlayerPosition.y
-            };
-          }
-
           entity = this.player = new Player(game, position.x, position.y);
           this.entities.add(this.player);
           this.playerGroup = game.add.group(this.player);
@@ -99,6 +92,10 @@ export default class PuzzleState extends Phaser.State {
             this.teacherEntity = entity;
           }
           break;
+      }
+      
+      if (object.properties.facing) {
+        entity.setFacing(object.properties.facing);
       }
     });
 
@@ -455,8 +452,8 @@ export default class PuzzleState extends Phaser.State {
 
       if (closest) {
         this.dialog.playGroupRandom('door-closed', {
-          x: closest.x,
-          y: closest.y - 22
+          entity: this.player,
+          align: 'left'
         });
 
         return;
