@@ -42,6 +42,17 @@ export default class PuzzleState extends Phaser.State {
       const layer = map.createLayer(layerName);
     });
 
+    // Create solids
+    const solids = this.solids = game.add.group();
+    solids.enableBody = true;
+    solids.physicsBodyType = Phaser.Physics.ARCADE;
+
+    map.objects.Solids.forEach((object) => {
+      let wall = solids.create(object.x, object.y, null);
+      wall.body.setSize(object.width, object.height);
+      wall.body.immovable = true;
+    });
+
     // Create entities
     this.entities = game.add.group();
 
@@ -235,7 +246,13 @@ export default class PuzzleState extends Phaser.State {
   }
 
   update() {
-    this.dialog.update();
+    const { game, dialog } = this;
+
+    dialog.update();
+
+    game.physics.arcade.collide(this.player, this.solids);
+    game.physics.arcade.collide(this.player, this.doors);
+    game.physics.arcade.collide(this.player, this.entities);
   }
 
   render() {
