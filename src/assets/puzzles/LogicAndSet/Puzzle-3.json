@@ -1,4 +1,5 @@
 {
+  "title": "Logic & Set\nPart 3",
   "tiles": {
     "inputs": {
       "input-1": { "x": 0, "y": 0, "state": true },
@@ -19,7 +20,7 @@
         "parts": [
           { "x": 1, "y": 0, "type": "LeftRight" },
           { "x": 2, "y": 0, "type": "LeftBottom" },
-          { "x": 2, "y": 1, "type": "RightTop" },
+          { "x": 2, "y": 1, "type": "TopRight" },
           { "x": 3, "y": 1, "type": "Gate-Left-In"}
         ]
       },
@@ -53,7 +54,7 @@
           { "x": 2, "y": 4, "type": "Gate-Right-Out" },
           { "x": 3, "y": 4, "type": "LeftRight" },
           { "x": 4, "y": 4, "type": "LeftTop" },
-          { "x": 4, "y": 3, "type": "RightBottom" },
+          { "x": 4, "y": 3, "type": "BottomRightLeft" },
           { "x": 3, "y": 3, "type": "RightTop" },
           { "x": 3, "y": 2, "type": "BottomTop" },
           { "x": 3, "y": 1, "type": "Gate-Bottom-In" },
@@ -69,5 +70,11 @@
     "xor": 0,
     "or": 1,
     "pass": 0
-  }
+  },
+  "dialogs": {
+    "intro": "Puzzle-LogicAndSet-3-Intro",
+    "outro": "Puzzle-LogicAndSet-3-Outro",
+    "hints": "Puzzle-LogicAndSet-3-Hints"
+  },
+  "nextPuzzle": "Puzzle-LogicAndSet-4"
 }

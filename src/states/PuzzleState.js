@@ -292,6 +292,17 @@ export default class PuzzleState extends Phaser.State {
           break;
 
         case 'stop':
+          if (params[0] === this.activePuzzle.dialogs.outro) {
+            if (this.activePuzzle.nextPuzzle) {
+              this.game.stateTransition.to('BlackState', true, false, {
+                nextState: 'PuzzleState',
+                nextParams: [{ key: this.activePuzzle.nextPuzzle, playerPosition: this.playerPosition }],
+                title: this.game.cache.getJSON(this.activePuzzle.nextPuzzle).title
+              });
+            }
+            break;
+          }
+
           let entity = this.dialog.activeEntity;
           if (entity && entity.paused) {
             entity.unpause();

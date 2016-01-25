@@ -54,15 +54,22 @@ export default class LoadState extends Phaser.State {
     game.load.spritesheet('Wire-LeftRight', require('file!../assets/puzzle-sprites/Wire-LeftRight.png'), 32, 32);
     game.load.spritesheet('Wire-LeftTop', require('file!../assets/puzzle-sprites/Wire-LeftTop.png'), 32, 32);
     game.load.spritesheet('Wire-LeftBottom', require('file!../assets/puzzle-sprites/Wire-LeftBottom.png'), 32, 32);
+    game.load.spritesheet('Wire-LeftTopBottom', require('file!../assets/puzzle-sprites/Wire-LeftTopBottom.png'), 32, 32);
+    game.load.spritesheet('Wire-LeftTopRight', require('file!../assets/puzzle-sprites/Wire-LeftTopRight.png'), 32, 32);
+    game.load.spritesheet('Wire-LeftRightBottom', require('file!../assets/puzzle-sprites/Wire-LeftRightBottom.png'), 32, 32);
 
     game.load.spritesheet('Wire-RightLeft', require('file!../assets/puzzle-sprites/Wire-RightLeft.png'), 32, 32);
     game.load.spritesheet('Wire-RightTop', require('file!../assets/puzzle-sprites/Wire-RightTop.png'), 32, 32);
     game.load.spritesheet('Wire-RightBottom', require('file!../assets/puzzle-sprites/Wire-RightBottom.png'), 32, 32);
 
     game.load.spritesheet('Wire-TopBottom', require('file!../assets/puzzle-sprites/Wire-TopBottom.png'), 32, 32);
+    game.load.spritesheet('Wire-TopRight', require('file!../assets/puzzle-sprites/Wire-TopRight.png'), 32, 32);
+    // game.load.spritesheet('Wire-TopLeft', require('file!../assets/puzzle-sprites/Wire-TopLeft.png'), 32, 32);
 
     game.load.spritesheet('Wire-BottomTop', require('file!../assets/puzzle-sprites/Wire-BottomTop.png'), 32, 32);
-    // game.load.spritesheet('Wire-BottomRight', require('file!../assets/puzzle-sprites/Wire-BottomRight-Green.png'), 32, 32);
+    game.load.spritesheet('Wire-BottomRight', require('file!../assets/puzzle-sprites/Wire-BottomRight.png'), 32, 32);
+    // game.load.spritesheet('Wire-BottomLeft', require('file!../assets/puzzle-sprites/Wire-BottomLeft.png'), 32, 32);
+    game.load.spritesheet('Wire-BottomRightLeft', require('file!../assets/puzzle-sprites/Wire-BottomRightLeft.png'), 32, 32);
 
     game.load.spritesheet('Wire-Gate-Left-In', require('file!../assets/puzzle-sprites/Wire-Gate-Left-In.png'), 32, 32);
     game.load.spritesheet('Wire-Gate-Right-In', require('file!../assets/puzzle-sprites/Wire-Gate-Right-In.png'), 32, 32);
@@ -275,6 +282,52 @@ export default class LoadState extends Phaser.State {
     Dialog.add('Puzzle-LogicAndSet-1-Hint-2', 'dialog-Puzzle-LogicAndSet-1-Hint-2');
     Dialog.addGroup('Puzzle-LogicAndSet-1-Hints', ['Puzzle-LogicAndSet-1-Hint-1', 'Puzzle-LogicAndSet-1-Hint-2']);
 
+    game.load.json('dialog-Puzzle-LogicAndSet-2-Intro', require('file!../assets/dialogs/Puzzle/LogicAndSet/2/Intro.json'));
+    Dialog.add('Puzzle-LogicAndSet-2-Intro', 'dialog-Puzzle-LogicAndSet-2-Intro');
+    game.load.json('dialog-Puzzle-LogicAndSet-2-Outro', require('file!../assets/dialogs/Puzzle/LogicAndSet/2/Outro.json'));
+    Dialog.add('Puzzle-LogicAndSet-2-Outro', 'dialog-Puzzle-LogicAndSet-2-Outro');
+    game.load.json('dialog-Puzzle-LogicAndSet-2-Hint-1', require('file!../assets/dialogs/Puzzle/LogicAndSet/2/Hint-1.json'));
+    Dialog.add('Puzzle-LogicAndSet-2-Hint-1', 'dialog-Puzzle-LogicAndSet-2-Hint-1');
+    game.load.json('dialog-Puzzle-LogicAndSet-2-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/2/Hint-2.json'));
+    Dialog.add('Puzzle-LogicAndSet-2-Hint-2', 'dialog-Puzzle-LogicAndSet-2-Hint-2');
+    Dialog.addGroup('Puzzle-LogicAndSet-2-Hints', ['Puzzle-LogicAndSet-2-Hint-1', 'Puzzle-LogicAndSet-2-Hint-2']);
+
+    game.load.json('dialog-Puzzle-LogicAndSet-3-Intro', require('file!../assets/dialogs/Puzzle/LogicAndSet/3/Intro.json'));
+    Dialog.add('Puzzle-LogicAndSet-3-Intro', 'dialog-Puzzle-LogicAndSet-3-Intro');
+    game.load.json('dialog-Puzzle-LogicAndSet-3-Outro', require('file!../assets/dialogs/Puzzle/LogicAndSet/3/Outro.json'));
+    Dialog.add('Puzzle-LogicAndSet-3-Outro', 'dialog-Puzzle-LogicAndSet-3-Outro');
+    game.load.json('dialog-Puzzle-LogicAndSet-3-Hint-1', require('file!../assets/dialogs/Puzzle/LogicAndSet/3/Hint-1.json'));
+    Dialog.add('Puzzle-LogicAndSet-3-Hint-1', 'dialog-Puzzle-LogicAndSet-3-Hint-1');
+    game.load.json('dialog-Puzzle-LogicAndSet-3-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/3/Hint-2.json'));
+    Dialog.add('Puzzle-LogicAndSet-3-Hint-2', 'dialog-Puzzle-LogicAndSet-3-Hint-2');
+    Dialog.addGroup('Puzzle-LogicAndSet-3-Hints', ['Puzzle-LogicAndSet-3-Hint-1', 'Puzzle-LogicAndSet-3-Hint-2']);
+
+    game.load.json('dialog-Puzzle-LogicAndSet-4-Outro', require('file!../assets/dialogs/Puzzle/LogicAndSet/4/Outro.json'));
+    Dialog.add('Puzzle-LogicAndSet-4-Outro', 'dialog-Puzzle-LogicAndSet-4-Outro');
+    game.load.json('dialog-Puzzle-LogicAndSet-4-Hint-1', require('file!../assets/dialogs/Puzzle/LogicAndSet/4/Hint-1.json'));
+    Dialog.add('Puzzle-LogicAndSet-4-Hint-1', 'dialog-Puzzle-LogicAndSet-4-Hint-1');
+    game.load.json('dialog-Puzzle-LogicAndSet-4-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/4/Hint-2.json'));
+    Dialog.add('Puzzle-LogicAndSet-4-Hint-2', 'dialog-Puzzle-LogicAndSet-4-Hint-2');
+    Dialog.addGroup('Puzzle-LogicAndSet-4-Hints', ['Puzzle-LogicAndSet-4-Hint-1', 'Puzzle-LogicAndSet-4-Hint-2']);
+
+    game.load.json('dialog-Puzzle-LogicAndSet-5-Outro', require('file!../assets/dialogs/Puzzle/LogicAndSet/5/Outro.json'));
+    Dialog.add('Puzzle-LogicAndSet-5-Outro', 'dialog-Puzzle-LogicAndSet-5-Outro');
+    game.load.json('dialog-Puzzle-LogicAndSet-5-Hint-1', require('file!../assets/dialogs/Puzzle/LogicAndSet/5/Hint-1.json'));
+    Dialog.add('Puzzle-LogicAndSet-5-Hint-1', 'dialog-Puzzle-LogicAndSet-5-Hint-1');
+    game.load.json('dialog-Puzzle-LogicAndSet-5-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/5/Hint-2.json'));
+    Dialog.add('Puzzle-LogicAndSet-5-Hint-2', 'dialog-Puzzle-LogicAndSet-5-Hint-2');
+    Dialog.addGroup('Puzzle-LogicAndSet-5-Hints', ['Puzzle-LogicAndSet-5-Hint-1', 'Puzzle-LogicAndSet-5-Hint-2']);
+
+    game.load.json('dialog-Puzzle-LogicAndSet-6-Intro', require('file!../assets/dialogs/Puzzle/LogicAndSet/6/Intro.json'));
+    Dialog.add('Puzzle-LogicAndSet-6-Intro', 'dialog-Puzzle-LogicAndSet-6-Intro');
+    game.load.json('dialog-Puzzle-LogicAndSet-6-Outro', require('file!../assets/dialogs/Puzzle/LogicAndSet/6/Outro.json'));
+    Dialog.add('Puzzle-LogicAndSet-6-Outro', 'dialog-Puzzle-LogicAndSet-6-Outro');
+    game.load.json('dialog-Puzzle-LogicAndSet-6-Hint-1', require('file!../assets/dialogs/Puzzle/LogicAndSet/6/Hint-1.json'));
+    Dialog.add('Puzzle-LogicAndSet-6-Hint-1', 'dialog-Puzzle-LogicAndSet-6-Hint-1');
+    game.load.json('dialog-Puzzle-LogicAndSet-6-Hint-2', require('file!../assets/dialogs/Puzzle/LogicAndSet/6/Hint-2.json'));
+    Dialog.add('Puzzle-LogicAndSet-6-Hint-2', 'dialog-Puzzle-LogicAndSet-6-Hint-2');
+    Dialog.addGroup('Puzzle-LogicAndSet-6-Hints', ['Puzzle-LogicAndSet-6-Hint-1', 'Puzzle-LogicAndSet-6-Hint-2']);
+
     // Load puzzles
     game.load.json('Puzzle-LogicAndSet-1', require('file!../assets/puzzles/LogicAndSet/Puzzle-1ROEL.json'));
     game.load.json('Puzzle-LogicAndSet-2', require('file!../assets/puzzles/LogicAndSet/Puzzle-2.json'));
@@ -282,7 +335,6 @@ export default class LoadState extends Phaser.State {
     game.load.json('Puzzle-LogicAndSet-4', require('file!../assets/puzzles/LogicAndSet/Puzzle-4.json'));
     game.load.json('Puzzle-LogicAndSet-5', require('file!../assets/puzzles/LogicAndSet/Puzzle-5.json'));
     game.load.json('Puzzle-LogicAndSet-6', require('file!../assets/puzzles/LogicAndSet/Puzzle-6.json'));
-    // PuzzleState.add('Puzzle-LogicAndSet-1', 2);
   }
 
   create() {
@@ -305,7 +357,7 @@ export default class LoadState extends Phaser.State {
         this.game.state.start('HubState');
         break;
       case 'puzzle':
-        this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-1' });
+        this.game.state.start('PuzzleState', true, false, { key: 'Puzzle-LogicAndSet-' + (this.game.env.puzzle || '1') });
         break;
 
       default:

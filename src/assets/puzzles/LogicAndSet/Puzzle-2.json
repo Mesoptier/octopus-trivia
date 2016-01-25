@@ -1,4 +1,5 @@
 {
+  "title": "Logic & Set\nPart 2",
   "tiles": {
     "inputs": {
       "input-1": { "x": 0, "y": 1, "state": true },
@@ -26,7 +27,7 @@
           { "x": 1, "y": 4, "type": "LeftRight" },
           { "x": 2, "y": 4, "type": "LeftTop" },
           { "x": 2, "y": 3, "type": "BottomTop" },
-          { "x": 2, "y": 2, "type": "RightBottom" },
+          { "x": 2, "y": 2, "type": "BottomRight" },
           { "x": 3, "y": 2, "type": "Gate-Left-In" }
         ]
       },
@@ -46,5 +47,11 @@
     "xor": 0,
     "or": 1,
     "pass": 0
-  }
+  },
+  "dialogs": {
+    "intro": "Puzzle-LogicAndSet-2-Intro",
+    "outro": "Puzzle-LogicAndSet-2-Outro",
+    "hints": "Puzzle-LogicAndSet-2-Hints"
+  },
+  "nextPuzzle": "Puzzle-LogicAndSet-3"
 }

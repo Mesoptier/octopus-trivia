@@ -1,4 +1,5 @@
 {
+  "title": "Logic & Set\nPart 4",
   "tiles": {
     "inputs": {
       "input-1": { "x": 0, "y": 0, "state": true },
@@ -45,10 +46,9 @@
       {
         "input": "socket-1",
         "parts": [
-          { "x": 4, "y": 1, "type": "Gate-Right-Out" },
-          { "x": 5, "y": 1, "type": "LeftBottom" },
-          { "x": 5, "y": 2, "type": "TopRight" },
-          { "x": 6, "y": 2, "type": "Gate-Left-In" }
+          { "x": 4, "y": 0, "type": "Gate-Right-Out" },
+          { "x": 5, "y": 0, "type": "LeftBottom" },
+          { "x": 5, "y": 1, "type": "TopRight" }
         ]
       },
       {
@@ -69,8 +69,7 @@
         "parts": [
           { "x": 4, "y": 5, "type": "Gate-Right-Out" },
           { "x": 5, "y": 5, "type": "LeftTop" },
-          { "x": 5, "y": 4, "type": "TopRight" },
-          { "x": 6, "y": 4, "type": "Gate-Left-In" },
+          { "x": 5, "y": 4, "type": "BottomRight" }
         ]
       }
     ]
@@ -81,5 +80,11 @@
     "xor": 0,
     "or": 2,
     "pass": 0
-  }
+  },
+  "dialogs": {
+    "intro": null,
+    "outro": "Puzzle-LogicAndSet-4-Outro",
+    "hints": "Puzzle-LogicAndSet-4-Hints"
+  },
+  "nextPuzzle": "Puzzle-LogicAndSet-5"
 }

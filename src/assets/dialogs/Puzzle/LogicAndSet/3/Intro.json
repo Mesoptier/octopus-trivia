@@ -1,4 +1,5 @@
 [
   ["character", "LeTique"],
-  "An OR gate will give a green flow if it receives at least 1 green flow. This is like my pet shark that is happy with only one human, but doesn’t mind eating two humans either."
+  "An OR gate will give a green flow if it receives at least 1 green flow.",
+  "This is like my pet shark that is happy with only one human, but doesn’t mind eating two humans either."
 ]

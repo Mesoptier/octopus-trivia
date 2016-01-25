@@ -1,4 +1,5 @@
 {
+  "title": "Logic & Set\nPart 5",
   "tiles": {
     "inputs": {
       "input-1": { "x": 0, "y": 0, "state": true },
@@ -46,7 +47,7 @@
         "parts": [
           { "x": 1, "y": 5, "type": "LeftRight" },
           { "x": 2, "y": 5, "type": "LeftTop" },
-          { "x": 2, "y": 1, "type": "Gate-Bottom-In"}
+          { "x": 2, "y": 4, "type": "Gate-Bottom-In"}
         ]
       },
       {
@@ -91,5 +92,11 @@
     "xor": 0,
     "or": 2,
     "pass": 0
-  }
+  },
+  "dialogs": {
+    "intro": null,
+    "outro": "Puzzle-LogicAndSet-5-Outro",
+    "hints": "Puzzle-LogicAndSet-5-Hints"
+  },
+  "nextPuzzle": "Puzzle-LogicAndSet-6"
 }
